@@ -1,5 +1,5 @@
 {
-  "name": "oblivion-spell-altar",
+  "name": "oblivion-wayshrine",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,7 +14,6 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.1",
     "@mui/material": "^6.1.1",
-    "lz-string": "^1.5.0",
     "next": "14.2.12",
     "react": "^18",
     "react-dom": "^18",

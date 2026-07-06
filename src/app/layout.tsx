@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 
@@ -15,33 +15,27 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Oblivion Spell Altar',
+  title: 'Oblivion Wayshrine',
   description:
-    "Craft powerful custom spells with ease using this Oblivion Spell Calculator. Whether you're min-maxing your magic or experimenting with creative effects, this tool helps you visualize magicka costs, durations, and effect stacking - all within the constraints of the game's enchanting system.",
+    'Track your progress through every discoverable location in The Elder Scrolls IV: Oblivion. Mark locations as discovered and cleared on your journey to 100% completion.',
   openGraph: {
-    title: 'Oblivion Spell Altar',
+    title: 'Oblivion Wayshrine',
     description:
-      "Craft powerful custom spells with ease using this Oblivion Spell Calculator. Whether you're min-maxing your magic or experimenting with creative effects, this tool helps you visualize magicka costs, durations, and effect stacking - all within the constraints of the game's enchanting system.",
-    url: 'https://spells.oblivion.tools',
-    siteName: 'Oblivion Spell Altar',
+      'Track your progress through every discoverable location in The Elder Scrolls IV: Oblivion. Mark locations as discovered and cleared on your journey to 100% completion.',
+    url: 'https://wayshrine.oblivion.tools',
+    siteName: 'Oblivion Wayshrine',
     type: 'website',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Oblivion Spell Altar',
+    title: 'Oblivion Wayshrine',
     description:
-      "Craft powerful custom spells with ease using this Oblivion Spell Calculator. Whether you're min-maxing your magic or experimenting with creative effects, this tool helps you visualize magicka costs, durations, and effect stacking - all within the constraints of the game's enchanting system.",
+      'Track your progress through every discoverable location in The Elder Scrolls IV: Oblivion. Mark locations as discovered and cleared on your journey to 100% completion.',
   },
   alternates: {
-    canonical: 'https://spells.oblivion.tools',
+    canonical: 'https://wayshrine.oblivion.tools',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  themeColor: '#1e1e1e',
   robots: {
     index: true,
     follow: true,
@@ -52,6 +46,13 @@ export const metadata: Metadata = {
       noimageindex: false,
     },
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: '#1e1e1e',
 };
 
 export default function RootLayout({

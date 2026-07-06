@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://spells.oblivion.tools/sitemap.xml
+Sitemap: https://wayshrine.oblivion.tools/sitemap.xml

@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import SpellAltar from '@/components/SpellAltar';
+import Wayshrine from '@/components/Wayshrine';
 
 export default function Home() {
-  return <SpellAltar />;
+  return <Wayshrine />;
 }

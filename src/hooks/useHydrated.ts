@@ -1,17 +1,17 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useSpellStore } from '@/data/spellStore';
+import { useLocationStore } from '@/data/locationStore';
 
 export function useHydrated() {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    if (useSpellStore.persist.hasHydrated()) {
+    if (useLocationStore.persist.hasHydrated()) {
       setHydrated(true);
       return;
     }
-    const unsub = useSpellStore.persist.onFinishHydration(() => setHydrated(true));
+    const unsub = useLocationStore.persist.onFinishHydration(() => setHydrated(true));
     return unsub;
   }, []);
 
