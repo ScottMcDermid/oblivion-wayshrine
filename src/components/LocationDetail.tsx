@@ -14,6 +14,7 @@ import {
 import {
   Visibility,
   CheckCircle,
+  RadioButtonUnchecked,
   MenuBook,
   Store,
   Assignment,
@@ -54,46 +55,52 @@ export default function LocationDetail({
         </Box>
       </Box>
 
-      <Box sx={{ mb: 2, display: 'flex', gap: 1 }}>
+      <Box sx={{ mb: 2 }}>
         <Button
           size="small"
-          startIcon={<Visibility fontSize="small" />}
-          variant={status === 'discovered' ? 'contained' : 'outlined'}
-          onClick={() => onStatusChange(status === 'discovered' ? 'undiscovered' : 'discovered')}
+          fullWidth
+          startIcon={
+            status === 'cleared' ? <CheckCircle fontSize="small" /> :
+            status === 'discovered' ? <Visibility fontSize="small" /> :
+            <RadioButtonUnchecked fontSize="small" />
+          }
+          variant={status === 'undiscovered' ? 'outlined' : 'contained'}
+          onClick={() => {
+            const next: Record<LocationStatus, LocationStatus> = {
+              undiscovered: 'discovered',
+              discovered: 'cleared',
+              cleared: 'undiscovered',
+            };
+            onStatusChange(next[status]);
+          }}
           sx={{
-            flex: 1,
-            backgroundColor: status === 'discovered' ? '#3b82f6' : 'transparent',
-            borderColor: '#3b82f6',
-            color: status === 'discovered' ? '#fff' : '#3b82f6',
+            backgroundColor:
+              status === 'cleared' ? '#22c55e' :
+              status === 'discovered' ? '#3b82f6' :
+              'transparent',
+            borderColor:
+              status === 'cleared' ? '#22c55e' :
+              status === 'discovered' ? '#3b82f6' :
+              'grey.500',
+            color:
+              status === 'undiscovered' ? 'grey.500' : '#fff',
             '&:hover': {
-              backgroundColor: status === 'discovered' ? '#3b82f6' : '#3b82f622',
-              borderColor: '#3b82f6',
+              backgroundColor:
+                status === 'cleared' ? '#22c55e' :
+                status === 'discovered' ? '#3b82f6' :
+                'rgba(255,255,255,0.05)',
+              borderColor:
+                status === 'cleared' ? '#22c55e' :
+                status === 'discovered' ? '#3b82f6' :
+                'grey.500',
             },
             fontSize: '0.7rem',
             textTransform: 'none',
           }}
         >
-          Discovered
-        </Button>
-        <Button
-          size="small"
-          startIcon={<CheckCircle fontSize="small" />}
-          variant={status === 'cleared' ? 'contained' : 'outlined'}
-          onClick={() => onStatusChange(status === 'cleared' ? 'undiscovered' : 'cleared')}
-          sx={{
-            flex: 1,
-            backgroundColor: status === 'cleared' ? '#22c55e' : 'transparent',
-            borderColor: '#22c55e',
-            color: status === 'cleared' ? '#fff' : '#22c55e',
-            '&:hover': {
-              backgroundColor: status === 'cleared' ? '#22c55e' : '#22c55e22',
-              borderColor: '#22c55e',
-            },
-            fontSize: '0.7rem',
-            textTransform: 'none',
-          }}
-        >
-          Cleared
+          {status === 'cleared' ? 'Cleared' :
+           status === 'discovered' ? 'Discovered' :
+           'Undiscovered'}
         </Button>
       </Box>
 
