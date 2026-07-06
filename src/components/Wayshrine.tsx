@@ -30,7 +30,16 @@ function WayshrineContent() {
   const hydrated = useHydrated();
 
   const locations = useLocationStore((s) => s.locations);
-  const { setLocationStatus, resetToDefaults } = useLocationStore((s) => s.actions);
+  const completedQuests = useLocationStore((s) => s.completedQuests);
+  const investedMerchants = useLocationStore((s) => s.investedMerchants);
+  const acquiredItems = useLocationStore((s) => s.acquiredItems);
+  const {
+    setLocationStatus,
+    toggleQuestCompleted,
+    toggleMerchantInvested,
+    toggleItemAcquired,
+    resetToDefaults,
+  } = useLocationStore((s) => s.actions);
 
   const [selectedLocation, setSelectedLocation] = useState<LocationDefinition | null>(null);
   const [search, setSearch] = useState('');
@@ -101,6 +110,12 @@ function WayshrineContent() {
       location={selectedLocation}
       status={locations[selectedLocation.id] || 'undiscovered'}
       onStatusChange={(status) => setLocationStatus(selectedLocation.id, status)}
+      completedQuests={completedQuests}
+      investedMerchants={investedMerchants}
+      acquiredItems={acquiredItems}
+      onToggleQuest={(name) => toggleQuestCompleted(selectedLocation.id, name)}
+      onToggleMerchant={(name) => toggleMerchantInvested(selectedLocation.id, name)}
+      onToggleItem={(name) => toggleItemAcquired(selectedLocation.id, name)}
     />
   ) : (
     <Box

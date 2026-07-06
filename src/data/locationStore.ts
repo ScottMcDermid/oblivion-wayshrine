@@ -13,11 +13,17 @@ function buildDefaultStatuses(): Record<string, LocationStatus> {
 
 type State = {
   locations: Record<string, LocationStatus>;
+  completedQuests: Record<string, boolean>;
+  investedMerchants: Record<string, boolean>;
+  acquiredItems: Record<string, boolean>;
   version: number;
 };
 
 type Actions = {
   setLocationStatus: (id: string, status: LocationStatus) => void;
+  toggleQuestCompleted: (locationId: string, questName: string) => void;
+  toggleMerchantInvested: (locationId: string, merchantName: string) => void;
+  toggleItemAcquired: (locationId: string, itemName: string) => void;
   resetToDefaults: () => void;
 };
 
@@ -27,15 +33,39 @@ export const useLocationStore = create<LocationStore>()(
   persist(
     (set) => ({
       locations: buildDefaultStatuses(),
+      completedQuests: {},
+      investedMerchants: {},
+      acquiredItems: {},
       version: 1,
       actions: {
         setLocationStatus: (id, status) =>
           set((state) => ({
             locations: { ...state.locations, [id]: status },
           })),
+        toggleQuestCompleted: (locationId, questName) =>
+          set((state) => {
+            const key = `${locationId}:${questName}`;
+            const { [key]: current, ...rest } = state.completedQuests;
+            return { completedQuests: current ? rest : { ...state.completedQuests, [key]: true } };
+          }),
+        toggleMerchantInvested: (locationId, merchantName) =>
+          set((state) => {
+            const key = `${locationId}:${merchantName}`;
+            const { [key]: current, ...rest } = state.investedMerchants;
+            return { investedMerchants: current ? rest : { ...state.investedMerchants, [key]: true } };
+          }),
+        toggleItemAcquired: (locationId, itemName) =>
+          set((state) => {
+            const key = `${locationId}:${itemName}`;
+            const { [key]: current, ...rest } = state.acquiredItems;
+            return { acquiredItems: current ? rest : { ...state.acquiredItems, [key]: true } };
+          }),
         resetToDefaults: () =>
           set({
             locations: buildDefaultStatuses(),
+            completedQuests: {},
+            investedMerchants: {},
+            acquiredItems: {},
           }),
       },
     }),
@@ -43,6 +73,9 @@ export const useLocationStore = create<LocationStore>()(
       name: 'oblivion-wayshrine',
       partialize: (state) => ({
         locations: state.locations,
+        completedQuests: state.completedQuests,
+        investedMerchants: state.investedMerchants,
+        acquiredItems: state.acquiredItems,
         version: state.version,
       }),
     },

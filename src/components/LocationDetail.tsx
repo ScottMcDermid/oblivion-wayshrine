@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Box,
   Button,
+  Checkbox,
   Chip,
   Divider,
   List,
@@ -16,9 +17,6 @@ import {
   CheckCircle,
   RadioButtonUnchecked,
   MenuBook,
-  Store,
-  Assignment,
-  Diamond,
   Warning,
 } from '@mui/icons-material';
 import { LocationDefinition, LocationStatus } from '@/utils/locationTypes';
@@ -27,10 +25,22 @@ export default function LocationDetail({
   location,
   status,
   onStatusChange,
+  completedQuests,
+  investedMerchants,
+  acquiredItems,
+  onToggleQuest,
+  onToggleMerchant,
+  onToggleItem,
 }: {
   location: LocationDefinition;
   status: LocationStatus;
   onStatusChange: (status: LocationStatus) => void;
+  completedQuests: Record<string, boolean>;
+  investedMerchants: Record<string, boolean>;
+  acquiredItems: Record<string, boolean>;
+  onToggleQuest: (questName: string) => void;
+  onToggleMerchant: (merchantName: string) => void;
+  onToggleItem: (itemName: string) => void;
 }) {
 
   return (
@@ -136,17 +146,40 @@ export default function LocationDetail({
             Quests
           </Typography>
           <List dense disablePadding>
-            {location.quests.map((q) => (
-              <ListItem key={q.name} disableGutters sx={{ py: 0.25 }}>
-                <ListItemIcon sx={{ minWidth: 28 }}>
-                  <Assignment sx={{ fontSize: 16, color: '#a78bfa' }} />
-                </ListItemIcon>
-                <ListItemText
-                  primary={q.name}
-                  primaryTypographyProps={{ fontSize: '0.8rem' }}
-                />
-              </ListItem>
-            ))}
+            {location.quests.map((q) => {
+              const checked = !!completedQuests[`${location.id}:${q.name}`];
+              return (
+                <ListItem
+                  key={q.name}
+                  disableGutters
+                  sx={{ py: 0.25, cursor: 'pointer' }}
+                  onClick={() => onToggleQuest(q.name)}
+                >
+                  <ListItemIcon sx={{ minWidth: 28 }}>
+                    <Checkbox
+                      size="small"
+                      checked={checked}
+                      tabIndex={-1}
+                      disableRipple
+                      sx={{
+                        p: 0,
+                        color: '#a78bfa',
+                        '&.Mui-checked': { color: '#a78bfa' },
+                      }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={q.name}
+                    primaryTypographyProps={{
+                      fontSize: '0.8rem',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.secondary' }
+                        : undefined,
+                    }}
+                  />
+                </ListItem>
+              );
+            })}
           </List>
         </>
       )}
@@ -188,17 +221,40 @@ export default function LocationDetail({
             Merchants
           </Typography>
           <List dense disablePadding>
-            {location.merchants.map((m) => (
-              <ListItem key={m.name} disableGutters sx={{ py: 0.25 }}>
-                <ListItemIcon sx={{ minWidth: 28 }}>
-                  <Store sx={{ fontSize: 16, color: '#34d399' }} />
-                </ListItemIcon>
-                <ListItemText
-                  primary={m.name}
-                  primaryTypographyProps={{ fontSize: '0.8rem' }}
-                />
-              </ListItem>
-            ))}
+            {location.merchants.map((m) => {
+              const checked = !!investedMerchants[`${location.id}:${m.name}`];
+              return (
+                <ListItem
+                  key={m.name}
+                  disableGutters
+                  sx={{ py: 0.25, cursor: 'pointer' }}
+                  onClick={() => onToggleMerchant(m.name)}
+                >
+                  <ListItemIcon sx={{ minWidth: 28 }}>
+                    <Checkbox
+                      size="small"
+                      checked={checked}
+                      tabIndex={-1}
+                      disableRipple
+                      sx={{
+                        p: 0,
+                        color: '#34d399',
+                        '&.Mui-checked': { color: '#34d399' },
+                      }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={m.name}
+                    primaryTypographyProps={{
+                      fontSize: '0.8rem',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.secondary' }
+                        : undefined,
+                    }}
+                  />
+                </ListItem>
+              );
+            })}
           </List>
         </>
       )}
@@ -213,17 +269,40 @@ export default function LocationDetail({
             Unique Items
           </Typography>
           <List dense disablePadding>
-            {location.uniqueItems.map((item) => (
-              <ListItem key={item.name} disableGutters sx={{ py: 0.25 }}>
-                <ListItemIcon sx={{ minWidth: 28 }}>
-                  <Diamond sx={{ fontSize: 16, color: '#f472b6' }} />
-                </ListItemIcon>
-                <ListItemText
-                  primary={item.name}
-                  primaryTypographyProps={{ fontSize: '0.8rem' }}
-                />
-              </ListItem>
-            ))}
+            {location.uniqueItems.map((item) => {
+              const checked = !!acquiredItems[`${location.id}:${item.name}`];
+              return (
+                <ListItem
+                  key={item.name}
+                  disableGutters
+                  sx={{ py: 0.25, cursor: 'pointer' }}
+                  onClick={() => onToggleItem(item.name)}
+                >
+                  <ListItemIcon sx={{ minWidth: 28 }}>
+                    <Checkbox
+                      size="small"
+                      checked={checked}
+                      tabIndex={-1}
+                      disableRipple
+                      sx={{
+                        p: 0,
+                        color: '#f472b6',
+                        '&.Mui-checked': { color: '#f472b6' },
+                      }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.name}
+                    primaryTypographyProps={{
+                      fontSize: '0.8rem',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.secondary' }
+                        : undefined,
+                    }}
+                  />
+                </ListItem>
+              );
+            })}
           </List>
         </>
       )}
