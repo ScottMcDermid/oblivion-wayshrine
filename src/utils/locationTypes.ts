@@ -33,6 +33,8 @@ export const locationTypes: LocationType[] = [
 
 export type LocationStatus = 'undiscovered' | 'discovered' | 'cleared';
 
+export const locationStatuses: LocationStatus[] = ['undiscovered', 'discovered', 'cleared'];
+
 export type QuestReference = {
   name: string;
 };

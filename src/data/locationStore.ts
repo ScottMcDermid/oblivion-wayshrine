@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { LocationStatus } from '@/utils/locationTypes';
+import { LocationStatus, LocationType } from '@/utils/locationTypes';
 import { locationDefinitions } from '@/data/locations';
 
 function buildDefaultStatuses(): Record<string, LocationStatus> {
@@ -16,6 +16,8 @@ type State = {
   completedQuests: Record<string, boolean>;
   investedMerchants: Record<string, boolean>;
   acquiredItems: Record<string, boolean>;
+  typeFilters: LocationType[];
+  statusFilters: LocationStatus[];
   version: number;
 };
 
@@ -24,6 +26,9 @@ type Actions = {
   toggleQuestCompleted: (locationId: string, questName: string) => void;
   toggleMerchantInvested: (locationId: string, merchantName: string) => void;
   toggleItemAcquired: (locationId: string, itemName: string) => void;
+  toggleTypeFilter: (type: LocationType) => void;
+  toggleStatusFilter: (status: LocationStatus) => void;
+  clearFilters: () => void;
   resetToDefaults: () => void;
 };
 
@@ -36,6 +41,8 @@ export const useLocationStore = create<LocationStore>()(
       completedQuests: {},
       investedMerchants: {},
       acquiredItems: {},
+      typeFilters: [],
+      statusFilters: [],
       version: 1,
       actions: {
         setLocationStatus: (id, status) =>
@@ -60,6 +67,20 @@ export const useLocationStore = create<LocationStore>()(
             const { [key]: current, ...rest } = state.acquiredItems;
             return { acquiredItems: current ? rest : { ...state.acquiredItems, [key]: true } };
           }),
+        toggleTypeFilter: (type) =>
+          set((state) => ({
+            typeFilters: state.typeFilters.includes(type)
+              ? state.typeFilters.filter((t) => t !== type)
+              : [...state.typeFilters, type],
+          })),
+        toggleStatusFilter: (status) =>
+          set((state) => ({
+            statusFilters: state.statusFilters.includes(status)
+              ? state.statusFilters.filter((s) => s !== status)
+              : [...state.statusFilters, status],
+          })),
+        clearFilters: () =>
+          set({ typeFilters: [], statusFilters: [] }),
         resetToDefaults: () =>
           set({
             locations: buildDefaultStatuses(),
@@ -76,6 +97,8 @@ export const useLocationStore = create<LocationStore>()(
         completedQuests: state.completedQuests,
         investedMerchants: state.investedMerchants,
         acquiredItems: state.acquiredItems,
+        typeFilters: state.typeFilters,
+        statusFilters: state.statusFilters,
         version: state.version,
       }),
     },

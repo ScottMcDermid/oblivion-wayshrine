@@ -13,9 +13,7 @@ import {
   Visibility,
   CheckCircle,
 } from '@mui/icons-material';
-import { LocationDefinition, LocationStatus, LocationType } from '@/utils/locationTypes';
-import { locationDefinitions } from '@/data/locations';
-import LocationFilters from '@/components/LocationFilters';
+import { LocationDefinition, LocationStatus } from '@/utils/locationTypes';
 
 const statusIcon: Partial<Record<LocationStatus, React.ReactNode>> = {
   discovered: <Visibility sx={{ fontSize: 14, color: '#3b82f6' }} />,
@@ -23,28 +21,23 @@ const statusIcon: Partial<Record<LocationStatus, React.ReactNode>> = {
 };
 
 export default function LocationList({
+  filteredLocations,
   locations,
   selectedId,
   onSelect,
   search,
   onSearchChange,
-  activeFilters,
-  onToggleFilter,
 }: {
+  filteredLocations: LocationDefinition[];
   locations: Record<string, LocationStatus>;
   selectedId: string | null;
   onSelect: (location: LocationDefinition) => void;
   search: string;
   onSearchChange: (search: string) => void;
-  activeFilters: Set<LocationType>;
-  onToggleFilter: (type: LocationType) => void;
 }) {
-  const filtered = locationDefinitions.filter((loc) => {
-    const matchesSearch =
-      search === '' || loc.name.toLowerCase().includes(search.toLowerCase());
-    const matchesFilter = activeFilters.size === 0 || activeFilters.has(loc.type);
-    return matchesSearch && matchesFilter;
-  });
+  const filtered = filteredLocations.filter(
+    (loc) => search === '' || loc.name.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -63,13 +56,11 @@ export default function LocationList({
             ),
           }}
           sx={{
-            mb: 1,
             '& .MuiOutlinedInput-root': {
               fontSize: '0.85rem',
             },
           }}
         />
-        <LocationFilters activeFilters={activeFilters} onToggleFilter={onToggleFilter} />
       </Box>
 
       <Box sx={{ overflow: 'auto', flex: 1 }}>

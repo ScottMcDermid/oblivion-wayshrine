@@ -3,10 +3,14 @@
 import React, { useMemo, useState } from 'react';
 import {
   AppBar,
+  Badge,
   Box,
   Button,
   Chip,
   CircularProgress,
+  Dialog,
+  DialogContent,
+  DialogTitle,
   Drawer,
   IconButton,
   Toolbar,
@@ -14,14 +18,15 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { ThemeProvider, StyledEngineProvider, useTheme } from '@mui/material/styles';
-import { ArrowBack, RestartAlt } from '@mui/icons-material';
+import { ArrowBack, Close, FilterList, RestartAlt } from '@mui/icons-material';
 import theme from '@/app/theme';
 import { useLocationStore } from '@/data/locationStore';
 import { useHydrated } from '@/hooks/useHydrated';
 import { locationDefinitions } from '@/data/locations';
-import { LocationDefinition, LocationType } from '@/utils/locationTypes';
+import { LocationDefinition, LocationStatus, LocationType } from '@/utils/locationTypes';
 import LocationList from '@/components/LocationList';
 import LocationDetail from '@/components/LocationDetail';
+import LocationFilters from '@/components/LocationFilters';
 import ConfirmDialog from '@/components/ConfirmDialog';
 
 function WayshrineContent() {
@@ -33,19 +38,40 @@ function WayshrineContent() {
   const completedQuests = useLocationStore((s) => s.completedQuests);
   const investedMerchants = useLocationStore((s) => s.investedMerchants);
   const acquiredItems = useLocationStore((s) => s.acquiredItems);
+  const typeFilters = useLocationStore((s) => s.typeFilters);
+  const statusFilters = useLocationStore((s) => s.statusFilters);
   const {
     setLocationStatus,
     toggleQuestCompleted,
     toggleMerchantInvested,
     toggleItemAcquired,
+    toggleTypeFilter,
+    toggleStatusFilter,
+    clearFilters,
     resetToDefaults,
   } = useLocationStore((s) => s.actions);
 
+  const activeFilters = useMemo(() => new Set<LocationType>(typeFilters), [typeFilters]);
+  const activeStatusFilters = useMemo(() => new Set<LocationStatus>(statusFilters), [statusFilters]);
+
   const [selectedLocation, setSelectedLocation] = useState<LocationDefinition | null>(null);
   const [search, setSearch] = useState('');
-  const [activeFilters, setActiveFilters] = useState<Set<LocationType>>(new Set());
+  const [filterPanelOpen, setFilterPanelOpen] = useState(false);
   const [isConfirmingReset, setIsConfirmingReset] = useState(false);
   const [mobileDetailOpen, setMobileDetailOpen] = useState(false);
+
+  const hasActiveFilters = activeFilters.size > 0 || activeStatusFilters.size > 0;
+
+  const filteredLocations = useMemo(
+    () =>
+      locationDefinitions.filter((loc) => {
+        const matchesFilter = activeFilters.size === 0 || activeFilters.has(loc.type);
+        const status = locations[loc.id] || 'undiscovered';
+        const matchesStatus = activeStatusFilters.size === 0 || activeStatusFilters.has(status);
+        return matchesFilter && matchesStatus;
+      }),
+    [locations, activeFilters, activeStatusFilters],
+  );
 
   const stats = useMemo(() => {
     const total = locationDefinitions.length;
@@ -61,18 +87,6 @@ function WayshrineContent() {
     }
     return { total, discovered, cleared };
   }, [locations]);
-
-  const handleToggleFilter = (type: LocationType) => {
-    setActiveFilters((prev) => {
-      const next = new Set(prev);
-      if (next.has(type)) {
-        next.delete(type);
-      } else {
-        next.add(type);
-      }
-      return next;
-    });
-  };
 
   const handleSelectLocation = (location: LocationDefinition) => {
     setSelectedLocation(location);
@@ -154,6 +168,16 @@ function WayshrineContent() {
             Oblivion Wayshrine
           </Typography>
 
+          <IconButton
+            size="small"
+            onClick={() => setFilterPanelOpen((prev) => !prev)}
+            sx={{ color: 'text.secondary' }}
+          >
+            <Badge variant="dot" color="secondary" invisible={!hasActiveFilters}>
+              <FilterList fontSize="small" />
+            </Badge>
+          </IconButton>
+
           <Box sx={{ flex: 1 }} />
 
           <Chip
@@ -198,7 +222,47 @@ function WayshrineContent() {
       </AppBar>
 
       <Box sx={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
-        {/* Location List - Left Panel */}
+        {/* Filter Panel - Desktop */}
+        {!isMobile && filterPanelOpen && (
+          <Box
+            sx={{
+              width: 250,
+              minWidth: 250,
+              borderRight: '1px solid',
+              borderColor: 'divider',
+              overflow: 'auto',
+              p: 1.5,
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <Typography variant="subtitle2" sx={{ fontWeight: 'bold', mb: 1.5 }}>
+              Filters
+            </Typography>
+            <LocationFilters
+              activeFilters={activeFilters}
+              onToggleFilter={toggleTypeFilter}
+              activeStatusFilters={activeStatusFilters}
+              onToggleStatusFilter={toggleStatusFilter}
+            />
+            {hasActiveFilters && (
+              <Button
+                size="small"
+                onClick={clearFilters}
+                sx={{
+                  mt: 1.5,
+                  fontSize: '0.7rem',
+                  textTransform: 'none',
+                  color: 'text.secondary',
+                }}
+              >
+                Clear filters
+              </Button>
+            )}
+          </Box>
+        )}
+
+        {/* Location List */}
         <Box
           sx={{
             width: isMobile ? '100%' : 380,
@@ -211,17 +275,16 @@ function WayshrineContent() {
           }}
         >
           <LocationList
+            filteredLocations={filteredLocations}
             locations={locations}
             selectedId={selectedLocation?.id ?? null}
             onSelect={handleSelectLocation}
             search={search}
             onSearchChange={setSearch}
-            activeFilters={activeFilters}
-            onToggleFilter={handleToggleFilter}
           />
         </Box>
 
-        {/* Detail Panel - Right (desktop only) */}
+        {/* Detail Panel - Desktop */}
         {!isMobile && (
           <Box sx={{ flex: 1, overflow: 'auto' }}>{detailContent}</Box>
         )}
@@ -248,6 +311,54 @@ function WayshrineContent() {
           </Drawer>
         )}
       </Box>
+
+      {/* Filter Dialog - Mobile */}
+      {isMobile && (
+        <Dialog
+          open={filterPanelOpen}
+          onClose={() => setFilterPanelOpen(false)}
+          fullWidth
+          maxWidth="xs"
+        >
+          <DialogTitle
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              pb: 1,
+            }}
+          >
+            <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
+              Filters
+            </Typography>
+            <IconButton size="small" onClick={() => setFilterPanelOpen(false)}>
+              <Close fontSize="small" />
+            </IconButton>
+          </DialogTitle>
+          <DialogContent>
+            <LocationFilters
+              activeFilters={activeFilters}
+              onToggleFilter={toggleTypeFilter}
+              activeStatusFilters={activeStatusFilters}
+              onToggleStatusFilter={toggleStatusFilter}
+            />
+            {hasActiveFilters && (
+              <Button
+                size="small"
+                onClick={clearFilters}
+                sx={{
+                  mt: 1.5,
+                  fontSize: '0.7rem',
+                  textTransform: 'none',
+                  color: 'text.secondary',
+                }}
+              >
+                Clear filters
+              </Button>
+            )}
+          </DialogContent>
+        </Dialog>
+      )}
 
       {/* Footer */}
       <Box
