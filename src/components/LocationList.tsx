@@ -10,7 +10,6 @@ import {
 } from '@mui/material';
 import {
   Search,
-  VisibilityOff,
   Visibility,
   CheckCircle,
 } from '@mui/icons-material';
@@ -18,8 +17,7 @@ import { LocationDefinition, LocationStatus, LocationType } from '@/utils/locati
 import { locationDefinitions } from '@/data/locations';
 import LocationFilters from '@/components/LocationFilters';
 
-const statusIcon: Record<LocationStatus, React.ReactNode> = {
-  undiscovered: <VisibilityOff sx={{ fontSize: 14, color: '#6b7280' }} />,
+const statusIcon: Partial<Record<LocationStatus, React.ReactNode>> = {
   discovered: <Visibility sx={{ fontSize: 14, color: '#3b82f6' }} />,
   cleared: <CheckCircle sx={{ fontSize: 14, color: '#22c55e' }} />,
 };
@@ -100,8 +98,8 @@ export default function LocationList({
                   },
                 }}
               >
-                <Box sx={{ mr: 1, display: 'flex', alignItems: 'center' }}>
-                  {statusIcon[status]}
+                <Box sx={{ mr: 1, display: 'flex', alignItems: 'center', width: 14 }}>
+                  {statusIcon[status] ?? null}
                 </Box>
                 <ListItemText
                   primary={

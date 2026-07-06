@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Box,
   Button,
-  ButtonGroup,
   Chip,
   Divider,
   List,
@@ -14,7 +13,6 @@ import {
 } from '@mui/material';
 import {
   Visibility,
-  VisibilityOff,
   CheckCircle,
   MenuBook,
   Store,
@@ -23,13 +21,6 @@ import {
   Warning,
 } from '@mui/icons-material';
 import { LocationDefinition, LocationStatus } from '@/utils/locationTypes';
-
-const statusConfig: Record<LocationStatus, { label: string; color: string; icon: React.ReactNode }> =
-  {
-    undiscovered: { label: 'Undiscovered', color: '#6b7280', icon: <VisibilityOff fontSize="small" /> },
-    discovered: { label: 'Discovered', color: '#3b82f6', icon: <Visibility fontSize="small" /> },
-    cleared: { label: 'Cleared', color: '#22c55e', icon: <CheckCircle fontSize="small" /> },
-  };
 
 export default function LocationDetail({
   location,
@@ -40,7 +31,6 @@ export default function LocationDetail({
   status: LocationStatus;
   onStatusChange: (status: LocationStatus) => void;
 }) {
-  const statuses: LocationStatus[] = ['undiscovered', 'discovered', 'cleared'];
 
   return (
     <Paper
@@ -64,34 +54,47 @@ export default function LocationDetail({
         </Box>
       </Box>
 
-      <Box sx={{ mb: 2 }}>
-        <ButtonGroup size="small" fullWidth>
-          {statuses.map((s) => {
-            const config = statusConfig[s];
-            const isActive = status === s;
-            return (
-              <Button
-                key={s}
-                onClick={() => onStatusChange(s)}
-                startIcon={config.icon}
-                variant={isActive ? 'contained' : 'outlined'}
-                sx={{
-                  backgroundColor: isActive ? config.color : 'transparent',
-                  borderColor: config.color,
-                  color: isActive ? '#fff' : config.color,
-                  '&:hover': {
-                    backgroundColor: isActive ? config.color : `${config.color}22`,
-                    borderColor: config.color,
-                  },
-                  fontSize: '0.7rem',
-                  textTransform: 'none',
-                }}
-              >
-                {config.label}
-              </Button>
-            );
-          })}
-        </ButtonGroup>
+      <Box sx={{ mb: 2, display: 'flex', gap: 1 }}>
+        <Button
+          size="small"
+          startIcon={<Visibility fontSize="small" />}
+          variant={status === 'discovered' ? 'contained' : 'outlined'}
+          onClick={() => onStatusChange(status === 'discovered' ? 'undiscovered' : 'discovered')}
+          sx={{
+            flex: 1,
+            backgroundColor: status === 'discovered' ? '#3b82f6' : 'transparent',
+            borderColor: '#3b82f6',
+            color: status === 'discovered' ? '#fff' : '#3b82f6',
+            '&:hover': {
+              backgroundColor: status === 'discovered' ? '#3b82f6' : '#3b82f622',
+              borderColor: '#3b82f6',
+            },
+            fontSize: '0.7rem',
+            textTransform: 'none',
+          }}
+        >
+          Discovered
+        </Button>
+        <Button
+          size="small"
+          startIcon={<CheckCircle fontSize="small" />}
+          variant={status === 'cleared' ? 'contained' : 'outlined'}
+          onClick={() => onStatusChange(status === 'cleared' ? 'undiscovered' : 'cleared')}
+          sx={{
+            flex: 1,
+            backgroundColor: status === 'cleared' ? '#22c55e' : 'transparent',
+            borderColor: '#22c55e',
+            color: status === 'cleared' ? '#fff' : '#22c55e',
+            '&:hover': {
+              backgroundColor: status === 'cleared' ? '#22c55e' : '#22c55e22',
+              borderColor: '#22c55e',
+            },
+            fontSize: '0.7rem',
+            textTransform: 'none',
+          }}
+        >
+          Cleared
+        </Button>
       </Box>
 
       {location.notes && (
