@@ -328,9 +328,7 @@ function WayshrineContent() {
               pb: 1,
             }}
           >
-            <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
-              Filters
-            </Typography>
+            <span style={{ fontWeight: 'bold' }}>Filters</span>
             <IconButton size="small" onClick={() => setFilterPanelOpen(false)}>
               <Close fontSize="small" />
             </IconButton>

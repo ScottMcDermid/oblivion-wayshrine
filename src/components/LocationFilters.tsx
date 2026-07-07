@@ -6,6 +6,7 @@ import {
   locationStatuses,
   locationTypes,
 } from '@/utils/locationTypes';
+import { locationTypeIcons } from '@/utils/locationIcons';
 
 const statusColors: Record<LocationStatus, string> = {
   undiscovered: '#9e9e9e',
@@ -76,6 +77,7 @@ export default function LocationFilters({
           {locationTypes.map((type) => (
             <Chip
               key={type}
+              icon={React.createElement(locationTypeIcons[type], { size: 14 })}
               label={type}
               size="small"
               variant={activeFilters.has(type) ? 'filled' : 'outlined'}
@@ -88,6 +90,10 @@ export default function LocationFilters({
                   backgroundColor: activeFilters.has(type) ? 'secondary.dark' : 'action.hover',
                 },
                 fontSize: '0.7rem',
+                '& .MuiChip-icon': {
+                  color: activeFilters.has(type) ? '#1e1e1e' : 'text.secondary',
+                  ml: 0.5,
+                },
               }}
             />
           ))}

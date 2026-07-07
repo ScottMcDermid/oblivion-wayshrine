@@ -1,7 +1,6 @@
 export type LocationType =
   | 'Ayleid Ruin'
   | 'Camp'
-  | 'Castle'
   | 'Cave'
   | 'City'
   | 'Daedric Shrine'
@@ -11,13 +10,11 @@ export type LocationType =
   | 'Landmark'
   | 'Mine'
   | 'Oblivion Gate'
-  | 'Settlement'
-  | 'Shrine';
+  | 'Settlement';
 
 export const locationTypes: LocationType[] = [
   'Ayleid Ruin',
   'Camp',
-  'Castle',
   'Cave',
   'City',
   'Daedric Shrine',
@@ -28,7 +25,6 @@ export const locationTypes: LocationType[] = [
   'Mine',
   'Oblivion Gate',
   'Settlement',
-  'Shrine',
 ];
 
 export type LocationStatus = 'undiscovered' | 'discovered' | 'cleared';

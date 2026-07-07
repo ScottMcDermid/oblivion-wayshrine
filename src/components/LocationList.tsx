@@ -14,6 +14,7 @@ import {
   CheckCircle,
 } from '@mui/icons-material';
 import { LocationDefinition, LocationStatus } from '@/utils/locationTypes';
+import { locationTypeIcons } from '@/utils/locationIcons';
 
 const statusIcon: Partial<Record<LocationStatus, React.ReactNode>> = {
   discovered: <Visibility sx={{ fontSize: 14, color: '#3b82f6' }} />,
@@ -111,9 +112,11 @@ export default function LocationList({
                   }
                   secondary={
                     <Typography
+                      component="span"
                       variant="caption"
-                      sx={{ fontSize: '0.65rem', color: 'text.secondary' }}
+                      sx={{ fontSize: '0.65rem', color: 'text.secondary', display: 'flex', alignItems: 'center', gap: 0.5 }}
                     >
+                      {React.createElement(locationTypeIcons[loc.type], { size: 12 })}
                       {loc.type}
                       {hasInfo ? ' \u00B7 Has info' : ''}
                     </Typography>

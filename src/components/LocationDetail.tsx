@@ -20,6 +20,7 @@ import {
   Warning,
 } from '@mui/icons-material';
 import { LocationDefinition, LocationStatus } from '@/utils/locationTypes';
+import { locationTypeIcons } from '@/utils/locationIcons';
 
 export default function LocationDetail({
   location,
@@ -58,7 +59,12 @@ export default function LocationDetail({
           {location.name}
         </Typography>
         <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
-          <Chip label={location.type} size="small" sx={{ fontSize: '0.7rem' }} />
+          <Chip
+            icon={React.createElement(locationTypeIcons[location.type], { size: 14 })}
+            label={location.type}
+            size="small"
+            sx={{ fontSize: '0.7rem', '& .MuiChip-icon': { ml: 0.5 } }}
+          />
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             {location.hold}
           </Typography>
