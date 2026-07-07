@@ -39,6 +39,8 @@ function WayshrineContent() {
   const foundSkillBooks = useLocationStore((s) => s.foundSkillBooks);
   const investedMerchants = useLocationStore((s) => s.investedMerchants);
   const acquiredItems = useLocationStore((s) => s.acquiredItems);
+  const acquiredPowers = useLocationStore((s) => s.acquiredPowers);
+  const purchasedHouses = useLocationStore((s) => s.purchasedHouses);
   const typeFilters = useLocationStore((s) => s.typeFilters);
   const statusFilters = useLocationStore((s) => s.statusFilters);
   const {
@@ -47,6 +49,8 @@ function WayshrineContent() {
     toggleSkillBookFound,
     toggleMerchantInvested,
     toggleItemAcquired,
+    togglePowerAcquired,
+    toggleHousePurchased,
     toggleTypeFilter,
     toggleStatusFilter,
     clearFilters,
@@ -130,10 +134,14 @@ function WayshrineContent() {
       foundSkillBooks={foundSkillBooks}
       investedMerchants={investedMerchants}
       acquiredItems={acquiredItems}
+      acquiredPowers={acquiredPowers}
+      purchasedHouses={purchasedHouses}
       onToggleQuest={(name) => toggleQuestCompleted(selectedLocation.id, name)}
       onToggleSkillBook={(title) => toggleSkillBookFound(selectedLocation.id, title)}
       onToggleMerchant={(name) => toggleMerchantInvested(selectedLocation.id, name)}
       onToggleItem={(name) => toggleItemAcquired(selectedLocation.id, name)}
+      onTogglePower={(name) => togglePowerAcquired(selectedLocation.id, name)}
+      onToggleHouse={(name) => toggleHousePurchased(selectedLocation.id, name)}
     />
   ) : (
     <Box

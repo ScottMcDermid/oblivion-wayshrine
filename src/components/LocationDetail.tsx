@@ -29,10 +29,14 @@ export default function LocationDetail({
   foundSkillBooks,
   investedMerchants,
   acquiredItems,
+  acquiredPowers,
+  purchasedHouses,
   onToggleQuest,
   onToggleSkillBook,
   onToggleMerchant,
   onToggleItem,
+  onTogglePower,
+  onToggleHouse,
 }: {
   location: LocationDefinition;
   status: LocationStatus;
@@ -41,10 +45,14 @@ export default function LocationDetail({
   foundSkillBooks: Record<string, boolean>;
   investedMerchants: Record<string, boolean>;
   acquiredItems: Record<string, boolean>;
+  acquiredPowers: Record<string, boolean>;
+  purchasedHouses: Record<string, boolean>;
   onToggleQuest: (questName: string) => void;
   onToggleSkillBook: (bookTitle: string) => void;
   onToggleMerchant: (merchantName: string) => void;
   onToggleItem: (itemName: string) => void;
+  onTogglePower: (powerName: string) => void;
+  onToggleHouse: (houseName: string) => void;
 }) {
 
   return (
@@ -143,6 +151,61 @@ export default function LocationDetail({
             {location.notes}
           </Typography>
         </Box>
+      )}
+
+      {location.houses && location.houses.length > 0 && (
+        <>
+          <Divider sx={{ my: 1 }} />
+          <Typography
+            variant="caption"
+            sx={{ color: 'text.secondary', fontWeight: 'bold', textTransform: 'uppercase' }}
+          >
+            Houses
+          </Typography>
+          <List dense disablePadding>
+            {location.houses.map((house) => {
+              const checked = !!purchasedHouses[`${location.id}:${house.name}`];
+              return (
+                <ListItem
+                  key={house.name}
+                  disableGutters
+                  sx={{ py: 0.25, cursor: 'pointer' }}
+                  onClick={() => onToggleHouse(house.name)}
+                >
+                  <ListItemIcon sx={{ minWidth: 28 }}>
+                    <Checkbox
+                      size="small"
+                      checked={checked}
+                      tabIndex={-1}
+                      disableRipple
+                      sx={{
+                        p: 0,
+                        color: '#14b8a6',
+                        '&.Mui-checked': { color: '#14b8a6' },
+                      }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={house.name}
+                    secondary={`${house.price.toLocaleString()} gold`}
+                    primaryTypographyProps={{
+                      fontSize: '0.8rem',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.secondary' }
+                        : undefined,
+                    }}
+                    secondaryTypographyProps={{
+                      fontSize: '0.7rem',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.disabled' }
+                        : undefined,
+                    }}
+                  />
+                </ListItem>
+              );
+            })}
+          </List>
+        </>
       )}
 
       {location.quests && location.quests.length > 0 && (
@@ -335,6 +398,61 @@ export default function LocationDetail({
                       sx: checked
                         ? { textDecoration: 'line-through', color: 'text.secondary' }
                         : undefined,
+                    }}
+                  />
+                </ListItem>
+              );
+            })}
+          </List>
+        </>
+      )}
+
+      {location.greaterPowers && location.greaterPowers.length > 0 && (
+        <>
+          <Divider sx={{ my: 1 }} />
+          <Typography
+            variant="caption"
+            sx={{ color: 'text.secondary', fontWeight: 'bold', textTransform: 'uppercase' }}
+          >
+            Greater Powers
+          </Typography>
+          <List dense disablePadding>
+            {location.greaterPowers.map((power) => {
+              const checked = !!acquiredPowers[`${location.id}:${power.name}`];
+              return (
+                <ListItem
+                  key={power.name}
+                  disableGutters
+                  sx={{ py: 0.25, cursor: 'pointer' }}
+                  onClick={() => onTogglePower(power.name)}
+                >
+                  <ListItemIcon sx={{ minWidth: 28 }}>
+                    <Checkbox
+                      size="small"
+                      checked={checked}
+                      tabIndex={-1}
+                      disableRipple
+                      sx={{
+                        p: 0,
+                        color: '#f59e0b',
+                        '&.Mui-checked': { color: '#f59e0b' },
+                      }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={power.name}
+                    secondary={power.renown > 0 ? `Renown: ${power.renown}` : undefined}
+                    primaryTypographyProps={{
+                      fontSize: '0.8rem',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.secondary' }
+                        : undefined,
+                    }}
+                    secondaryTypographyProps={{
+                      fontSize: '0.7rem',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.disabled' }
+                        : { color: '#f59e0b' },
                     }}
                   />
                 </ListItem>

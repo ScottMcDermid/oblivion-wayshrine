@@ -6,6 +6,7 @@ import {
   GiFireShrine,
   GiBeerStein,
   GiMagicPortal,
+  GiMenhir,
   GiVillage,
 } from 'react-icons/gi';
 import { FaCampground } from 'react-icons/fa';
@@ -16,12 +17,14 @@ import { LocationType } from '@/utils/locationTypes';
 
 export const locationTypeIcons: Record<LocationType, IconType> = {
   'Ayleid Ruin': GiIonicColumn,
+  'Birthsign Stone': GiMenhir,
   'Camp': FaCampground,
   'Cave': GiCaveEntrance,
   'City': GiCapitol,
   'Daedric Shrine': GiFireShrine,
   'Farm': PiBarnFill,
   'Fort': PiCastleTurretFill,
+  'Heaven Stone': GiMenhir,
   'Inn': GiBeerStein,
   'Landmark': MdTerrain,
   'Mine': TbPick,

@@ -17,6 +17,8 @@ type State = {
   foundSkillBooks: Record<string, boolean>;
   investedMerchants: Record<string, boolean>;
   acquiredItems: Record<string, boolean>;
+  acquiredPowers: Record<string, boolean>;
+  purchasedHouses: Record<string, boolean>;
   typeFilters: LocationType[];
   statusFilters: LocationStatus[];
   version: number;
@@ -28,6 +30,8 @@ type Actions = {
   toggleSkillBookFound: (locationId: string, bookTitle: string) => void;
   toggleMerchantInvested: (locationId: string, merchantName: string) => void;
   toggleItemAcquired: (locationId: string, itemName: string) => void;
+  togglePowerAcquired: (locationId: string, powerName: string) => void;
+  toggleHousePurchased: (locationId: string, houseName: string) => void;
   toggleTypeFilter: (type: LocationType) => void;
   toggleStatusFilter: (status: LocationStatus) => void;
   clearFilters: () => void;
@@ -44,6 +48,8 @@ export const useLocationStore = create<LocationStore>()(
       foundSkillBooks: {},
       investedMerchants: {},
       acquiredItems: {},
+      acquiredPowers: {},
+      purchasedHouses: {},
       typeFilters: [],
       statusFilters: [],
       version: 1,
@@ -76,6 +82,18 @@ export const useLocationStore = create<LocationStore>()(
             const { [key]: current, ...rest } = state.acquiredItems;
             return { acquiredItems: current ? rest : { ...state.acquiredItems, [key]: true } };
           }),
+        togglePowerAcquired: (locationId, powerName) =>
+          set((state) => {
+            const key = `${locationId}:${powerName}`;
+            const { [key]: current, ...rest } = state.acquiredPowers;
+            return { acquiredPowers: current ? rest : { ...state.acquiredPowers, [key]: true } };
+          }),
+        toggleHousePurchased: (locationId, houseName) =>
+          set((state) => {
+            const key = `${locationId}:${houseName}`;
+            const { [key]: current, ...rest } = state.purchasedHouses;
+            return { purchasedHouses: current ? rest : { ...state.purchasedHouses, [key]: true } };
+          }),
         toggleTypeFilter: (type) =>
           set((state) => ({
             typeFilters: state.typeFilters.includes(type)
@@ -97,6 +115,8 @@ export const useLocationStore = create<LocationStore>()(
             foundSkillBooks: {},
             investedMerchants: {},
             acquiredItems: {},
+            acquiredPowers: {},
+            purchasedHouses: {},
           }),
       },
     }),
@@ -108,6 +128,8 @@ export const useLocationStore = create<LocationStore>()(
         foundSkillBooks: state.foundSkillBooks,
         investedMerchants: state.investedMerchants,
         acquiredItems: state.acquiredItems,
+        acquiredPowers: state.acquiredPowers,
+        purchasedHouses: state.purchasedHouses,
         typeFilters: state.typeFilters,
         statusFilters: state.statusFilters,
         version: state.version,

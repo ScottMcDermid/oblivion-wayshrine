@@ -1,11 +1,13 @@
 export type LocationType =
   | 'Ayleid Ruin'
+  | 'Birthsign Stone'
   | 'Camp'
   | 'Cave'
   | 'City'
   | 'Daedric Shrine'
   | 'Farm'
   | 'Fort'
+  | 'Heaven Stone'
   | 'Inn'
   | 'Landmark'
   | 'Mine'
@@ -14,12 +16,14 @@ export type LocationType =
 
 export const locationTypes: LocationType[] = [
   'Ayleid Ruin',
+  'Birthsign Stone',
   'Camp',
   'Cave',
   'City',
   'Daedric Shrine',
   'Farm',
   'Fort',
+  'Heaven Stone',
   'Inn',
   'Landmark',
   'Mine',
@@ -48,6 +52,16 @@ export type UniqueItemReference = {
   name: string;
 };
 
+export type HouseReference = {
+  name: string;
+  price: number;
+};
+
+export type GreaterPowerReference = {
+  name: string;
+  renown: number;
+};
+
 export type LocationDefinition = {
   id: string;
   name: string;
@@ -58,5 +72,7 @@ export type LocationDefinition = {
   skillBooks?: SkillBookReference[];
   merchants?: MerchantReference[];
   uniqueItems?: UniqueItemReference[];
+  houses?: HouseReference[];
+  greaterPowers?: GreaterPowerReference[];
   notes?: string;
 };

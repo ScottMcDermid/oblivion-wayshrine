@@ -28,6 +28,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'The Doors of Oblivion', skill: 'Conjuration' },
       { title: 'Fighters Guild History, 1st Ed.', skill: 'Heavy Armor' },
     ],
+    houses: [{ name: 'Benirus Manor', price: 5000 }],
   },
   {
     id: 'bravil',
@@ -55,6 +56,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'The Wolf Queen, v1', skill: 'Security' },
       { title: '2920, Last Seed', skill: 'Sneak' },
     ],
+    houses: [{ name: 'Bravil House', price: 7900 }],
   },
   {
     id: 'bruma',
@@ -80,6 +82,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'The Wolf Queen, v3', skill: 'Illusion' },
       { title: 'A Dance in Fire, v5', skill: 'Marksman' },
     ],
+    houses: [{ name: 'Bruma House', price: 19900 }],
     notes: 'Missable: Invest in Selena Orania and buy Summon Dremora Lord from Volanaro before "A Plot Revealed"',
   },
   {
@@ -110,6 +113,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'The Wolf Queen, v6', skill: 'Sneak' },
       { title: 'The Wolf Queen, v7', skill: 'Speechcraft' },
     ],
+    houses: [{ name: 'Cheydinhal House', price: 30000 }],
   },
   {
     id: 'chorrol',
@@ -138,6 +142,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'A Dance in Fire, v6', skill: 'Mercantile' },
       { title: 'Notes on Racial Phylogeny', skill: 'Restoration' },
     ],
+    houses: [{ name: 'Arborwatch', price: 39400 }],
   },
   {
     id: 'imperial-city',
@@ -195,6 +200,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'Biography of the Wolf Queen', skill: 'Speechcraft' },
       { title: 'The Wolf Queen, v5', skill: 'Speechcraft' },
     ],
+    houses: [{ name: 'Waterfront Shack', price: 4000 }],
     notes: 'Missable: Invest in Fathis Ules before "Sins of the Father"',
   },
   {
@@ -236,6 +242,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'Ice and Chitin', skill: 'Light Armor' },
       { title: 'Withershins', skill: 'Restoration' },
     ],
+    houses: [{ name: 'Leyawiin House', price: 14000 }],
   },
   {
     id: 'skingrad',
@@ -261,6 +268,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: '2920, Sun\'s Dawn', skill: 'Mysticism' },
       { title: 'The Exodus', skill: 'Restoration' },
     ],
+    houses: [{ name: 'Rosethorn Hall', price: 48200 }],
   },
 
   // ============================================================
@@ -916,6 +924,180 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Landmark',
     hold: 'West Weald',
     initiallyDiscovered: false,
+  },
+
+  // ============================================================
+  // BIRTHSIGN STONES (13)
+  // ============================================================
+  {
+    id: 'apprentice-stone',
+    name: 'The Apprentice Stone',
+    type: 'Birthsign Stone',
+    hold: 'West Weald',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Void Seed', renown: 0 }],
+  },
+  {
+    id: 'atronach-stone',
+    name: 'The Atronach Stone',
+    type: 'Birthsign Stone',
+    hold: 'Colovian Highlands',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Arcane Well', renown: 0 }],
+  },
+  {
+    id: 'lady-stone',
+    name: 'The Lady Stone',
+    type: 'Birthsign Stone',
+    hold: 'Gold Coast',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Lady\'s Warding', renown: 0 }],
+  },
+  {
+    id: 'lord-stone',
+    name: 'The Lord Stone',
+    type: 'Birthsign Stone',
+    hold: 'Gold Coast',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Ysmir\'s Scales', renown: 0 }],
+  },
+  {
+    id: 'lover-stone',
+    name: 'The Lover Stone',
+    type: 'Birthsign Stone',
+    hold: 'Nibenay Valley',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Lover\'s Bower', renown: 0 }],
+  },
+  {
+    id: 'mage-stone',
+    name: 'The Mage Stone',
+    type: 'Birthsign Stone',
+    hold: 'Nibenay Basin',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Magicka Manifold', renown: 0 }],
+  },
+  {
+    id: 'ritual-stone',
+    name: 'The Ritual Stone',
+    type: 'Birthsign Stone',
+    hold: 'Blackwood',
+    initiallyDiscovered: false,
+    greaterPowers: [
+      { name: 'Mara\'s Milk', renown: 0 },
+      { name: 'Mara\'s Mercy', renown: 0 },
+    ],
+  },
+  {
+    id: 'serpent-stone',
+    name: 'The Serpent Stone',
+    type: 'Birthsign Stone',
+    hold: 'Blackwood',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Cobra\'s Dance', renown: 0 }],
+  },
+  {
+    id: 'shadow-stone',
+    name: 'The Shadow Stone',
+    type: 'Birthsign Stone',
+    hold: 'Nibenay Basin',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Fingernail Moon', renown: 0 }],
+  },
+  {
+    id: 'steed-stone',
+    name: 'The Steed Stone',
+    type: 'Birthsign Stone',
+    hold: 'Nibenay Basin',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Hellride', renown: 0 }],
+  },
+  {
+    id: 'thief-stone',
+    name: 'The Thief Stone',
+    type: 'Birthsign Stone',
+    hold: 'Heartlands',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Cheater\'s Nip', renown: 0 }],
+  },
+  {
+    id: 'tower-stone',
+    name: 'The Tower Stone',
+    type: 'Birthsign Stone',
+    hold: 'Heartlands',
+    initiallyDiscovered: false,
+    greaterPowers: [
+      { name: 'The Master\'s Hand', renown: 0 },
+      { name: 'Warden Key', renown: 0 },
+    ],
+  },
+  {
+    id: 'warrior-stone',
+    name: 'The Warrior Stone',
+    type: 'Birthsign Stone',
+    hold: 'West Weald',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'War Cry', renown: 0 }],
+  },
+
+  // ============================================================
+  // HEAVEN STONES (7)
+  // ============================================================
+  {
+    id: 'jone-stone',
+    name: 'The Jone Stone',
+    type: 'Heaven Stone',
+    hold: 'West Weald',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Jone\'s Shadow', renown: 10 }],
+  },
+  {
+    id: 'aetherius-stone',
+    name: 'The Aetherius Stone',
+    type: 'Heaven Stone',
+    hold: 'West Weald',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Gates of Aetherius', renown: 20 }],
+  },
+  {
+    id: 'jode-stone',
+    name: 'The Jode Stone',
+    type: 'Heaven Stone',
+    hold: 'Gold Coast',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Jode\'s Blood', renown: 30 }],
+  },
+  {
+    id: 'sithian-stone',
+    name: 'The Sithian Stone',
+    type: 'Heaven Stone',
+    hold: 'Colovian Highlands',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Sithian Web', renown: 40 }],
+  },
+  {
+    id: 'magnus-stone',
+    name: 'The Magnus Stone',
+    type: 'Heaven Stone',
+    hold: 'Blackwood',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Skein of Magnus', renown: 50 }],
+  },
+  {
+    id: 'shezarr-stone',
+    name: 'The Shezarr Stone',
+    type: 'Heaven Stone',
+    hold: 'Blackwood',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Shield of Shezarr', renown: 60 }],
+  },
+  {
+    id: 'dragon-stone',
+    name: 'The Dragon Stone',
+    type: 'Heaven Stone',
+    hold: 'Valus Mountains',
+    initiallyDiscovered: false,
+    greaterPowers: [{ name: 'Dragon Dream', renown: 70 }],
   },
 
   // ============================================================
