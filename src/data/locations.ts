@@ -71,6 +71,7 @@ export const locationDefinitions: LocationDefinition[] = [
     merchants: [
       { name: 'Novaroma' },
       { name: 'Hammer and Tongs' },
+      { name: 'Selena Orania' },
     ],
     skillBooks: [
       { title: '2920, Hearth Fire', skill: 'Conjuration' },
@@ -79,6 +80,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'The Wolf Queen, v3', skill: 'Illusion' },
       { title: 'A Dance in Fire, v5', skill: 'Marksman' },
     ],
+    notes: 'Missable: Invest in Selena Orania and buy Summon Dremora Lord from Volanaro before "A Plot Revealed"',
   },
   {
     id: 'cheydinhal',
@@ -164,6 +166,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Divine Elegance' },
       { name: 'Red Diamond Jewelry' },
       { name: 'Three Brothers Trade Goods' },
+      { name: 'Fathis Ules' },
     ],
     skillBooks: [
       { title: 'Mannimarco, King of Worms', skill: 'Alchemy' },
@@ -192,6 +195,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'Biography of the Wolf Queen', skill: 'Speechcraft' },
       { title: 'The Wolf Queen, v5', skill: 'Speechcraft' },
     ],
+    notes: 'Missable: Invest in Fathis Ules before "Sins of the Father"',
   },
   {
     id: 'kvatch',
@@ -285,6 +289,8 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Great Forest',
     initiallyDiscovered: false,
     quests: [{ name: 'Mephala (Daedric Quest)' }],
+    merchants: [{ name: 'Kirsten' }],
+    notes: 'Missable: Invest in Kirsten before "Mephala" Daedric quest',
   },
   {
     id: 'border-watch',
@@ -320,7 +326,11 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Great Forest',
     initiallyDiscovered: false,
     quests: [{ name: 'A Shadow over Hackdirt' }],
-    merchants: [{ name: 'Vlanhonder Moslin' }],
+    merchants: [
+      { name: 'Vlanhonder Moslin' },
+      { name: 'Etira Moslin' },
+    ],
+    notes: 'Missable: Invest in Etira Moslin and Vlanhonder Moslin before "A Shadow over Hackdirt"',
   },
   {
     id: 'harluns-watch',
@@ -557,6 +567,7 @@ export const locationDefinitions: LocationDefinition[] = [
     initiallyDiscovered: false,
     quests: [{ name: 'Next of Kin' }],
     merchants: [{ name: 'Andreas Draconis' }],
+    notes: 'Missable: Invest in Andreas Draconis before "Next of Kin"',
   },
   {
     id: 'faregyl-inn',
