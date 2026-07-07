@@ -36,6 +36,7 @@ function WayshrineContent() {
 
   const locations = useLocationStore((s) => s.locations);
   const completedQuests = useLocationStore((s) => s.completedQuests);
+  const foundSkillBooks = useLocationStore((s) => s.foundSkillBooks);
   const investedMerchants = useLocationStore((s) => s.investedMerchants);
   const acquiredItems = useLocationStore((s) => s.acquiredItems);
   const typeFilters = useLocationStore((s) => s.typeFilters);
@@ -43,6 +44,7 @@ function WayshrineContent() {
   const {
     setLocationStatus,
     toggleQuestCompleted,
+    toggleSkillBookFound,
     toggleMerchantInvested,
     toggleItemAcquired,
     toggleTypeFilter,
@@ -125,9 +127,11 @@ function WayshrineContent() {
       status={locations[selectedLocation.id] || 'undiscovered'}
       onStatusChange={(status) => setLocationStatus(selectedLocation.id, status)}
       completedQuests={completedQuests}
+      foundSkillBooks={foundSkillBooks}
       investedMerchants={investedMerchants}
       acquiredItems={acquiredItems}
       onToggleQuest={(name) => toggleQuestCompleted(selectedLocation.id, name)}
+      onToggleSkillBook={(title) => toggleSkillBookFound(selectedLocation.id, title)}
       onToggleMerchant={(name) => toggleMerchantInvested(selectedLocation.id, name)}
       onToggleItem={(name) => toggleItemAcquired(selectedLocation.id, name)}
     />
@@ -150,7 +154,7 @@ function WayshrineContent() {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        height: '100vh',
+        minHeight: '100vh',
         backgroundColor: 'background.default',
       }}
     >
@@ -221,7 +225,7 @@ function WayshrineContent() {
         </Toolbar>
       </AppBar>
 
-      <Box sx={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
+      <Box sx={{ display: 'flex', height: 'calc(100vh - 48px)', overflow: 'hidden' }}>
         {/* Filter Panel - Desktop */}
         {!isMobile && filterPanelOpen && (
           <Box

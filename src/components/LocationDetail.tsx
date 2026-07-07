@@ -16,7 +16,6 @@ import {
   Visibility,
   CheckCircle,
   RadioButtonUnchecked,
-  MenuBook,
   Warning,
 } from '@mui/icons-material';
 import { LocationDefinition, LocationStatus } from '@/utils/locationTypes';
@@ -27,9 +26,11 @@ export default function LocationDetail({
   status,
   onStatusChange,
   completedQuests,
+  foundSkillBooks,
   investedMerchants,
   acquiredItems,
   onToggleQuest,
+  onToggleSkillBook,
   onToggleMerchant,
   onToggleItem,
 }: {
@@ -37,9 +38,11 @@ export default function LocationDetail({
   status: LocationStatus;
   onStatusChange: (status: LocationStatus) => void;
   completedQuests: Record<string, boolean>;
+  foundSkillBooks: Record<string, boolean>;
   investedMerchants: Record<string, boolean>;
   acquiredItems: Record<string, boolean>;
   onToggleQuest: (questName: string) => void;
+  onToggleSkillBook: (bookTitle: string) => void;
   onToggleMerchant: (merchantName: string) => void;
   onToggleItem: (itemName: string) => void;
 }) {
@@ -200,19 +203,47 @@ export default function LocationDetail({
             Skill Books
           </Typography>
           <List dense disablePadding>
-            {location.skillBooks.map((sb) => (
-              <ListItem key={sb.title} disableGutters sx={{ py: 0.25 }}>
-                <ListItemIcon sx={{ minWidth: 28 }}>
-                  <MenuBook sx={{ fontSize: 16, color: '#60a5fa' }} />
-                </ListItemIcon>
-                <ListItemText
-                  primary={sb.title}
-                  secondary={sb.skill}
-                  primaryTypographyProps={{ fontSize: '0.8rem' }}
-                  secondaryTypographyProps={{ fontSize: '0.7rem' }}
-                />
-              </ListItem>
-            ))}
+            {location.skillBooks.map((sb) => {
+              const checked = !!foundSkillBooks[`${location.id}:${sb.title}`];
+              return (
+                <ListItem
+                  key={sb.title}
+                  disableGutters
+                  sx={{ py: 0.25, cursor: 'pointer' }}
+                  onClick={() => onToggleSkillBook(sb.title)}
+                >
+                  <ListItemIcon sx={{ minWidth: 28 }}>
+                    <Checkbox
+                      size="small"
+                      checked={checked}
+                      tabIndex={-1}
+                      disableRipple
+                      sx={{
+                        p: 0,
+                        color: '#60a5fa',
+                        '&.Mui-checked': { color: '#60a5fa' },
+                      }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={sb.title}
+                    secondary={sb.skill}
+                    primaryTypographyProps={{
+                      fontSize: '0.8rem',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.secondary' }
+                        : undefined,
+                    }}
+                    secondaryTypographyProps={{
+                      fontSize: '0.7rem',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.disabled' }
+                        : undefined,
+                    }}
+                  />
+                </ListItem>
+              );
+            })}
           </List>
         </>
       )}

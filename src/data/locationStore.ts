@@ -14,6 +14,7 @@ function buildDefaultStatuses(): Record<string, LocationStatus> {
 type State = {
   locations: Record<string, LocationStatus>;
   completedQuests: Record<string, boolean>;
+  foundSkillBooks: Record<string, boolean>;
   investedMerchants: Record<string, boolean>;
   acquiredItems: Record<string, boolean>;
   typeFilters: LocationType[];
@@ -24,6 +25,7 @@ type State = {
 type Actions = {
   setLocationStatus: (id: string, status: LocationStatus) => void;
   toggleQuestCompleted: (locationId: string, questName: string) => void;
+  toggleSkillBookFound: (locationId: string, bookTitle: string) => void;
   toggleMerchantInvested: (locationId: string, merchantName: string) => void;
   toggleItemAcquired: (locationId: string, itemName: string) => void;
   toggleTypeFilter: (type: LocationType) => void;
@@ -39,6 +41,7 @@ export const useLocationStore = create<LocationStore>()(
     (set) => ({
       locations: buildDefaultStatuses(),
       completedQuests: {},
+      foundSkillBooks: {},
       investedMerchants: {},
       acquiredItems: {},
       typeFilters: [],
@@ -54,6 +57,12 @@ export const useLocationStore = create<LocationStore>()(
             const key = `${locationId}:${questName}`;
             const { [key]: current, ...rest } = state.completedQuests;
             return { completedQuests: current ? rest : { ...state.completedQuests, [key]: true } };
+          }),
+        toggleSkillBookFound: (locationId, bookTitle) =>
+          set((state) => {
+            const key = `${locationId}:${bookTitle}`;
+            const { [key]: current, ...rest } = state.foundSkillBooks;
+            return { foundSkillBooks: current ? rest : { ...state.foundSkillBooks, [key]: true } };
           }),
         toggleMerchantInvested: (locationId, merchantName) =>
           set((state) => {
@@ -85,6 +94,7 @@ export const useLocationStore = create<LocationStore>()(
           set({
             locations: buildDefaultStatuses(),
             completedQuests: {},
+            foundSkillBooks: {},
             investedMerchants: {},
             acquiredItems: {},
           }),
@@ -95,6 +105,7 @@ export const useLocationStore = create<LocationStore>()(
       partialize: (state) => ({
         locations: state.locations,
         completedQuests: state.completedQuests,
+        foundSkillBooks: state.foundSkillBooks,
         investedMerchants: state.investedMerchants,
         acquiredItems: state.acquiredItems,
         typeFilters: state.typeFilters,
