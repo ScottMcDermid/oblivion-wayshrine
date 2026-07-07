@@ -18,7 +18,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { ThemeProvider, StyledEngineProvider, useTheme } from '@mui/material/styles';
-import { ArrowBack, Close, FilterList, RestartAlt } from '@mui/icons-material';
+import { ArrowBack, Close, FilterList, GitHub, RestartAlt } from '@mui/icons-material';
 import theme from '@/app/theme';
 import { useLocationStore } from '@/data/locationStore';
 import { useHydrated } from '@/hooks/useHydrated';
@@ -361,24 +361,62 @@ function WayshrineContent() {
       {/* Footer */}
       <Box
         sx={{
-          px: 2,
-          py: 0.5,
+          position: 'relative',
+          px: 3,
+          py: 2,
           borderTop: '1px solid',
           borderColor: 'divider',
           textAlign: 'center',
         }}
       >
-        <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: '0.6rem' }}>
-          Not affiliated with Bethesda Softworks. Game data is from UESP.{' '}
-          <a
-            href="https://github.com/ScottMcDermid/oblivion-wayshrine"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: '#facc15' }}
-          >
-            Source
-          </a>
-        </Typography>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
+          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+            Oblivion Tool Suite &copy; 2025 Scott McDermid
+          </Typography>
+          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+            Licensed under the{' '}
+            <a
+              href="https://www.gnu.org/licenses/gpl-3.0.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#facc15', textDecoration: 'underline' }}
+            >
+              GNU General Public License v3.0
+            </a>
+            .
+          </Typography>
+          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+            The Elder Scrolls and Oblivion are trademarks of Bethesda Softworks LLC, a ZeniMax
+            Media company.
+          </Typography>
+          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+            This site is fan-made and not affiliated with Bethesda.
+          </Typography>
+        </Box>
+        <Box
+          component="a"
+          href="https://github.com/ScottMcDermid/oblivion-wayshrine"
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{
+            position: { xs: 'static', sm: 'absolute' },
+            right: { sm: 24 },
+            bottom: { sm: 16 },
+            mt: { xs: 1, sm: 0 },
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 0.5,
+            color: 'text.secondary',
+            textDecoration: 'none',
+            fontSize: '0.7rem',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+            '&:hover': { color: 'text.primary' },
+          }}
+        >
+          <GitHub sx={{ fontSize: 16 }} />
+          <span>GitHub</span>
+        </Box>
       </Box>
 
       <ConfirmDialog
