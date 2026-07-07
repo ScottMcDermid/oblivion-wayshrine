@@ -20,6 +20,14 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Varnado' },
       { name: 'Lelles\' Quality Merchandise' },
     ],
+    skillBooks: [
+      { title: 'The Red Kitchen Reader', skill: 'Athletics' },
+      { title: 'Death Blow of Abernanit', skill: 'Block' },
+      { title: 'King', skill: 'Blunt' },
+      { title: '2920, Frostfall', skill: 'Conjuration' },
+      { title: 'The Doors of Oblivion', skill: 'Conjuration' },
+      { title: 'Fighters Guild History, 1st Ed.', skill: 'Heavy Armor' },
+    ],
   },
   {
     id: 'bravil',
@@ -35,6 +43,17 @@ export const locationDefinitions: LocationDefinition[] = [
     merchants: [
       { name: 'Ungarion' },
       { name: 'Nilawen' },
+    ],
+    skillBooks: [
+      { title: 'Thief', skill: 'Acrobatics' },
+      { title: 'Light Armor Repair', skill: 'Armorer' },
+      { title: 'Song of Hrormir', skill: 'Blade' },
+      { title: 'The Importance of Where', skill: 'Blunt' },
+      { title: 'The Horrors of Castle Xyr', skill: 'Destruction' },
+      { title: 'Father Of The Niben', skill: 'Marksman' },
+      { title: '2920, Rain\'s Hand', skill: 'Restoration' },
+      { title: 'The Wolf Queen, v1', skill: 'Security' },
+      { title: '2920, Last Seed', skill: 'Sneak' },
     ],
   },
   {
@@ -53,6 +72,13 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Novaroma' },
       { name: 'Hammer and Tongs' },
     ],
+    skillBooks: [
+      { title: '2920, Hearth Fire', skill: 'Conjuration' },
+      { title: 'Ahzirr Traajijazeri', skill: 'Hand to Hand' },
+      { title: 'How Orsinium Passed to Orcs', skill: 'Heavy Armor' },
+      { title: 'The Wolf Queen, v3', skill: 'Illusion' },
+      { title: 'A Dance in Fire, v5', skill: 'Marksman' },
+    ],
   },
   {
     id: 'cheydinhal',
@@ -68,6 +94,19 @@ export const locationDefinitions: LocationDefinition[] = [
     merchants: [
       { name: 'Borba gra-Uzgash' },
       { name: 'Mach-Na' },
+    ],
+    skillBooks: [
+      { title: 'A Dance in Fire, v1', skill: 'Acrobatics' },
+      { title: 'The Armorer\'s Challenge', skill: 'Armorer' },
+      { title: '2920, Morning Star', skill: 'Blade' },
+      { title: 'Ahzirr Traajijazeri', skill: 'Hand to Hand' },
+      { title: 'Incident in Necrom', skill: 'Illusion' },
+      { title: 'The Rear Guard', skill: 'Light Armor' },
+      { title: 'The Gold Ribbon of Merit', skill: 'Marksman' },
+      { title: 'The Firsthold Revolt', skill: 'Mysticism' },
+      { title: 'Advances in Lock Picking', skill: 'Security' },
+      { title: 'The Wolf Queen, v6', skill: 'Sneak' },
+      { title: 'The Wolf Queen, v7', skill: 'Speechcraft' },
     ],
   },
   {
@@ -85,6 +124,17 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Northern Goods and Trade' },
       { name: 'Fire and Steel' },
       { name: 'Seed-Neeus' },
+    ],
+    skillBooks: [
+      { title: 'A Game at Dinner', skill: 'Alchemy' },
+      { title: 'Words and Philosophy', skill: 'Blade' },
+      { title: 'The Legendary Sancre Tor', skill: 'Blunt' },
+      { title: '2920, MidYear', skill: 'Heavy Armor' },
+      { title: 'Fighters Guild History, 1st Ed.', skill: 'Heavy Armor' },
+      { title: 'Hallgerd\'s Tale', skill: 'Heavy Armor' },
+      { title: 'Vernaccus and Bourlor', skill: 'Marksman' },
+      { title: 'A Dance in Fire, v6', skill: 'Mercantile' },
+      { title: 'Notes on Racial Phylogeny', skill: 'Restoration' },
     ],
   },
   {
@@ -115,6 +165,33 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Red Diamond Jewelry' },
       { name: 'Three Brothers Trade Goods' },
     ],
+    skillBooks: [
+      { title: 'Mannimarco, King of Worms', skill: 'Alchemy' },
+      { title: 'Song of the Alchemists', skill: 'Alchemy' },
+      { title: 'The Dragon Break', skill: 'Alteration' },
+      { title: 'The Armorer\'s Challenge', skill: 'Armorer' },
+      { title: 'Cherim\'s Heart of Anequina', skill: 'Armorer' },
+      { title: 'Last Scabbard of Akrash', skill: 'Armorer' },
+      { title: 'The Ransom of Zarek', skill: 'Athletics' },
+      { title: 'Song of Hrormir', skill: 'Blade' },
+      { title: 'A Dance in Fire, v2', skill: 'Block' },
+      { title: 'Liminal Bridges', skill: 'Conjuration' },
+      { title: 'Response to Bero\'s Speech', skill: 'Destruction' },
+      { title: 'Immortal Blood', skill: 'Hand to Hand' },
+      { title: 'Chimarvamidium', skill: 'Heavy Armor' },
+      { title: 'Fighters Guild History, 1st Ed.', skill: 'Heavy Armor' },
+      { title: 'The Argonian Account, Book 3', skill: 'Illusion' },
+      { title: 'The Refugees', skill: 'Light Armor' },
+      { title: '2920, Sun\'s Height', skill: 'Mercantile' },
+      { title: 'The Buying Game', skill: 'Mercantile' },
+      { title: 'The Wolf Queen, v4', skill: 'Mercantile' },
+      { title: 'Before the Ages of Man', skill: 'Mysticism' },
+      { title: 'The Black Arts On Trial', skill: 'Mysticism' },
+      { title: 'Proper Lock Design', skill: 'Security' },
+      { title: '2920, Second Seed', skill: 'Speechcraft' },
+      { title: 'Biography of the Wolf Queen', skill: 'Speechcraft' },
+      { title: 'The Wolf Queen, v5', skill: 'Speechcraft' },
+    ],
   },
   {
     id: 'kvatch',
@@ -125,6 +202,9 @@ export const locationDefinitions: LocationDefinition[] = [
     quests: [
       { name: 'Breaking the Siege of Kvatch' },
       { name: 'The Battle for Castle Kvatch' },
+    ],
+    skillBooks: [
+      { title: 'A Dance in Fire, v4', skill: 'Acrobatics' },
     ],
   },
   {
@@ -143,6 +223,15 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Best Goods and Guarantees' },
       { name: 'Southern Books' },
     ],
+    skillBooks: [
+      { title: 'Reality & Other Falsehoods', skill: 'Alteration' },
+      { title: 'Sithis', skill: 'Alteration' },
+      { title: '2920, Morning Star', skill: 'Blade' },
+      { title: 'The Mirror', skill: 'Block' },
+      { title: 'Warrior', skill: 'Block' },
+      { title: 'Ice and Chitin', skill: 'Light Armor' },
+      { title: 'Withershins', skill: 'Restoration' },
+    ],
   },
   {
     id: 'skingrad',
@@ -158,6 +247,15 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Colovian Traders' },
       { name: 'Hammer and Axe' },
       { name: 'All Things Alchemical' },
+    ],
+    skillBooks: [
+      { title: 'De Rerum Dirennis', skill: 'Alchemy' },
+      { title: 'Daughter of the Niben', skill: 'Alteration' },
+      { title: 'A Dance in Fire, v3', skill: 'Athletics' },
+      { title: 'A Hypothetical Treachery', skill: 'Destruction' },
+      { title: 'The Wolf Queen, v2', skill: 'Hand to Hand' },
+      { title: '2920, Sun\'s Dawn', skill: 'Mysticism' },
+      { title: 'The Exodus', skill: 'Restoration' },
     ],
   },
 
@@ -203,6 +301,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Great Forest',
     initiallyDiscovered: false,
     quests: [{ name: 'The Gravefinder\'s Repose' }],
+    skillBooks: [
+      { title: 'The Black Arrow, v1', skill: 'Acrobatics' },
+    ],
   },
   {
     id: 'cropsford',
@@ -272,6 +373,11 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Defense of Bruma' },
     ],
     notes: 'Visit manually before starting the "Weynon Priory" quest to count toward discovered locations',
+    skillBooks: [
+      { title: 'Beggar', skill: 'Athletics' },
+      { title: 'The Refugees', skill: 'Light Armor' },
+      { title: 'Legend of Krately House', skill: 'Sneak' },
+    ],
   },
   {
     id: 'gottlesfont-priory',
@@ -305,6 +411,9 @@ export const locationDefinitions: LocationDefinition[] = [
     quests: [
       { name: 'Deliver the Amulet' },
       { name: 'Weynon Priory' },
+    ],
+    skillBooks: [
+      { title: 'The Warp in the West', skill: 'Block' },
     ],
   },
   {
@@ -472,6 +581,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
     merchants: [{ name: 'Davela Hlaren' }],
+    skillBooks: [
+      { title: 'Calcinator Treatise', skill: 'Alchemy' },
+    ],
   },
   {
     id: 'inn-of-ill-omen',
@@ -1185,6 +1297,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Heartlands',
     initiallyDiscovered: false,
     quests: [{ name: 'The Path of Dawn' }],
+    skillBooks: [
+      { title: 'Fire and Darkness', skill: 'Blade' },
+    ],
   },
   {
     id: 'ondo',
@@ -1289,6 +1404,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Heartlands',
     initiallyDiscovered: false,
     quests: [{ name: 'Tutorial' }],
+    skillBooks: [
+      { title: 'Immortal Blood', skill: 'Hand to Hand' },
+    ],
   },
   {
     id: 'vindasel',
@@ -1384,6 +1502,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'West Weald',
     initiallyDiscovered: false,
     quests: [{ name: 'A Mage\'s Staff' }],
+    skillBooks: [
+      { title: 'Lord Jornibret\'s Last Dance', skill: 'Light Armor' },
+    ],
   },
   {
     id: 'bloodcrust-cavern',
@@ -1539,6 +1660,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Blackwood',
     initiallyDiscovered: false,
+    skillBooks: [
+      { title: 'Way of the Exposed Palm', skill: 'Hand to Hand' },
+    ],
   },
   {
     id: 'fingerbowl-cave',
@@ -1546,6 +1670,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Heartlands',
     initiallyDiscovered: false,
+    skillBooks: [
+      { title: 'Advances in Lock Picking', skill: 'Security' },
+    ],
   },
   {
     id: 'frostfire-glade',
@@ -1575,6 +1702,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'West Weald',
     initiallyDiscovered: false,
+    skillBooks: [
+      { title: 'Night Falls on Sentinel', skill: 'Blunt' },
+    ],
   },
   {
     id: 'grayrock-cave',
@@ -1655,6 +1785,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Valus Mountains',
     initiallyDiscovered: false,
     quests: [{ name: 'Dagon Shrine' }],
+    skillBooks: [
+      { title: 'Sacred Witness', skill: 'Sneak' },
+    ],
   },
   {
     id: 'leafrot-cave',
@@ -1662,6 +1795,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
+    skillBooks: [
+      { title: 'The Art of War Magic', skill: 'Destruction' },
+    ],
   },
   {
     id: 'lost-boy-cavern',
@@ -1684,6 +1820,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Heartlands',
     initiallyDiscovered: false,
+    skillBooks: [
+      { title: 'Mythic Dawn Commentaries 1', skill: 'Conjuration' },
+    ],
   },
   {
     id: 'mongrels-tooth-cave',
@@ -1985,6 +2124,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
     quests: [{ name: 'Vaermina (Daedric Quest)' }],
+    skillBooks: [
+      { title: 'Palla, volume 1', skill: 'Illusion' },
+    ],
   },
   {
     id: 'crowhaven',
@@ -2052,6 +2194,10 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Heartlands',
     initiallyDiscovered: false,
     quests: [{ name: 'The Wandering Scholar' }],
+    skillBooks: [
+      { title: 'The Doors of Oblivion', skill: 'Conjuration' },
+      { title: 'Mystery of Talara, v4', skill: 'Illusion' },
+    ],
   },
   {
     id: 'fort-carmala',
@@ -2087,6 +2233,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
+    skillBooks: [
+      { title: 'Souls, Black and White', skill: 'Mysticism' },
+    ],
   },
   {
     id: 'fort-dirich',
