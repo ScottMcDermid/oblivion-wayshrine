@@ -29,5 +29,6 @@ export const locationTypeIcons: Record<LocationType, IconType> = {
   'Landmark': MdTerrain,
   'Mine': TbPick,
   'Oblivion Gate': GiMagicPortal,
+  'Ruin': PiCastleTurretFill,
   'Settlement': GiVillage,
 };

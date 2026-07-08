@@ -12,6 +12,7 @@ export type LocationType =
   | 'Landmark'
   | 'Mine'
   | 'Oblivion Gate'
+  | 'Ruin'
   | 'Settlement';
 
 export const locationTypes: LocationType[] = [
@@ -28,6 +29,7 @@ export const locationTypes: LocationType[] = [
   'Landmark',
   'Mine',
   'Oblivion Gate',
+  'Ruin',
   'Settlement',
 ];
 
