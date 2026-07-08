@@ -255,11 +255,18 @@ export default function LocationDetail({
                   </ListItemIcon>
                   <ListItemText
                     primary={q.name}
+                    secondary={q.leveled ? 'Leveled reward' : undefined}
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
                       sx: checked
                         ? { textDecoration: 'line-through', color: 'text.secondary' }
                         : undefined,
+                    }}
+                    secondaryTypographyProps={{
+                      fontSize: '0.7rem',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.disabled' }
+                        : { color: '#fb923c' },
                     }}
                   />
                 </ListItem>

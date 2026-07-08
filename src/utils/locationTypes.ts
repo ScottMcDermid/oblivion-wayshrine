@@ -39,6 +39,7 @@ export const locationStatuses: LocationStatus[] = ['undiscovered', 'discovered',
 
 export type QuestReference = {
   name: string;
+  leveled?: boolean;
 };
 
 export type SkillBookReference = {
