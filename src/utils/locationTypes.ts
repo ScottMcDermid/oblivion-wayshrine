@@ -62,6 +62,15 @@ export type GreaterPowerReference = {
   renown: number;
 };
 
+export type TrainerTier = 'Novice' | 'Journeyman' | 'Master';
+
+export type TrainerReference = {
+  name: string;
+  skill: string;
+  tier: TrainerTier;
+  maxLevel: number;
+};
+
 export type LocationDefinition = {
   id: string;
   name: string;
@@ -74,5 +83,6 @@ export type LocationDefinition = {
   uniqueItems?: UniqueItemReference[];
   houses?: HouseReference[];
   greaterPowers?: GreaterPowerReference[];
+  trainers?: TrainerReference[];
   notes?: string;
 };

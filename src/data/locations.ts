@@ -29,6 +29,21 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'Fighters Guild History, 1st Ed.', skill: 'Heavy Armor' },
     ],
     houses: [{ name: 'Benirus Manor', price: 5000 }],
+    trainers: [
+      { name: 'Azzan', skill: 'Blunt', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Carahil', skill: 'Illusion', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Felen Relas', skill: 'Alchemy', tier: 'Novice', maxLevel: 40 },
+      { name: 'Hauls-Ropes-Faster', skill: 'Athletics', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Huurwen', skill: 'Block', tier: 'Novice', maxLevel: 40 },
+      { name: 'Marc Gulitte', skill: 'Destruction', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Mirabelle Monet', skill: 'Sneak', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Pinarus Inventius', skill: 'Marksman', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Quill-Weave', skill: 'Acrobatics', tier: 'Novice', maxLevel: 40 },
+      { name: 'Rhano', skill: 'Blade', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Rufrius Vinicius', skill: 'Hand to Hand', tier: 'Novice', maxLevel: 40 },
+      { name: 'Rusia Bradus', skill: 'Athletics', tier: 'Master', maxLevel: 100 },
+      { name: 'Vigdis', skill: 'Blunt', tier: 'Novice', maxLevel: 40 },
+    ],
   },
   {
     id: 'bravil',
@@ -57,6 +72,21 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: '2920, Last Seed', skill: 'Sneak' },
     ],
     houses: [{ name: 'Bravil House', price: 7900 }],
+    trainers: [
+      { name: 'Andragil', skill: 'Block', tier: 'Master', maxLevel: 100 },
+      { name: 'Ardaline', skill: 'Alchemy', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'City-Swimmer', skill: 'Sneak', tier: 'Novice', maxLevel: 40 },
+      { name: 'Delphine Jend', skill: 'Destruction', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Dro\'shanji', skill: 'Security', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Fathis Aren', skill: 'Conjuration', tier: 'Novice', maxLevel: 40 },
+      { name: 'Ita Rienus', skill: 'Mysticism', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Luciana Galena', skill: 'Light Armor', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Marz', skill: 'Restoration', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Nahsi', skill: 'Hand to Hand', tier: 'Novice', maxLevel: 40 },
+      { name: 'Tadrose Helas', skill: 'Armorer', tier: 'Novice', maxLevel: 40 },
+      { name: 'Uravasa Othrelas', skill: 'Speechcraft', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Varon Vamori', skill: 'Speechcraft', tier: 'Journeyman', maxLevel: 70 },
+    ],
   },
   {
     id: 'bruma',
@@ -83,6 +113,19 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'A Dance in Fire, v5', skill: 'Marksman' },
     ],
     houses: [{ name: 'Bruma House', price: 19900 }],
+    trainers: [
+      { name: 'Alga', skill: 'Speechcraft', tier: 'Novice', maxLevel: 40 },
+      { name: 'Arentus Falvius', skill: 'Conjuration', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Brotch Calus', skill: 'Alchemy', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Bumph gra-Gash', skill: 'Heavy Armor', tier: 'Novice', maxLevel: 40 },
+      { name: 'Cirroc', skill: 'Restoration', tier: 'Novice', maxLevel: 40 },
+      { name: 'Edla Dark-Heart', skill: 'Marksman', tier: 'Novice', maxLevel: 40 },
+      { name: 'Helvius Cecia', skill: 'Hand to Hand', tier: 'Master', maxLevel: 100 },
+      { name: 'J\'skar', skill: 'Destruction', tier: 'Novice', maxLevel: 40 },
+      { name: 'Jantus Brolus', skill: 'Illusion', tier: 'Novice', maxLevel: 40 },
+      { name: 'Olfand', skill: 'Light Armor', tier: 'Novice', maxLevel: 40 },
+      { name: 'Right-Wind', skill: 'Blade', tier: 'Novice', maxLevel: 40 },
+    ],
     notes: 'Missable: Invest in Selena Orania and buy Summon Dremora Lord from Volanaro before "A Plot Revealed"',
   },
   {
@@ -114,6 +157,16 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'The Wolf Queen, v7', skill: 'Speechcraft' },
     ],
     houses: [{ name: 'Cheydinhal House', price: 30000 }],
+    trainers: [
+      { name: 'Deetsan', skill: 'Alteration', tier: 'Novice', maxLevel: 40 },
+      { name: 'Ganredhel', skill: 'Acrobatics', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Gruiand Garrana', skill: 'Speechcraft', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Hil the Tall', skill: 'Illusion', tier: 'Novice', maxLevel: 40 },
+      { name: 'Mach-Na', skill: 'Mercantile', tier: 'Novice', maxLevel: 40 },
+      { name: 'Naspia Cosma', skill: 'Blade', tier: 'Novice', maxLevel: 40 },
+      { name: 'Ohtesse', skill: 'Restoration', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Ra\'qanar', skill: 'Hand to Hand', tier: 'Journeyman', maxLevel: 70 },
+    ],
   },
   {
     id: 'chorrol',
@@ -143,6 +196,18 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'Notes on Racial Phylogeny', skill: 'Restoration' },
     ],
     houses: [{ name: 'Arborwatch', price: 39400 }],
+    trainers: [
+      { name: 'Alberic Litte', skill: 'Conjuration', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Angalmo', skill: 'Mysticism', tier: 'Novice', maxLevel: 40 },
+      { name: 'Athragar', skill: 'Alteration', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Chanel', skill: 'Destruction', tier: 'Novice', maxLevel: 40 },
+      { name: 'Glistel', skill: 'Sneak', tier: 'Novice', maxLevel: 40 },
+      { name: 'Honditar', skill: 'Athletics', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Lum gro-Baroth', skill: 'Block', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Malintus Ancrus', skill: 'Security', tier: 'Novice', maxLevel: 40 },
+      { name: 'Rasheda', skill: 'Armorer', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Seed-Neeus', skill: 'Mercantile', tier: 'Journeyman', maxLevel: 70 },
+    ],
   },
   {
     id: 'imperial-city',
@@ -201,6 +266,24 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'The Wolf Queen, v5', skill: 'Speechcraft' },
     ],
     houses: [{ name: 'Waterfront Shack', price: 4000 }],
+    trainers: [
+      { name: 'Boderi Farano', skill: 'Mysticism', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Dovyn Aren', skill: 'Alteration', tier: 'Novice', maxLevel: 40 },
+      { name: 'Dul gro-Shug', skill: 'Light Armor', tier: 'Novice', maxLevel: 40 },
+      { name: 'Gin-Wulm', skill: 'Armorer', tier: 'Master', maxLevel: 100 },
+      { name: 'Ida Vlinorman', skill: 'Acrobatics', tier: 'Novice', maxLevel: 40 },
+      { name: 'Irene Metrick', skill: 'Blunt', tier: 'Master', maxLevel: 100 },
+      { name: 'J\'baana', skill: 'Security', tier: 'Master', maxLevel: 100 },
+      { name: 'Mandil', skill: 'Security', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Marana Rian', skill: 'Sneak', tier: 'Master', maxLevel: 100 },
+      { name: 'Martina Floria', skill: 'Illusion', tier: 'Master', maxLevel: 100 },
+      { name: 'Othrelos', skill: 'Sneak', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Palonirya', skill: 'Mercantile', tier: 'Master', maxLevel: 100 },
+      { name: 'Rohssan', skill: 'Armorer', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Samuel Bantien', skill: 'Security', tier: 'Novice', maxLevel: 40 },
+      { name: 'Tandilwe', skill: 'Speechcraft', tier: 'Master', maxLevel: 100 },
+      { name: 'Varnado', skill: 'Heavy Armor', tier: 'Journeyman', maxLevel: 70 },
+    ],
     notes: 'Missable: Invest in Fathis Ules before "Sins of the Father"',
   },
   {
@@ -215,6 +298,9 @@ export const locationDefinitions: LocationDefinition[] = [
     ],
     skillBooks: [
       { title: 'A Dance in Fire, v4', skill: 'Acrobatics' },
+    ],
+    trainers: [
+      { name: 'Oleta', skill: 'Restoration', tier: 'Master', maxLevel: 100 },
     ],
   },
   {
@@ -243,6 +329,19 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'Withershins', skill: 'Restoration' },
     ],
     houses: [{ name: 'Leyawiin House', price: 14000 }],
+    trainers: [
+      { name: 'Ahdarji', skill: 'Light Armor', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Brodras', skill: 'Heavy Armor', tier: 'Novice', maxLevel: 40 },
+      { name: 'Bugak gro-Bol', skill: 'Blunt', tier: 'Novice', maxLevel: 40 },
+      { name: 'Dagail', skill: 'Mysticism', tier: 'Master', maxLevel: 100 },
+      { name: 'Eitar', skill: 'Armorer', tier: 'Novice', maxLevel: 40 },
+      { name: 'J\'bari', skill: 'Light Armor', tier: 'Master', maxLevel: 100 },
+      { name: 'Mahei', skill: 'Athletics', tier: 'Novice', maxLevel: 40 },
+      { name: 'Margarte', skill: 'Mercantile', tier: 'Novice', maxLevel: 40 },
+      { name: 'S\'drassa', skill: 'Alchemy', tier: 'Novice', maxLevel: 40 },
+      { name: 'Sherina', skill: 'Blade', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Tsrava', skill: 'Acrobatics', tier: 'Journeyman', maxLevel: 70 },
+    ],
   },
   {
     id: 'skingrad',
@@ -269,6 +368,17 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'The Exodus', skill: 'Restoration' },
     ],
     houses: [{ name: 'Rosethorn Hall', price: 48200 }],
+    trainers: [
+      { name: 'Ambroise Canne', skill: 'Block', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Druja', skill: 'Mysticism', tier: 'Novice', maxLevel: 40 },
+      { name: 'Fadus Calidius', skill: 'Block', tier: 'Novice', maxLevel: 40 },
+      { name: 'Marie Palielle', skill: 'Restoration', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Reman Broder', skill: 'Marksman', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Shameer', skill: 'Marksman', tier: 'Novice', maxLevel: 40 },
+      { name: 'Sinderion', skill: 'Alchemy', tier: 'Master', maxLevel: 100 },
+      { name: 'Sulinus Vassinus', skill: 'Conjuration', tier: 'Novice', maxLevel: 40 },
+      { name: 'Uuras the Shepherd', skill: 'Athletics', tier: 'Novice', maxLevel: 40 },
+    ],
   },
 
   // ============================================================
@@ -566,6 +676,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Gold Coast',
     initiallyDiscovered: false,
     merchants: [{ name: 'Christophe Marane' }],
+    trainers: [
+      { name: 'Christophe Marane', skill: 'Blunt', tier: 'Journeyman', maxLevel: 70 },
+    ],
   },
   {
     id: 'drunken-dragon-inn',
@@ -584,6 +697,10 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Heartlands',
     initiallyDiscovered: false,
     merchants: [{ name: 'Abhuki' }],
+    trainers: [
+      { name: 'Abhuki', skill: 'Alteration', tier: 'Journeyman', maxLevel: 70 },
+      { name: 'Alix Lencolia', skill: 'Blade', tier: 'Master', maxLevel: 100 },
+    ],
   },
   {
     id: 'gottshaw-inn',
@@ -592,6 +709,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Gold Coast',
     initiallyDiscovered: false,
     merchants: [{ name: 'Foroch' }],
+    trainers: [
+      { name: 'Foroch', skill: 'Mercantile', tier: 'Novice', maxLevel: 40 },
+    ],
   },
   {
     id: 'imperial-bridge-inn',
@@ -602,6 +722,9 @@ export const locationDefinitions: LocationDefinition[] = [
     merchants: [{ name: 'Davela Hlaren' }],
     skillBooks: [
       { title: 'Calcinator Treatise', skill: 'Alchemy' },
+    ],
+    trainers: [
+      { name: 'Davela Hlaren', skill: 'Hand to Hand', tier: 'Journeyman', maxLevel: 70 },
     ],
   },
   {
@@ -620,6 +743,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Heartlands',
     initiallyDiscovered: false,
     merchants: [{ name: 'Malene' }],
+    trainers: [
+      { name: 'Pranal', skill: 'Heavy Armor', tier: 'Master', maxLevel: 100 },
+    ],
   },
 
   // ============================================================
@@ -632,6 +758,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Valus Mountains',
     initiallyDiscovered: false,
     quests: [{ name: 'Acrobatics Master Training' }],
+    trainers: [
+      { name: 'Torbern', skill: 'Acrobatics', tier: 'Master', maxLevel: 100 },
+    ],
   },
   {
     id: 'atrene-camp',
@@ -817,6 +946,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Gold Coast',
     initiallyDiscovered: false,
     quests: [{ name: 'Marksman Master Training' }],
+    trainers: [
+      { name: 'Alawen', skill: 'Marksman', tier: 'Master', maxLevel: 100 },
+    ],
   },
   {
     id: 'trossan-camp',
@@ -1183,6 +1315,9 @@ export const locationDefinitions: LocationDefinition[] = [
     initiallyDiscovered: false,
     quests: [{ name: 'Molag Bal' }],
     uniqueItems: [{ name: 'Mace of Molag Bal' }],
+    trainers: [
+      { name: 'Olyn Seran', skill: 'Conjuration', tier: 'Master', maxLevel: 100 },
+    ],
   },
   {
     id: 'namiras-shrine',

@@ -359,6 +359,60 @@ export default function LocationDetail({
         </>
       )}
 
+      {location.trainers && location.trainers.length > 0 && (
+        <>
+          <Divider sx={{ my: 1 }} />
+          <Typography
+            variant="caption"
+            sx={{ color: 'text.secondary', fontWeight: 'bold', textTransform: 'uppercase' }}
+          >
+            Trainers
+          </Typography>
+          <List dense disablePadding>
+            {[...location.trainers].sort((a, b) => {
+              const tierOrder = { Master: 0, Journeyman: 1, Novice: 2 };
+              const tierDiff = tierOrder[a.tier] - tierOrder[b.tier];
+              return tierDiff !== 0 ? tierDiff : a.name.localeCompare(b.name);
+            }).map((trainer) => (
+              <ListItem
+                key={`${trainer.name}-${trainer.skill}`}
+                disableGutters
+                sx={{ py: 0.25 }}
+              >
+                <ListItemIcon sx={{ minWidth: 28 }}>
+                  <Box
+                    sx={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: '50%',
+                      backgroundColor:
+                        trainer.tier === 'Master' ? '#ef4444' :
+                        trainer.tier === 'Journeyman' ? '#3b82f6' :
+                        '#22c55e',
+                      ml: 0.75,
+                    }}
+                  />
+                </ListItemIcon>
+                <ListItemText
+                  primary={trainer.name}
+                  secondary={`${trainer.skill} — ${trainer.tier} (up to ${trainer.maxLevel})`}
+                  primaryTypographyProps={{ fontSize: '0.8rem' }}
+                  secondaryTypographyProps={{
+                    fontSize: '0.7rem',
+                    sx: {
+                      color:
+                        trainer.tier === 'Master' ? '#ef4444' :
+                        trainer.tier === 'Journeyman' ? '#3b82f6' :
+                        '#22c55e',
+                    },
+                  }}
+                />
+              </ListItem>
+            ))}
+          </List>
+        </>
+      )}
+
       {location.uniqueItems && location.uniqueItems.length > 0 && (
         <>
           <Divider sx={{ my: 1 }} />
