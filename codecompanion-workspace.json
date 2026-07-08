@@ -1,8 +1,8 @@
 {
   "$schema": "https://codecompanion.dev/schema/workspace.json",
-  "name": "Oblivion Spell Altar",
-  "description": "Open‑source web tool for crafting custom Oblivion spells (ScottMcDermid/oblivion‑spell‑altar)",
-  "tags": ["oblivion", "spell", "react", "typescript"],
+  "name": "Oblivion Wayshrine",
+  "description": "Open‑source web tool for tracking discoveries (ScottMcDermid/oblivion‑wayshrine)",
+  "tags": ["oblivion", "react", "typescript"],
   "include": [
     "src/**/*.{ts,tsx,js,jsx,css,json}",
     "public/**/*.json",
