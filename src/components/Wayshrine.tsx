@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   AppBar,
   Badge,
@@ -70,6 +70,12 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
     () => (selectedLocationId ? locationDefinitionById[selectedLocationId] ?? null : null),
     [selectedLocationId],
   );
+
+  const displayedLocationRef = useRef<LocationDefinition | null>(null);
+  if (selectedLocation) {
+    displayedLocationRef.current = selectedLocation;
+  }
+  const displayedLocation = selectedLocation ?? displayedLocationRef.current;
 
   const navigateTo = useCallback((id?: string) => {
     const path = id ? `/location/${id}` : '/';
@@ -203,18 +209,20 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
+        maxWidth: '100vw',
+        overflowX: 'hidden',
         backgroundColor: 'background.default',
       }}
     >
       <AppBar position="static" sx={{ backgroundColor: 'background.paper' }} elevation={1}>
-        <Toolbar variant="dense" sx={{ gap: 1 }}>
+        <Toolbar variant="dense" sx={{ gap: 1, overflow: 'hidden' }}>
           <Typography
             variant="h6"
+            noWrap
             sx={{
               fontSize: '1rem',
               fontWeight: 'bold',
               color: 'secondary.main',
-              flexShrink: 0,
             }}
           >
             Oblivion Wayshrine
@@ -235,7 +243,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
           <Chip
             label={`${overallPercent}%`}
             size="small"
-            icon={<span style={{ fontSize: '0.7rem', marginLeft: 8 }}>Completion</span>}
+            icon={isMobile ? undefined : <span style={{ fontSize: '0.7rem', marginLeft: 8 }}>Completion</span>}
             onClick={() => setCompletionDialogOpen(true)}
             sx={{
               fontSize: '0.7rem',
@@ -247,19 +255,29 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
             variant="outlined"
           />
 
-          <Button
-            size="small"
-            startIcon={<RestartAlt sx={{ fontSize: 16 }} />}
-            onClick={() => setIsConfirmingReset(true)}
-            sx={{
-              color: 'error.main',
-              fontSize: '0.7rem',
-              textTransform: 'none',
-              minWidth: 'auto',
-            }}
-          >
-            Reset
-          </Button>
+          {isMobile ? (
+            <IconButton
+              size="small"
+              onClick={() => setIsConfirmingReset(true)}
+              sx={{ color: 'error.main' }}
+            >
+              <RestartAlt sx={{ fontSize: 18 }} />
+            </IconButton>
+          ) : (
+            <Button
+              size="small"
+              startIcon={<RestartAlt sx={{ fontSize: 16 }} />}
+              onClick={() => setIsConfirmingReset(true)}
+              sx={{
+                color: 'error.main',
+                fontSize: '0.7rem',
+                textTransform: 'none',
+                minWidth: 'auto',
+              }}
+            >
+              Reset
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
 
@@ -339,6 +357,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
             anchor="right"
             open={mobileDetailOpen}
             onClose={() => navigateTo()}
+            transitionDuration={{ enter: 250, exit: 200 }}
             PaperProps={{
               sx: {
                 width: '100%',
@@ -351,7 +370,25 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
                 <ArrowBack />
               </IconButton>
             </Box>
-            {detailContent}
+            {displayedLocation ? (
+              <LocationDetail
+                location={displayedLocation}
+                status={locations[displayedLocation.id] || 'undiscovered'}
+                onStatusChange={(status) => setLocationStatus(displayedLocation.id, status)}
+                completedQuests={completedQuests}
+                foundSkillBooks={foundSkillBooks}
+                investedMerchants={investedMerchants}
+                acquiredItems={acquiredItems}
+                acquiredPowers={acquiredPowers}
+                purchasedHouses={purchasedHouses}
+                onToggleQuest={(name) => toggleQuestCompleted(displayedLocation.id, name)}
+                onToggleSkillBook={(title) => toggleSkillBookFound(displayedLocation.id, title)}
+                onToggleMerchant={(name) => toggleMerchantInvested(displayedLocation.id, name)}
+                onToggleItem={(name) => toggleItemAcquired(displayedLocation.id, name)}
+                onTogglePower={(name) => togglePowerAcquired(displayedLocation.id, name)}
+                onToggleHouse={(name) => toggleHousePurchased(displayedLocation.id, name)}
+              />
+            ) : null}
           </Drawer>
         )}
       </Box>
