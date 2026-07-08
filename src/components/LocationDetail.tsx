@@ -21,6 +21,26 @@ import {
 import { LocationDefinition, LocationStatus, locationDLCColors, locationDLCLabels } from '@/utils/locationTypes';
 import { locationTypeIcons } from '@/utils/locationIcons';
 import SkillIcon from '@/components/SkillIcon';
+import { buildUespUrl, disambiguationNames } from '@/utils/uespLinks';
+
+function UespLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Box
+      component="a"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={(e: React.MouseEvent) => e.stopPropagation()}
+      sx={{
+        color: 'inherit',
+        textDecoration: 'inherit',
+        '&:hover': { textDecoration: 'underline' },
+      }}
+    >
+      {children}
+    </Box>
+  );
+}
 
 export default function LocationDetail({
   location,
@@ -67,7 +87,21 @@ export default function LocationDetail({
       }}
     >
       <Box sx={{ mb: 2 }}>
-        <Typography variant="h6" sx={{ fontWeight: 'bold', color: 'text.primary', mb: 0.5 }}>
+        <Typography
+          variant="h6"
+          component="a"
+          href={buildUespUrl(location.name, location.dlc, disambiguationNames.has(location.name) ? 'place' : undefined)}
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{
+            fontWeight: 'bold',
+            color: 'text.primary',
+            mb: 0.5,
+            display: 'block',
+            textDecoration: 'none',
+            '&:hover': { textDecoration: 'underline' },
+          }}
+        >
           {location.name}
         </Typography>
         <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
@@ -200,7 +234,11 @@ export default function LocationDetail({
                     />
                   </ListItemIcon>
                   <ListItemText
-                    primary={house.name}
+                    primary={
+                      <UespLink href={buildUespUrl(house.name, location.dlc)}>
+                        {house.name}
+                      </UespLink>
+                    }
                     secondary={`${house.price.toLocaleString()} gold`}
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
@@ -255,7 +293,11 @@ export default function LocationDetail({
                     />
                   </ListItemIcon>
                   <ListItemText
-                    primary={q.name}
+                    primary={
+                      <UespLink href={buildUespUrl(q.name, location.dlc, disambiguationNames.has(q.name) ? 'quest' : undefined)}>
+                        {q.name}
+                      </UespLink>
+                    }
                     secondary={q.leveled ? 'Leveled reward' : undefined}
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
@@ -310,7 +352,11 @@ export default function LocationDetail({
                     />
                   </ListItemIcon>
                   <ListItemText
-                    primary={sb.title}
+                    primary={
+                      <UespLink href={buildUespUrl(sb.title, location.dlc)}>
+                        {sb.title}
+                      </UespLink>
+                    }
                     secondary={
                       <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.5 }}>
                         <SkillIcon skill={sb.skill} size={12} />
@@ -371,7 +417,11 @@ export default function LocationDetail({
                     />
                   </ListItemIcon>
                   <ListItemText
-                    primary={m.name}
+                    primary={
+                      <UespLink href={buildUespUrl(m.name, location.dlc)}>
+                        {m.name}
+                      </UespLink>
+                    }
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
                       sx: checked
@@ -421,7 +471,11 @@ export default function LocationDetail({
                   />
                 </ListItemIcon>
                 <ListItemText
-                  primary={trainer.name}
+                  primary={
+                    <UespLink href={buildUespUrl(trainer.name, location.dlc)}>
+                      {trainer.name}
+                    </UespLink>
+                  }
                   secondary={
                     <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.5 }}>
                       <SkillIcon skill={trainer.skill} size={12} />
@@ -479,7 +533,11 @@ export default function LocationDetail({
                     />
                   </ListItemIcon>
                   <ListItemText
-                    primary={item.name}
+                    primary={
+                      <UespLink href={buildUespUrl(item.name, location.dlc)}>
+                        {item.name}
+                      </UespLink>
+                    }
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
                       sx: checked
@@ -527,7 +585,11 @@ export default function LocationDetail({
                     />
                   </ListItemIcon>
                   <ListItemText
-                    primary={power.name}
+                    primary={
+                      <UespLink href={buildUespUrl(power.name, location.dlc)}>
+                        {power.name}
+                      </UespLink>
+                    }
                     secondary={power.renown > 0 ? `Renown: ${power.renown}` : undefined}
                     primaryTypographyProps={{
                       fontSize: '0.8rem',

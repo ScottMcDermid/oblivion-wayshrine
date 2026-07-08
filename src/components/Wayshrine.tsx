@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   AppBar,
   Badge,
@@ -22,14 +22,15 @@ import { ArrowBack, Close, FilterList, GitHub, RestartAlt } from '@mui/icons-mat
 import theme from '@/app/theme';
 import { useLocationStore } from '@/data/locationStore';
 import { useHydrated } from '@/hooks/useHydrated';
-import { locationDefinitions } from '@/data/locations';
+import { locationDefinitions, locationDefinitionById } from '@/data/locations';
 import { LocationDLC, LocationDefinition, LocationStatus, LocationType } from '@/utils/locationTypes';
 import LocationList from '@/components/LocationList';
 import LocationDetail from '@/components/LocationDetail';
 import LocationFilters from '@/components/LocationFilters';
 import ConfirmDialog from '@/components/ConfirmDialog';
+import CompletionDialog from '@/components/CompletionDialog';
 
-function WayshrineContent() {
+function WayshrineContent({ locationId }: { locationId?: string }) {
   const muiTheme = useTheme();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down('md'));
   const hydrated = useHydrated();
@@ -63,11 +64,33 @@ function WayshrineContent() {
   const activeStatusFilters = useMemo(() => new Set<LocationStatus>(statusFilters), [statusFilters]);
   const activeDLCFilters = useMemo(() => new Set<LocationDLC>(dlcFilters), [dlcFilters]);
 
-  const [selectedLocation, setSelectedLocation] = useState<LocationDefinition | null>(null);
+  const [selectedLocationId, setSelectedLocationId] = useState<string | undefined>(locationId);
+
+  const selectedLocation = useMemo(
+    () => (selectedLocationId ? locationDefinitionById[selectedLocationId] ?? null : null),
+    [selectedLocationId],
+  );
+
+  const navigateTo = useCallback((id?: string) => {
+    const path = id ? `/location/${id}` : '/';
+    window.history.pushState(null, '', path);
+    setSelectedLocationId(id);
+  }, []);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const match = window.location.pathname.match(/^\/location\/(.+)$/);
+      setSelectedLocationId(match ? match[1] : undefined);
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   const [search, setSearch] = useState('');
   const [filterPanelOpen, setFilterPanelOpen] = useState(false);
   const [isConfirmingReset, setIsConfirmingReset] = useState(false);
-  const [mobileDetailOpen, setMobileDetailOpen] = useState(false);
+  const [completionDialogOpen, setCompletionDialogOpen] = useState(false);
+  const mobileDetailOpen = isMobile && !!selectedLocation;
 
   const hasActiveFilters = activeFilters.size > 0 || activeStatusFilters.size > 0 || activeDLCFilters.size > 0;
 
@@ -83,33 +106,46 @@ function WayshrineContent() {
     [locations, activeFilters, activeStatusFilters, activeDLCFilters],
   );
 
-  const stats = useMemo(() => {
-    const total = locationDefinitions.length;
-    let discovered = 0;
-    let cleared = 0;
+  const totals = useMemo(() => {
+    let quests = 0, skillBooks = 0, merchants = 0, uniqueItems = 0, houses = 0, greaterPowers = 0;
     for (const loc of locationDefinitions) {
-      const status = locations[loc.id];
-      if (status === 'discovered') discovered++;
-      if (status === 'cleared') {
-        discovered++;
-        cleared++;
-      }
+      quests += loc.quests?.length ?? 0;
+      skillBooks += loc.skillBooks?.length ?? 0;
+      merchants += loc.merchants?.length ?? 0;
+      uniqueItems += loc.uniqueItems?.length ?? 0;
+      houses += loc.houses?.length ?? 0;
+      greaterPowers += loc.greaterPowers?.length ?? 0;
     }
-    return { total, discovered, cleared };
-  }, [locations]);
+    return { locations: locationDefinitions.length, quests, skillBooks, merchants, uniqueItems, houses, greaterPowers };
+  }, []);
+
+  const completed = useMemo(() => ({
+    locations: Object.values(locations).filter((s) => s === 'cleared').length,
+    quests: Object.keys(completedQuests).length,
+    skillBooks: Object.keys(foundSkillBooks).length,
+    merchants: Object.keys(investedMerchants).length,
+    uniqueItems: Object.keys(acquiredItems).length,
+    houses: Object.keys(purchasedHouses).length,
+    greaterPowers: Object.keys(acquiredPowers).length,
+  }), [locations, completedQuests, foundSkillBooks, investedMerchants, acquiredItems, purchasedHouses, acquiredPowers]);
+
+  const overallPercent = useMemo(() => {
+    const cats = ['locations', 'quests', 'skillBooks', 'merchants', 'uniqueItems', 'houses', 'greaterPowers'] as const;
+    const percentages = cats.map((cat) =>
+      totals[cat] > 0 ? (completed[cat] / totals[cat]) * 100 : 100,
+    );
+    return Math.round(percentages.reduce((a, b) => a + b, 0) / cats.length);
+  }, [totals, completed]);
 
   const handleSelectLocation = (location: LocationDefinition) => {
-    setSelectedLocation(location);
-    if (isMobile) {
-      setMobileDetailOpen(true);
-    }
+    navigateTo(location.id);
   };
 
   const handleResetConfirm = (confirm: boolean) => {
     setIsConfirmingReset(false);
     if (confirm) {
       resetToDefaults();
-      setSelectedLocation(null);
+      navigateTo();
     }
   };
 
@@ -197,26 +233,16 @@ function WayshrineContent() {
           <Box sx={{ flex: 1 }} />
 
           <Chip
-            label={`${stats.discovered}/${stats.total}`}
+            label={`${overallPercent}%`}
             size="small"
-            icon={<span style={{ fontSize: '0.7rem', marginLeft: 8 }}>Discovered</span>}
+            icon={<span style={{ fontSize: '0.7rem', marginLeft: 8 }}>Completion</span>}
+            onClick={() => setCompletionDialogOpen(true)}
             sx={{
               fontSize: '0.7rem',
-              color: '#3b82f6',
-              borderColor: '#3b82f6',
-              '& .MuiChip-icon': { color: '#93c5fd' },
-            }}
-            variant="outlined"
-          />
-          <Chip
-            label={`${stats.cleared}/${stats.total}`}
-            size="small"
-            icon={<span style={{ fontSize: '0.7rem', marginLeft: 8 }}>Cleared</span>}
-            sx={{
-              fontSize: '0.7rem',
-              color: '#22c55e',
-              borderColor: '#22c55e',
-              '& .MuiChip-icon': { color: '#86efac' },
+              color: 'secondary.main',
+              borderColor: 'secondary.main',
+              cursor: 'pointer',
+              '& .MuiChip-icon': { color: 'secondary.light' },
             }}
             variant="outlined"
           />
@@ -312,7 +338,7 @@ function WayshrineContent() {
           <Drawer
             anchor="right"
             open={mobileDetailOpen}
-            onClose={() => setMobileDetailOpen(false)}
+            onClose={() => navigateTo()}
             PaperProps={{
               sx: {
                 width: '100%',
@@ -321,7 +347,7 @@ function WayshrineContent() {
             }}
           >
             <Box sx={{ p: 1, borderBottom: '1px solid', borderColor: 'divider' }}>
-              <IconButton onClick={() => setMobileDetailOpen(false)} size="small">
+              <IconButton onClick={() => navigateTo()} size="small">
                 <ArrowBack />
               </IconButton>
             </Box>
@@ -444,15 +470,22 @@ function WayshrineContent() {
         description="This will reset all locations to their default state. Cities will be marked as discovered, and all other locations will be marked as undiscovered."
         handleClose={handleResetConfirm}
       />
+
+      <CompletionDialog
+        open={completionDialogOpen}
+        onClose={() => setCompletionDialogOpen(false)}
+        totals={totals}
+        completed={completed}
+      />
     </Box>
   );
 }
 
-export default function Wayshrine() {
+export default function Wayshrine({ locationId }: { locationId?: string }) {
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
-        <WayshrineContent />
+        <WayshrineContent locationId={locationId} />
       </ThemeProvider>
     </StyledEngineProvider>
   );
