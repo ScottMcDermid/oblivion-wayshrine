@@ -18,7 +18,7 @@ import {
   RadioButtonUnchecked,
   Warning,
 } from '@mui/icons-material';
-import { LocationDefinition, LocationStatus } from '@/utils/locationTypes';
+import { LocationDefinition, LocationStatus, locationDLCColors, locationDLCLabels } from '@/utils/locationTypes';
 import { locationTypeIcons } from '@/utils/locationIcons';
 
 export default function LocationDetail({
@@ -76,6 +76,19 @@ export default function LocationDetail({
             size="small"
             sx={{ fontSize: '0.7rem', '& .MuiChip-icon': { ml: 0.5 } }}
           />
+          {location.dlc && (
+            <Chip
+              label={locationDLCLabels[location.dlc]}
+              size="small"
+              sx={{
+                fontSize: '0.65rem',
+                fontWeight: 'bold',
+                color: '#fff',
+                backgroundColor: locationDLCColors[location.dlc],
+                height: 20,
+              }}
+            />
+          )}
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             {location.hold}
           </Typography>

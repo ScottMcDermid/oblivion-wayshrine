@@ -73,11 +73,28 @@ export type TrainerReference = {
   maxLevel: number;
 };
 
+export type LocationDLC = 'Base' | 'SI' | 'KotN';
+
+export const locationDLCs: LocationDLC[] = ['Base', 'SI', 'KotN'];
+
+export const locationDLCLabels: Record<LocationDLC, string> = {
+  Base: 'Base Game',
+  SI: 'Shivering Isles',
+  KotN: 'Knights of the Nine',
+};
+
+export const locationDLCColors: Record<LocationDLC, string> = {
+  Base: '#6b7280',
+  SI: '#a855f7',
+  KotN: '#f59e0b',
+};
+
 export type LocationDefinition = {
   id: string;
   name: string;
   type: LocationType;
   hold: string;
+  dlc?: LocationDLC;
   initiallyDiscovered: boolean;
   quests?: QuestReference[];
   skillBooks?: SkillBookReference[];

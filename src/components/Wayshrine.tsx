@@ -23,7 +23,7 @@ import theme from '@/app/theme';
 import { useLocationStore } from '@/data/locationStore';
 import { useHydrated } from '@/hooks/useHydrated';
 import { locationDefinitions } from '@/data/locations';
-import { LocationDefinition, LocationStatus, LocationType } from '@/utils/locationTypes';
+import { LocationDLC, LocationDefinition, LocationStatus, LocationType } from '@/utils/locationTypes';
 import LocationList from '@/components/LocationList';
 import LocationDetail from '@/components/LocationDetail';
 import LocationFilters from '@/components/LocationFilters';
@@ -43,6 +43,7 @@ function WayshrineContent() {
   const purchasedHouses = useLocationStore((s) => s.purchasedHouses);
   const typeFilters = useLocationStore((s) => s.typeFilters);
   const statusFilters = useLocationStore((s) => s.statusFilters);
+  const dlcFilters = useLocationStore((s) => s.dlcFilters);
   const {
     setLocationStatus,
     toggleQuestCompleted,
@@ -53,12 +54,14 @@ function WayshrineContent() {
     toggleHousePurchased,
     toggleTypeFilter,
     toggleStatusFilter,
+    toggleDLCFilter,
     clearFilters,
     resetToDefaults,
   } = useLocationStore((s) => s.actions);
 
   const activeFilters = useMemo(() => new Set<LocationType>(typeFilters), [typeFilters]);
   const activeStatusFilters = useMemo(() => new Set<LocationStatus>(statusFilters), [statusFilters]);
+  const activeDLCFilters = useMemo(() => new Set<LocationDLC>(dlcFilters), [dlcFilters]);
 
   const [selectedLocation, setSelectedLocation] = useState<LocationDefinition | null>(null);
   const [search, setSearch] = useState('');
@@ -66,7 +69,7 @@ function WayshrineContent() {
   const [isConfirmingReset, setIsConfirmingReset] = useState(false);
   const [mobileDetailOpen, setMobileDetailOpen] = useState(false);
 
-  const hasActiveFilters = activeFilters.size > 0 || activeStatusFilters.size > 0;
+  const hasActiveFilters = activeFilters.size > 0 || activeStatusFilters.size > 0 || activeDLCFilters.size > 0;
 
   const filteredLocations = useMemo(
     () =>
@@ -74,9 +77,10 @@ function WayshrineContent() {
         const matchesFilter = activeFilters.size === 0 || activeFilters.has(loc.type);
         const status = locations[loc.id] || 'undiscovered';
         const matchesStatus = activeStatusFilters.size === 0 || activeStatusFilters.has(status);
-        return matchesFilter && matchesStatus;
+        const matchesDLC = activeDLCFilters.size === 0 || activeDLCFilters.has(loc.dlc ?? 'Base');
+        return matchesFilter && matchesStatus && matchesDLC;
       }),
-    [locations, activeFilters, activeStatusFilters],
+    [locations, activeFilters, activeStatusFilters, activeDLCFilters],
   );
 
   const stats = useMemo(() => {
@@ -256,6 +260,8 @@ function WayshrineContent() {
               onToggleFilter={toggleTypeFilter}
               activeStatusFilters={activeStatusFilters}
               onToggleStatusFilter={toggleStatusFilter}
+              activeDLCFilters={activeDLCFilters}
+              onToggleDLCFilter={toggleDLCFilter}
             />
             {hasActiveFilters && (
               <Button
@@ -351,6 +357,8 @@ function WayshrineContent() {
               onToggleFilter={toggleTypeFilter}
               activeStatusFilters={activeStatusFilters}
               onToggleStatusFilter={toggleStatusFilter}
+              activeDLCFilters={activeDLCFilters}
+              onToggleDLCFilter={toggleDLCFilter}
             />
             {hasActiveFilters && (
               <Button

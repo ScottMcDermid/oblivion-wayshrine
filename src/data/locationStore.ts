@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { LocationStatus, LocationType } from '@/utils/locationTypes';
+import { LocationDLC, LocationStatus, LocationType } from '@/utils/locationTypes';
 import { locationDefinitions } from '@/data/locations';
 
 function buildDefaultStatuses(): Record<string, LocationStatus> {
@@ -21,6 +21,7 @@ type State = {
   purchasedHouses: Record<string, boolean>;
   typeFilters: LocationType[];
   statusFilters: LocationStatus[];
+  dlcFilters: LocationDLC[];
   version: number;
 };
 
@@ -34,6 +35,7 @@ type Actions = {
   toggleHousePurchased: (locationId: string, houseName: string) => void;
   toggleTypeFilter: (type: LocationType) => void;
   toggleStatusFilter: (status: LocationStatus) => void;
+  toggleDLCFilter: (dlc: LocationDLC) => void;
   clearFilters: () => void;
   resetToDefaults: () => void;
 };
@@ -52,6 +54,7 @@ export const useLocationStore = create<LocationStore>()(
       purchasedHouses: {},
       typeFilters: [],
       statusFilters: [],
+      dlcFilters: [],
       version: 1,
       actions: {
         setLocationStatus: (id, status) =>
@@ -106,8 +109,14 @@ export const useLocationStore = create<LocationStore>()(
               ? state.statusFilters.filter((s) => s !== status)
               : [...state.statusFilters, status],
           })),
+        toggleDLCFilter: (dlc) =>
+          set((state) => ({
+            dlcFilters: state.dlcFilters.includes(dlc)
+              ? state.dlcFilters.filter((d) => d !== dlc)
+              : [...state.dlcFilters, dlc],
+          })),
         clearFilters: () =>
-          set({ typeFilters: [], statusFilters: [] }),
+          set({ typeFilters: [], statusFilters: [], dlcFilters: [] }),
         resetToDefaults: () =>
           set({
             locations: buildDefaultStatuses(),
@@ -132,6 +141,7 @@ export const useLocationStore = create<LocationStore>()(
         purchasedHouses: state.purchasedHouses,
         typeFilters: state.typeFilters,
         statusFilters: state.statusFilters,
+        dlcFilters: state.dlcFilters,
         version: state.version,
       }),
     },

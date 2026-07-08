@@ -13,7 +13,7 @@ import {
   Visibility,
   CheckCircle,
 } from '@mui/icons-material';
-import { LocationDefinition, LocationStatus } from '@/utils/locationTypes';
+import { LocationDefinition, LocationStatus, locationDLCColors } from '@/utils/locationTypes';
 import { locationTypeIcons } from '@/utils/locationIcons';
 
 const statusIcon: Partial<Record<LocationStatus, React.ReactNode>> = {
@@ -105,6 +105,19 @@ export default function LocationList({
                       >
                         {loc.name}
                       </Typography>
+                      {loc.dlc && (
+                        <Typography
+                          component="span"
+                          sx={{
+                            fontSize: '0.55rem',
+                            fontWeight: 'bold',
+                            color: locationDLCColors[loc.dlc],
+                            lineHeight: 1,
+                          }}
+                        >
+                          {loc.dlc}
+                        </Typography>
+                      )}
                       {loc.notes && (
                         <Typography sx={{ fontSize: '0.65rem', color: '#fbbf24' }}>!</Typography>
                       )}
