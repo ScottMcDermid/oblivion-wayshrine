@@ -20,6 +20,7 @@ import {
 } from '@mui/icons-material';
 import { LocationDefinition, LocationStatus, locationDLCColors, locationDLCLabels } from '@/utils/locationTypes';
 import { locationTypeIcons } from '@/utils/locationIcons';
+import SkillIcon from '@/components/SkillIcon';
 
 export default function LocationDetail({
   location,
@@ -310,7 +311,12 @@ export default function LocationDetail({
                   </ListItemIcon>
                   <ListItemText
                     primary={sb.title}
-                    secondary={sb.skill}
+                    secondary={
+                      <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.5 }}>
+                        <SkillIcon skill={sb.skill} size={12} />
+                        {sb.skill}
+                      </Box>
+                    }
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
                       sx: checked
@@ -319,6 +325,7 @@ export default function LocationDetail({
                     }}
                     secondaryTypographyProps={{
                       fontSize: '0.7rem',
+                      component: 'div',
                       sx: checked
                         ? { textDecoration: 'line-through', color: 'text.disabled' }
                         : undefined,
@@ -415,10 +422,16 @@ export default function LocationDetail({
                 </ListItemIcon>
                 <ListItemText
                   primary={trainer.name}
-                  secondary={`${trainer.skill} — ${trainer.tier} (up to ${trainer.maxLevel})`}
+                  secondary={
+                    <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.5 }}>
+                      <SkillIcon skill={trainer.skill} size={12} />
+                      {`${trainer.skill} — ${trainer.tier} (up to ${trainer.maxLevel})`}
+                    </Box>
+                  }
                   primaryTypographyProps={{ fontSize: '0.8rem' }}
                   secondaryTypographyProps={{
                     fontSize: '0.7rem',
+                    component: 'div',
                     sx: {
                       color:
                         trainer.tier === 'Master' ? '#ef4444' :
