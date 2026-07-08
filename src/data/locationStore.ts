@@ -19,6 +19,7 @@ type State = {
   acquiredItems: Record<string, boolean>;
   acquiredPowers: Record<string, boolean>;
   purchasedHouses: Record<string, boolean>;
+  collectedNirnroots: Record<string, boolean>;
   typeFilters: LocationType[];
   statusFilters: LocationStatus[];
   dlcFilters: LocationDLC[];
@@ -33,6 +34,7 @@ type Actions = {
   toggleItemAcquired: (locationId: string, itemName: string) => void;
   togglePowerAcquired: (locationId: string, powerName: string) => void;
   toggleHousePurchased: (locationId: string, houseName: string) => void;
+  toggleNirnrootCollected: (locationId: string, description: string) => void;
   toggleTypeFilter: (type: LocationType) => void;
   toggleStatusFilter: (status: LocationStatus) => void;
   toggleDLCFilter: (dlc: LocationDLC) => void;
@@ -52,6 +54,7 @@ export const useLocationStore = create<LocationStore>()(
       acquiredItems: {},
       acquiredPowers: {},
       purchasedHouses: {},
+      collectedNirnroots: {},
       typeFilters: [],
       statusFilters: [],
       dlcFilters: [],
@@ -97,6 +100,12 @@ export const useLocationStore = create<LocationStore>()(
             const { [key]: current, ...rest } = state.purchasedHouses;
             return { purchasedHouses: current ? rest : { ...state.purchasedHouses, [key]: true } };
           }),
+        toggleNirnrootCollected: (locationId, description) =>
+          set((state) => {
+            const key = `${locationId}:${description}`;
+            const { [key]: current, ...rest } = state.collectedNirnroots;
+            return { collectedNirnroots: current ? rest : { ...state.collectedNirnroots, [key]: true } };
+          }),
         toggleTypeFilter: (type) =>
           set((state) => ({
             typeFilters: state.typeFilters.includes(type)
@@ -126,6 +135,7 @@ export const useLocationStore = create<LocationStore>()(
             acquiredItems: {},
             acquiredPowers: {},
             purchasedHouses: {},
+            collectedNirnroots: {},
           }),
       },
     }),
@@ -139,6 +149,7 @@ export const useLocationStore = create<LocationStore>()(
         acquiredItems: state.acquiredItems,
         acquiredPowers: state.acquiredPowers,
         purchasedHouses: state.purchasedHouses,
+        collectedNirnroots: state.collectedNirnroots,
         typeFilters: state.typeFilters,
         statusFilters: state.statusFilters,
         dlcFilters: state.dlcFilters,

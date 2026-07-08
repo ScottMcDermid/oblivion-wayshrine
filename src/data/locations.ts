@@ -44,6 +44,11 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Rusia Bradus', skill: 'Athletics', tier: 'Master', maxLevel: 100 },
       { name: 'Vigdis', skill: 'Blunt', tier: 'Novice', maxLevel: 40 },
     ],
+    nirnroots: [
+      { description: "Heinrich Oaken-Hull's bedroom" },
+      { description: "Anvil Castle, Dairhill's apartment" },
+      { description: "Lighthouse, Ulfgar Fog-Eye's house" },
+    ],
   },
   {
     id: 'bravil',
@@ -87,6 +92,14 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Uravasa Othrelas', skill: 'Speechcraft', tier: 'Journeyman', maxLevel: 70 },
       { name: 'Varon Vamori', skill: 'Speechcraft', tier: 'Journeyman', maxLevel: 70 },
     ],
+    nirnroots: [
+      { description: "Andragil's house" },
+      { description: "City-Swimmer's house" },
+      { description: "Silverhome on the Water, 3rd floor" },
+      { description: "Chapel Hall, room on the right" },
+      { description: "Fighters Guild, 2nd floor, first room" },
+      { description: "Wizard's Grotto, via secret entrance in Castle Bravil" },
+    ],
   },
   {
     id: 'bruma',
@@ -125,6 +138,11 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Jantus Brolus', skill: 'Illusion', tier: 'Novice', maxLevel: 40 },
       { name: 'Olfand', skill: 'Light Armor', tier: 'Novice', maxLevel: 40 },
       { name: 'Right-Wind', skill: 'Blade', tier: 'Novice', maxLevel: 40 },
+    ],
+    nirnroots: [
+      { description: "Baenlin's house, 2nd floor" },
+      { description: "Regner's house, downstairs" },
+      { description: "Castle Bruma, Tolgan's apartment" },
     ],
     notes: 'Missable: Invest in Selena Orania and buy Summon Dremora Lord from Volanaro before "A Plot Revealed"',
   },
@@ -167,6 +185,11 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Ohtesse', skill: 'Restoration', tier: 'Journeyman', maxLevel: 70 },
       { name: 'Ra\'qanar', skill: 'Hand to Hand', tier: 'Journeyman', maxLevel: 70 },
     ],
+    nirnroots: [
+      { description: "Mach-Na's Books, bedroom upstairs" },
+      { description: "Mages Guild Well, underwater" },
+      { description: "Riverview, upstairs" },
+    ],
   },
   {
     id: 'chorrol',
@@ -207,6 +230,10 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Malintus Ancrus', skill: 'Security', tier: 'Novice', maxLevel: 40 },
       { name: 'Rasheda', skill: 'Armorer', tier: 'Journeyman', maxLevel: 70 },
       { name: 'Seed-Neeus', skill: 'Mercantile', tier: 'Journeyman', maxLevel: 70 },
+    ],
+    nirnroots: [
+      { description: "Casta Scribonia's house, upstairs" },
+      { description: "Vilena Donton's house, 3rd floor" },
     ],
   },
   {
@@ -284,6 +311,17 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Tandilwe', skill: 'Speechcraft', tier: 'Master', maxLevel: 100 },
       { name: 'Varnado', skill: 'Heavy Armor', tier: 'Journeyman', maxLevel: 70 },
     ],
+    nirnroots: [
+      { description: "Arcane University, Arch-Mage's Quarters" },
+      { description: "Arcane University, Mages Quarters, room on the right" },
+      { description: "Market District, Mystic Emporium private quarters" },
+      { description: "Market District, The Gilded Carafe" },
+      { description: "Imperial Prison Sewer, North Tunnel" },
+      { description: "Talos Plaza District, Samuel Bantien's private quarters" },
+      { description: "Temple District, Salomon Geonette's private quarters" },
+      { description: "Waterfront District, Marie Elena captain's cabin" },
+      { description: "South Watch Tower, captain's quarters" },
+    ],
     notes: 'Missable: Invest in Fathis Ules before "Sins of the Father"',
   },
   {
@@ -342,6 +380,12 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Sherina', skill: 'Blade', tier: 'Journeyman', maxLevel: 70 },
       { name: 'Tsrava', skill: 'Acrobatics', tier: 'Journeyman', maxLevel: 70 },
     ],
+    nirnroots: [
+      { description: "Ahdarji's house, 2nd floor west" },
+      { description: "Blackwood Company Hall, 2nd floor" },
+      { description: "Blackwood Company, Jeetum-Ze's room, 2nd floor" },
+      { description: "Margarte's house, room on the right" },
+    ],
   },
   {
     id: 'skingrad',
@@ -378,6 +422,10 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Sinderion', skill: 'Alchemy', tier: 'Master', maxLevel: 100 },
       { name: 'Sulinus Vassinus', skill: 'Conjuration', tier: 'Novice', maxLevel: 40 },
       { name: 'Uuras the Shepherd', skill: 'Athletics', tier: 'Novice', maxLevel: 40 },
+    ],
+    nirnroots: [
+      { description: "Surilie Brothers' house, 3rd floor" },
+      { description: "Toutius Sextius' house, 3rd floor" },
     ],
   },
 
@@ -417,6 +465,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Blackwood',
     initiallyDiscovered: false,
     quests: [{ name: 'Sheogorath (Daedric Quest)' }],
+    nirnroots: [
+      { description: 'Border Watch Inn' },
+    ],
   },
   {
     id: 'brindle-home',
@@ -427,6 +478,9 @@ export const locationDefinitions: LocationDefinition[] = [
     quests: [{ name: 'The Gravefinder\'s Repose' }],
     skillBooks: [
       { title: 'The Black Arrow, v1', skill: 'Acrobatics' },
+    ],
+    nirnroots: [
+      { description: "Torbal the Sufficient's house" },
     ],
   },
   {
@@ -448,6 +502,9 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Vlanhonder Moslin' },
       { name: 'Etira Moslin' },
     ],
+    nirnroots: [
+      { description: "Natch Pinder's house, upstairs" },
+    ],
     notes: 'Missable: Invest in Etira Moslin and Vlanhonder Moslin before "A Shadow over Hackdirt"',
   },
   {
@@ -465,6 +522,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Heartlands',
     initiallyDiscovered: false,
     merchants: [{ name: 'Candice Corgine' }],
+    nirnroots: [
+      { description: "Shafaye's house" },
+    ],
   },
   {
     id: 'waters-edge',
@@ -626,6 +686,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
     quests: [{ name: 'No Stone Unturned' }],
+    nirnroots: [
+      { description: 'Estate house, upstairs' },
+    ],
   },
   {
     id: 'odiil-farm',
@@ -634,6 +697,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Great Forest',
     initiallyDiscovered: false,
     quests: [{ name: 'The Killing Field', leveled: true }],
+    nirnroots: [
+      { description: 'Inside the farmhouse' },
+    ],
   },
   {
     id: 'shardrock',
@@ -2411,6 +2477,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
+    nirnroots: [
+      { description: 'Veyond Black Waters, second zone' },
+    ],
   },
   {
     id: 'wellspring-cave',
@@ -2540,6 +2609,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
+    nirnroots: [
+      { description: 'First zone interior' },
+    ],
   },
   {
     id: 'fort-chalman',
@@ -2629,6 +2701,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
     quests: [{ name: 'Caught in the Hunt' }],
+    nirnroots: [
+      { description: "Hunter's Run, first zone" },
+    ],
   },
   {
     id: 'fort-hastrel',
@@ -2743,6 +2818,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Heartlands',
     initiallyDiscovered: false,
+    nirnroots: [
+      { description: 'First zone interior' },
+    ],
   },
   {
     id: 'fort-scinia',

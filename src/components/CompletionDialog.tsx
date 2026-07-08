@@ -69,6 +69,7 @@ export default function CompletionDialog({
     uniqueItems: number;
     houses: number;
     greaterPowers: number;
+    nirnroots: number;
   };
   completed: {
     locations: number;
@@ -78,6 +79,7 @@ export default function CompletionDialog({
     uniqueItems: number;
     houses: number;
     greaterPowers: number;
+    nirnroots: number;
   };
 }) {
   const categories: CompletionCategory[] = [
@@ -88,6 +90,7 @@ export default function CompletionDialog({
     { label: 'Unique Items Acquired', completed: completed.uniqueItems, total: totals.uniqueItems, color: '#f472b6' },
     { label: 'Houses Purchased', completed: completed.houses, total: totals.houses, color: '#14b8a6' },
     { label: 'Greater Powers Acquired', completed: completed.greaterPowers, total: totals.greaterPowers, color: '#f59e0b' },
+    { label: 'Nirnroots Collected', completed: completed.nirnroots, total: totals.nirnroots, color: '#84cc16' },
   ];
 
   const percentages = categories.map((cat) =>

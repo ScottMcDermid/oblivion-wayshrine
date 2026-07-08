@@ -52,12 +52,14 @@ export default function LocationDetail({
   acquiredItems,
   acquiredPowers,
   purchasedHouses,
+  collectedNirnroots,
   onToggleQuest,
   onToggleSkillBook,
   onToggleMerchant,
   onToggleItem,
   onTogglePower,
   onToggleHouse,
+  onToggleNirnroot,
 }: {
   location: LocationDefinition;
   status: LocationStatus;
@@ -68,12 +70,14 @@ export default function LocationDetail({
   acquiredItems: Record<string, boolean>;
   acquiredPowers: Record<string, boolean>;
   purchasedHouses: Record<string, boolean>;
+  collectedNirnroots: Record<string, boolean>;
   onToggleQuest: (questName: string) => void;
   onToggleSkillBook: (bookTitle: string) => void;
   onToggleMerchant: (merchantName: string) => void;
   onToggleItem: (itemName: string) => void;
   onTogglePower: (powerName: string) => void;
   onToggleHouse: (houseName: string) => void;
+  onToggleNirnroot: (description: string) => void;
 }) {
 
   return (
@@ -602,6 +606,61 @@ export default function LocationDetail({
                       sx: checked
                         ? { textDecoration: 'line-through', color: 'text.disabled' }
                         : { color: '#f59e0b' },
+                    }}
+                  />
+                </ListItem>
+              );
+            })}
+          </List>
+        </>
+      )}
+
+      {location.nirnroots && location.nirnroots.length > 0 && (
+        <>
+          <Divider sx={{ my: 1 }} />
+          <Typography
+            variant="caption"
+            sx={{ color: 'text.secondary', fontWeight: 'bold', textTransform: 'uppercase' }}
+          >
+            Nirnroots
+          </Typography>
+          <List dense disablePadding>
+            {location.nirnroots.map((nr, idx) => {
+              const checked = !!collectedNirnroots[`${location.id}:${nr.description}`];
+              return (
+                <ListItem
+                  key={`${nr.description}-${idx}`}
+                  disableGutters
+                  sx={{ py: 0.25, cursor: 'pointer' }}
+                  onClick={() => onToggleNirnroot(nr.description)}
+                >
+                  <ListItemIcon sx={{ minWidth: 28 }}>
+                    <Checkbox
+                      size="small"
+                      checked={checked}
+                      tabIndex={-1}
+                      disableRipple
+                      sx={{
+                        p: 0,
+                        color: '#84cc16',
+                        '&.Mui-checked': { color: '#84cc16' },
+                      }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Nirnroot"
+                    secondary={nr.description}
+                    primaryTypographyProps={{
+                      fontSize: '0.8rem',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.secondary' }
+                        : undefined,
+                    }}
+                    secondaryTypographyProps={{
+                      fontSize: '0.7rem',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.disabled' }
+                        : undefined,
                     }}
                   />
                 </ListItem>

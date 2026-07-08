@@ -65,6 +65,10 @@ export type GreaterPowerReference = {
   renown: number;
 };
 
+export type NirnrootReference = {
+  description: string;
+};
+
 export type TrainerTier = 'Novice' | 'Journeyman' | 'Master';
 
 export type TrainerReference = {
@@ -104,5 +108,6 @@ export type LocationDefinition = {
   houses?: HouseReference[];
   greaterPowers?: GreaterPowerReference[];
   trainers?: TrainerReference[];
+  nirnroots?: NirnrootReference[];
   notes?: string;
 };
