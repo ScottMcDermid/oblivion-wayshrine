@@ -275,7 +275,7 @@ export default function LocationDetail({
           </Typography>
           <List dense disablePadding>
             {location.quests.map((q) => {
-              const checked = !!completedQuests[`${location.id}:${q.name}`];
+              const checked = !!completedQuests[q.name];
               return (
                 <ListItem
                   key={q.name}

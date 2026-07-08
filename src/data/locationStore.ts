@@ -28,7 +28,7 @@ type State = {
 
 type Actions = {
   setLocationStatus: (id: string, status: LocationStatus) => void;
-  toggleQuestCompleted: (locationId: string, questName: string) => void;
+  toggleQuestCompleted: (questName: string) => void;
   toggleSkillBookFound: (locationId: string, bookTitle: string) => void;
   toggleMerchantInvested: (locationId: string, merchantName: string) => void;
   toggleItemAcquired: (locationId: string, itemName: string) => void;
@@ -58,17 +58,16 @@ export const useLocationStore = create<LocationStore>()(
       typeFilters: [],
       statusFilters: [],
       dlcFilters: [],
-      version: 1,
+      version: 2,
       actions: {
         setLocationStatus: (id, status) =>
           set((state) => ({
             locations: { ...state.locations, [id]: status },
           })),
-        toggleQuestCompleted: (locationId, questName) =>
+        toggleQuestCompleted: (questName) =>
           set((state) => {
-            const key = `${locationId}:${questName}`;
-            const { [key]: current, ...rest } = state.completedQuests;
-            return { completedQuests: current ? rest : { ...state.completedQuests, [key]: true } };
+            const { [questName]: current, ...rest } = state.completedQuests;
+            return { completedQuests: current ? rest : { ...state.completedQuests, [questName]: true } };
           }),
         toggleSkillBookFound: (locationId, bookTitle) =>
           set((state) => {
@@ -141,6 +140,25 @@ export const useLocationStore = create<LocationStore>()(
     }),
     {
       name: 'oblivion-wayshrine',
+      version: 2,
+      migrate: (persisted, version) => {
+        const state = persisted as Record<string, unknown>;
+        if (version < 2) {
+          // Migrate completedQuests from "locationId:questName" keys to just "questName" keys
+          const old = (state.completedQuests ?? {}) as Record<string, boolean>;
+          const migrated: Record<string, boolean> = {};
+          for (const key of Object.keys(old)) {
+            const colonIndex = key.indexOf(':');
+            const questName = colonIndex >= 0 ? key.slice(colonIndex + 1) : key;
+            // Also strip "(Daedric Quest)" suffix from old keys
+            const normalized = questName.replace(/ \(Daedric Quest\)$/, '');
+            migrated[normalized] = true;
+          }
+          state.completedQuests = migrated;
+          state.version = 2;
+        }
+        return state as LocationStore;
+      },
       partialize: (state) => ({
         locations: state.locations,
         completedQuests: state.completedQuests,

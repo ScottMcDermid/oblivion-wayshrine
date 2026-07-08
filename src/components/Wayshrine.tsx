@@ -115,9 +115,10 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
   );
 
   const totals = useMemo(() => {
-    let quests = 0, skillBooks = 0, merchants = 0, uniqueItems = 0, houses = 0, greaterPowers = 0, nirnroots = 0;
+    const uniqueQuests = new Set<string>();
+    let skillBooks = 0, merchants = 0, uniqueItems = 0, houses = 0, greaterPowers = 0, nirnroots = 0;
     for (const loc of locationDefinitions) {
-      quests += loc.quests?.length ?? 0;
+      loc.quests?.forEach((q) => uniqueQuests.add(q.name));
       skillBooks += loc.skillBooks?.length ?? 0;
       merchants += loc.merchants?.length ?? 0;
       uniqueItems += loc.uniqueItems?.length ?? 0;
@@ -125,7 +126,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
       greaterPowers += loc.greaterPowers?.length ?? 0;
       nirnroots += loc.nirnroots?.length ?? 0;
     }
-    return { locations: locationDefinitions.length, quests, skillBooks, merchants, uniqueItems, houses, greaterPowers, nirnroots };
+    return { locations: locationDefinitions.length, quests: uniqueQuests.size, skillBooks, merchants, uniqueItems, houses, greaterPowers, nirnroots };
   }, []);
 
   const completed = useMemo(() => ({
@@ -187,7 +188,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
       acquiredPowers={acquiredPowers}
       purchasedHouses={purchasedHouses}
       collectedNirnroots={collectedNirnroots}
-      onToggleQuest={(name) => toggleQuestCompleted(selectedLocation.id, name)}
+      onToggleQuest={(name) => toggleQuestCompleted(name)}
       onToggleSkillBook={(title) => toggleSkillBookFound(selectedLocation.id, title)}
       onToggleMerchant={(name) => toggleMerchantInvested(selectedLocation.id, name)}
       onToggleItem={(name) => toggleItemAcquired(selectedLocation.id, name)}
@@ -388,7 +389,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
                 acquiredPowers={acquiredPowers}
                 purchasedHouses={purchasedHouses}
                 collectedNirnroots={collectedNirnroots}
-                onToggleQuest={(name) => toggleQuestCompleted(displayedLocation.id, name)}
+                onToggleQuest={(name) => toggleQuestCompleted(name)}
                 onToggleSkillBook={(title) => toggleSkillBookFound(displayedLocation.id, title)}
                 onToggleMerchant={(name) => toggleMerchantInvested(displayedLocation.id, name)}
                 onToggleItem={(name) => toggleItemAcquired(displayedLocation.id, name)}

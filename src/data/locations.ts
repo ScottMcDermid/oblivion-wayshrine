@@ -454,7 +454,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Great Forest',
     initiallyDiscovered: false,
-    quests: [{ name: 'Mephala (Daedric Quest)' }],
+    quests: [{ name: 'Mephala' }],
     merchants: [{ name: 'Kirsten' }],
     notes: 'Missable: Invest in Kirsten before "Mephala" Daedric quest',
   },
@@ -464,7 +464,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Blackwood',
     initiallyDiscovered: false,
-    quests: [{ name: 'Sheogorath (Daedric Quest)' }],
+    quests: [{ name: 'Sheogorath' }],
     nirnroots: [
       { description: 'Border Watch Inn' },
     ],
@@ -677,7 +677,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Farm',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
-    quests: [{ name: 'Malacath (Daedric Quest)' }],
+    quests: [{ name: 'Malacath' }],
   },
   {
     id: 'lord-rugdumphs-estate',
@@ -1092,7 +1092,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Landmark',
     hold: 'Great Forest',
     initiallyDiscovered: false,
-    quests: [{ name: 'Hircine (Daedric Quest)' }],
+    quests: [{ name: 'Hircine' }],
     uniqueItems: [{ name: 'Unicorn' }],
   },
   {
@@ -1449,7 +1449,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Great Forest',
     initiallyDiscovered: false,
-    quests: [{ name: 'Azura (Daedric Quest)' }],
+    quests: [{ name: 'Azura' }],
   },
   {
     id: 'anutwyll',
@@ -1808,7 +1808,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Clavicus Vile (Daedric Quest)' }],
+    quests: [{ name: 'Clavicus Vile' }],
   },
   {
     id: 'welke',
@@ -1950,7 +1950,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Colovian Highlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Meridia (Daedric Quest)' }],
+    quests: [{ name: 'Meridia' }],
   },
   {
     id: 'broken-promises-cave',
@@ -2520,7 +2520,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    quests: [{ name: 'Vaermina (Daedric Quest)' }],
+    quests: [{ name: 'Vaermina' }],
     skillBooks: [
       { title: 'Palla, volume 1', skill: 'Illusion' },
     ],
@@ -2941,7 +2941,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Mine',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
-    quests: [{ name: 'Malacath (Daedric Quest)' }],
+    quests: [{ name: 'Malacath' }],
   },
   {
     id: 'collapsed-mine',
@@ -3029,7 +3029,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Mine',
     hold: 'Blackwood',
     initiallyDiscovered: false,
-    quests: [{ name: 'Nocturnal (Daedric Quest)' }],
+    quests: [{ name: 'Nocturnal' }],
   },
   {
     id: 'gutted-mine',
