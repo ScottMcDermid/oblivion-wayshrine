@@ -7,6 +7,7 @@ import {
   Button,
   Chip,
   CircularProgress,
+  Collapse,
   Dialog,
   DialogContent,
   DialogTitle,
@@ -279,45 +280,48 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
 
       <Box sx={{ display: 'flex', height: 'calc(100vh - 48px)', overflow: 'hidden' }}>
         {/* Filter Panel - Desktop */}
-        {!isMobile && filterPanelOpen && (
-          <Box
-            sx={{
-              width: 250,
-              minWidth: 250,
-              borderRight: '1px solid',
-              borderColor: 'divider',
-              overflow: 'auto',
-              p: 1.5,
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            <Typography variant="subtitle2" sx={{ fontWeight: 'bold', mb: 1.5 }}>
-              Filters
-            </Typography>
-            <LocationFilters
-              activeFilters={activeFilters}
-              onToggleFilter={toggleTypeFilter}
-              activeStatusFilters={activeStatusFilters}
-              onToggleStatusFilter={toggleStatusFilter}
-              activeDLCFilters={activeDLCFilters}
-              onToggleDLCFilter={toggleDLCFilter}
-            />
-            {hasActiveFilters && (
-              <Button
-                size="small"
-                onClick={clearFilters}
-                sx={{
-                  mt: 1.5,
-                  fontSize: '0.7rem',
-                  textTransform: 'none',
-                  color: 'text.secondary',
-                }}
-              >
-                Clear filters
-              </Button>
-            )}
-          </Box>
+        {!isMobile && (
+          <Collapse orientation="horizontal" in={filterPanelOpen} timeout={250}>
+            <Box
+              sx={{
+                width: 250,
+                minWidth: 250,
+                borderRight: '1px solid',
+                borderColor: 'divider',
+                overflow: 'auto',
+                p: 1.5,
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
+              }}
+            >
+              <Typography variant="subtitle2" sx={{ fontWeight: 'bold', mb: 1.5 }}>
+                Filters
+              </Typography>
+              <LocationFilters
+                activeFilters={activeFilters}
+                onToggleFilter={toggleTypeFilter}
+                activeStatusFilters={activeStatusFilters}
+                onToggleStatusFilter={toggleStatusFilter}
+                activeDLCFilters={activeDLCFilters}
+                onToggleDLCFilter={toggleDLCFilter}
+              />
+              {hasActiveFilters && (
+                <Button
+                  size="small"
+                  onClick={clearFilters}
+                  sx={{
+                    mt: 1.5,
+                    fontSize: '0.7rem',
+                    textTransform: 'none',
+                    color: 'text.secondary',
+                  }}
+                >
+                  Clear filters
+                </Button>
+              )}
+            </Box>
+          </Collapse>
         )}
 
         {/* Location List */}
