@@ -250,7 +250,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'An Unexpected Voyage', leveled: 25 },
       { name: 'Light the Dragonfires' },
       { name: 'Repairing the Orrery' },
-      { name: 'A Horse Armor for Combat' },
+      { name: 'Horse Armor' },
     ],
     merchants: [
       { name: 'Jensine' },
@@ -875,6 +875,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'Colovian Highlands',
     initiallyDiscovered: false,
+    quests: [{ name: 'Repairing the Orrery' }],
   },
   {
     id: 'bogwater',
@@ -890,6 +891,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'West Weald',
     initiallyDiscovered: false,
+    quests: [{ name: 'Repairing the Orrery' }],
   },
   {
     id: 'camp-ales',
@@ -897,6 +899,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'Colovian Highlands',
     initiallyDiscovered: false,
+    quests: [{ name: 'Repairing the Orrery' }],
   },
   {
     id: 'carbos-camp',
@@ -926,6 +929,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
+    quests: [{ name: 'Repairing the Orrery' }],
   },
   {
     id: 'fat-ramp-camp',
@@ -1059,6 +1063,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'Colovian Highlands',
     initiallyDiscovered: false,
+    quests: [{ name: 'Repairing the Orrery' }],
   },
   {
     id: 'walker-camp',
