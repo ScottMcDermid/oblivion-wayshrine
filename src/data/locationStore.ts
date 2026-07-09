@@ -58,7 +58,7 @@ export const useLocationStore = create<LocationStore>()(
       typeFilters: [],
       statusFilters: [],
       dlcFilters: [],
-      version: 3,
+      version: 4,
       actions: {
         setLocationStatus: (id, status) =>
           set((state) => ({
@@ -140,7 +140,7 @@ export const useLocationStore = create<LocationStore>()(
     }),
     {
       name: 'oblivion-wayshrine',
-      version: 3,
+      version: 4,
       migrate: (persisted, version) => {
         const state = persisted as Record<string, unknown>;
         if (version < 2) {
@@ -166,6 +166,16 @@ export const useLocationStore = create<LocationStore>()(
             state.completedQuests = { ...rest, "Mystery at Harlun's Watch": true };
           }
           state.version = 3;
+        }
+        if (version < 4) {
+          // Rename "Miscarcand (Main Quest)" to "Miscarcand"
+          const quests = (state.completedQuests ?? {}) as Record<string, boolean>;
+          if (quests['Miscarcand (Main Quest)']) {
+            const { ['Miscarcand (Main Quest)']: _dropped, ...rest } = quests;
+            void _dropped;
+            state.completedQuests = { ...rest, 'Miscarcand': true };
+          }
+          state.version = 4;
         }
         return state as LocationStore;
       },
