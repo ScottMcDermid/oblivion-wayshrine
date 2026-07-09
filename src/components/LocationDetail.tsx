@@ -255,13 +255,24 @@ export default function LocationDetail({
                   </ListItemIcon>
                   <ListItemText
                     primary={
-                      <UespLink href={buildUespUrl(house.name, location.dlc)}>
-                        {house.name}
-                      </UespLink>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+                        <UespLink href={buildUespUrl(house.name, location.dlc)}>
+                          {house.name}
+                        </UespLink>
+                        {locationDLC !== 'Base' && (
+                          <Typography
+                            component="span"
+                            sx={{ fontSize: '0.55rem', fontWeight: 'bold', color: locationDLCColors[locationDLC], lineHeight: 1 }}
+                          >
+                            {locationDLC}
+                          </Typography>
+                        )}
+                      </Box>
                     }
                     secondary={`${house.price.toLocaleString()} gold`}
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
+                      component: 'div',
                       sx: checked
                         ? { textDecoration: 'line-through', color: 'text.secondary' }
                         : undefined,
@@ -292,8 +303,8 @@ export default function LocationDetail({
           <List dense disablePadding>
             {filteredQuests.map((q) => {
               const checked = !!completedQuests[q.name];
-              const questDLCLabel = q.dlc ? locationDLCLabels[q.dlc] : undefined;
-              const questDLCColor = q.dlc ? locationDLCColors[q.dlc] : undefined;
+              const effectiveQuestDLC = q.dlc ?? locationDLC;
+              const questDLCBadge = effectiveQuestDLC !== 'Base' ? effectiveQuestDLC : undefined;
               const secondaryParts: string[] = [];
               if (q.leveled) secondaryParts.push(`Leveled reward (level ${q.leveled}+)`);
               return (
@@ -322,19 +333,13 @@ export default function LocationDetail({
                         <UespLink href={buildUespUrl(q.name, q.dlc ?? location.dlc, disambiguationNames.has(q.name) ? 'quest' : undefined)}>
                           {q.name}
                         </UespLink>
-                        {questDLCLabel && (
-                          <Chip
-                            label={questDLCLabel}
-                            size="small"
-                            sx={{
-                              fontSize: '0.55rem',
-                              fontWeight: 'bold',
-                              color: '#fff',
-                              backgroundColor: questDLCColor,
-                              height: 16,
-                              '& .MuiChip-label': { px: 0.5 },
-                            }}
-                          />
+                        {questDLCBadge && (
+                          <Typography
+                            component="span"
+                            sx={{ fontSize: '0.55rem', fontWeight: 'bold', color: locationDLCColors[questDLCBadge], lineHeight: 1 }}
+                          >
+                            {questDLCBadge}
+                          </Typography>
                         )}
                       </Box>
                     }
@@ -394,9 +399,19 @@ export default function LocationDetail({
                   </ListItemIcon>
                   <ListItemText
                     primary={
-                      <UespLink href={buildUespUrl(sb.title, location.dlc)}>
-                        {sb.title}
-                      </UespLink>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+                        <UespLink href={buildUespUrl(sb.title, location.dlc)}>
+                          {sb.title}
+                        </UespLink>
+                        {locationDLC !== 'Base' && (
+                          <Typography
+                            component="span"
+                            sx={{ fontSize: '0.55rem', fontWeight: 'bold', color: locationDLCColors[locationDLC], lineHeight: 1 }}
+                          >
+                            {locationDLC}
+                          </Typography>
+                        )}
+                      </Box>
                     }
                     secondary={
                       <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.5 }}>
@@ -406,6 +421,7 @@ export default function LocationDetail({
                     }
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
+                      component: 'div',
                       sx: checked
                         ? { textDecoration: 'line-through', color: 'text.secondary' }
                         : undefined,
@@ -459,12 +475,23 @@ export default function LocationDetail({
                   </ListItemIcon>
                   <ListItemText
                     primary={
-                      <UespLink href={buildUespUrl(m.name, location.dlc)}>
-                        {m.name}
-                      </UespLink>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+                        <UespLink href={buildUespUrl(m.name, location.dlc)}>
+                          {m.name}
+                        </UespLink>
+                        {locationDLC !== 'Base' && (
+                          <Typography
+                            component="span"
+                            sx={{ fontSize: '0.55rem', fontWeight: 'bold', color: locationDLCColors[locationDLC], lineHeight: 1 }}
+                          >
+                            {locationDLC}
+                          </Typography>
+                        )}
+                      </Box>
                     }
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
+                      component: 'div',
                       sx: checked
                         ? { textDecoration: 'line-through', color: 'text.secondary' }
                         : undefined,
@@ -513,9 +540,19 @@ export default function LocationDetail({
                 </ListItemIcon>
                 <ListItemText
                   primary={
-                    <UespLink href={buildUespUrl(trainer.name, location.dlc)}>
-                      {trainer.name}
-                    </UespLink>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+                      <UespLink href={buildUespUrl(trainer.name, location.dlc)}>
+                        {trainer.name}
+                      </UespLink>
+                      {locationDLC !== 'Base' && (
+                        <Typography
+                          component="span"
+                          sx={{ fontSize: '0.55rem', fontWeight: 'bold', color: locationDLCColors[locationDLC], lineHeight: 1 }}
+                        >
+                          {locationDLC}
+                        </Typography>
+                      )}
+                    </Box>
                   }
                   secondary={
                     <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.5 }}>
@@ -523,7 +560,7 @@ export default function LocationDetail({
                       {`${trainer.skill} — ${trainer.tier} (up to ${trainer.maxLevel})`}
                     </Box>
                   }
-                  primaryTypographyProps={{ fontSize: '0.8rem' }}
+                  primaryTypographyProps={{ fontSize: '0.8rem', component: 'div' }}
                   secondaryTypographyProps={{
                     fontSize: '0.7rem',
                     component: 'div',
@@ -575,12 +612,23 @@ export default function LocationDetail({
                   </ListItemIcon>
                   <ListItemText
                     primary={
-                      <UespLink href={buildUespUrl(item.name, location.dlc)}>
-                        {item.name}
-                      </UespLink>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+                        <UespLink href={buildUespUrl(item.name, location.dlc)}>
+                          {item.name}
+                        </UespLink>
+                        {locationDLC !== 'Base' && (
+                          <Typography
+                            component="span"
+                            sx={{ fontSize: '0.55rem', fontWeight: 'bold', color: locationDLCColors[locationDLC], lineHeight: 1 }}
+                          >
+                            {locationDLC}
+                          </Typography>
+                        )}
+                      </Box>
                     }
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
+                      component: 'div',
                       sx: checked
                         ? { textDecoration: 'line-through', color: 'text.secondary' }
                         : undefined,
@@ -627,13 +675,24 @@ export default function LocationDetail({
                   </ListItemIcon>
                   <ListItemText
                     primary={
-                      <UespLink href={buildUespUrl(power.name, location.dlc)}>
-                        {power.name}
-                      </UespLink>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+                        <UespLink href={buildUespUrl(power.name, location.dlc)}>
+                          {power.name}
+                        </UespLink>
+                        {locationDLC !== 'Base' && (
+                          <Typography
+                            component="span"
+                            sx={{ fontSize: '0.55rem', fontWeight: 'bold', color: locationDLCColors[locationDLC], lineHeight: 1 }}
+                          >
+                            {locationDLC}
+                          </Typography>
+                        )}
+                      </Box>
                     }
                     secondary={power.renown > 0 ? `Renown: ${power.renown}` : undefined}
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
+                      component: 'div',
                       sx: checked
                         ? { textDecoration: 'line-through', color: 'text.secondary' }
                         : undefined,
@@ -685,10 +744,23 @@ export default function LocationDetail({
                     />
                   </ListItemIcon>
                   <ListItemText
-                    primary="Nirnroot"
+                    primary={
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+                        <span>Nirnroot</span>
+                        {locationDLC !== 'Base' && (
+                          <Typography
+                            component="span"
+                            sx={{ fontSize: '0.55rem', fontWeight: 'bold', color: locationDLCColors[locationDLC], lineHeight: 1 }}
+                          >
+                            {locationDLC}
+                          </Typography>
+                        )}
+                      </Box>
+                    }
                     secondary={nr.description}
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
+                      component: 'div',
                       sx: checked
                         ? { textDecoration: 'line-through', color: 'text.secondary' }
                         : undefined,

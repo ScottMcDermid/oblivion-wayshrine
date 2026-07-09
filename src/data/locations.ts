@@ -305,8 +305,8 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'The Arena' },
       { name: 'An Unexpected Voyage', leveled: 25 },
       { name: 'Light the Dragonfires' },
-      { name: 'Repairing the Orrery' },
-      { name: 'Horse Armor' },
+      { name: 'Repairing the Orrery', dlc: 'Plugins' },
+      { name: 'Horse Armor', dlc: 'Plugins' },
       { name: 'Join the Mages Guild', leveled: 10 },
       { name: 'The Bloodworm Helm', leveled: 25 },
       { name: "The Necromancer's Amulet", leveled: 1 },
@@ -937,7 +937,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'Colovian Highlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Repairing the Orrery' }],
+    quests: [{ name: 'Repairing the Orrery', dlc: 'Plugins' }],
   },
   {
     id: 'bogwater',
@@ -953,7 +953,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'West Weald',
     initiallyDiscovered: false,
-    quests: [{ name: 'Repairing the Orrery' }],
+    quests: [{ name: 'Repairing the Orrery', dlc: 'Plugins' }],
   },
   {
     id: 'camp-ales',
@@ -961,7 +961,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'Colovian Highlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Repairing the Orrery' }],
+    quests: [{ name: 'Repairing the Orrery', dlc: 'Plugins' }],
   },
   {
     id: 'carbos-camp',
@@ -991,7 +991,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
-    quests: [{ name: 'Repairing the Orrery' }],
+    quests: [{ name: 'Repairing the Orrery', dlc: 'Plugins' }],
   },
   {
     id: 'fat-ramp-camp',
@@ -1121,7 +1121,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'Colovian Highlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Repairing the Orrery' }],
+    quests: [{ name: 'Repairing the Orrery', dlc: 'Plugins' }],
   },
   {
     id: 'walker-camp',
