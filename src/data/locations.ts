@@ -533,6 +533,10 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Blackwood',
     initiallyDiscovered: false,
     quests: [{ name: 'Go Fish' }],
+    nirnroots: [
+      { description: 'Near the water across the road from Biene Amelion\'s house' },
+      { description: 'Behind the large rock south of Marie Alouette\'s house' },
+    ],
   },
   {
     id: 'weye',
@@ -618,6 +622,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
+    nirnroots: [
+      { description: 'Outside, just left of the entrance door' },
+    ],
   },
   {
     id: 'greyland',
@@ -707,6 +714,10 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Farm',
     hold: 'West Weald',
     initiallyDiscovered: false,
+    nirnroots: [
+      { description: 'Giant nirnroot by the pond east of the farmhouse' },
+      { description: 'Giant nirnroot by the pond east of the farmhouse' },
+    ],
   },
   {
     id: 'shetcombe-farm',
@@ -715,6 +726,9 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Gold Coast',
     initiallyDiscovered: false,
     quests: [{ name: 'The Battle for Castle Kvatch', leveled: 25 }],
+    nirnroots: [
+      { description: 'Giant nirnroot by the pond northeast of the farmhouse' },
+    ],
   },
   {
     id: 'weatherleah',
@@ -841,6 +855,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
+    nirnroots: [
+      { description: 'Behind the rocks to the east of the island' },
+    ],
   },
   {
     id: 'black-dog-camp',
@@ -920,6 +937,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'Blackwood',
     initiallyDiscovered: false,
+    nirnroots: [
+      { description: 'On the shoreline to the west, between a pair of large rocks' },
+    ],
   },
   {
     id: 'garnet-camp',
@@ -1115,6 +1135,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Landmark',
     hold: 'Heartlands',
     initiallyDiscovered: false,
+    nirnroots: [
+      { description: "Next to the bridge's eastern end" },
+    ],
   },
   {
     id: 'shadeleaf-copse',
@@ -1638,6 +1661,9 @@ export const locationDefinitions: LocationDefinition[] = [
     initiallyDiscovered: false,
     quests: [{ name: 'Secrets of the Ayleids', leveled: 25 }],
     uniqueItems: [{ name: 'Crown of Nenalata' }],
+    nirnroots: [
+      { description: 'On the Silverfish riverbank near the ruin' },
+    ],
   },
   {
     id: 'nenyond-twyll',
@@ -1800,6 +1826,9 @@ export const locationDefinitions: LocationDefinition[] = [
     quests: [{ name: 'Tutorial' }],
     skillBooks: [
       { title: 'Immortal Blood', skill: 'Hand to Hand' },
+    ],
+    nirnroots: [
+      { description: 'On the Lake Rumare shore near the entrance' },
     ],
   },
   {
@@ -2664,6 +2693,10 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
+    nirnroots: [
+      { description: 'On the Niben riverbank near the fort' },
+      { description: 'On the Niben riverbank near the fort' },
+    ],
   },
   {
     id: 'fort-facian',
@@ -2693,6 +2726,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
+    nirnroots: [
+      { description: 'On the Niben riverbank near the fort' },
+    ],
   },
   {
     id: 'fort-grief',
@@ -2732,6 +2768,10 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
+    nirnroots: [
+      { description: 'On the riverbank near the fort' },
+      { description: 'On the riverbank near the fort' },
+    ],
   },
   {
     id: 'fort-istirus',
@@ -2804,6 +2844,10 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Blackwood',
     initiallyDiscovered: false,
+    nirnroots: [
+      { description: 'On the Niben riverbank near the fort' },
+      { description: 'On the Niben riverbank near the fort' },
+    ],
   },
   {
     id: 'fort-redwater',
@@ -2857,6 +2901,10 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Blackwood',
     initiallyDiscovered: false,
+    nirnroots: [
+      { description: 'On the waterside near the fort' },
+      { description: 'On the waterside near the fort' },
+    ],
   },
   {
     id: 'fort-urasek',
