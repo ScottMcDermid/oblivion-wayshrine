@@ -1,6 +1,8 @@
 import React from 'react';
 import {
+  Badge,
   Box,
+  IconButton,
   InputAdornment,
   List,
   ListItemButton,
@@ -9,6 +11,7 @@ import {
   Typography,
 } from '@mui/material';
 import {
+  FilterList,
   Search,
   Visibility,
   CheckCircle,
@@ -28,6 +31,8 @@ export default function LocationList({
   onSelect,
   search,
   onSearchChange,
+  onToggleFilter,
+  hasActiveFilters,
 }: {
   filteredLocations: LocationDefinition[];
   locations: Record<string, LocationStatus>;
@@ -35,6 +40,8 @@ export default function LocationList({
   onSelect: (location: LocationDefinition) => void;
   search: string;
   onSearchChange: (search: string) => void;
+  onToggleFilter: () => void;
+  hasActiveFilters: boolean;
 }) {
   const filtered = filteredLocations.filter(
     (loc) => search === '' || loc.name.toLowerCase().includes(search.toLowerCase()),
@@ -42,7 +49,7 @@ export default function LocationList({
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <Box sx={{ p: 1.5, pb: 1 }}>
+      <Box sx={{ p: 1.5, pb: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
         <TextField
           fullWidth
           size="small"
@@ -62,6 +69,15 @@ export default function LocationList({
             },
           }}
         />
+        <IconButton
+          size="small"
+          onClick={onToggleFilter}
+          sx={{ color: 'text.secondary' }}
+        >
+          <Badge variant="dot" color="secondary" invisible={!hasActiveFilters}>
+            <FilterList fontSize="small" />
+          </Badge>
+        </IconButton>
       </Box>
 
       <Box sx={{ overflow: 'auto', flex: 1 }}>

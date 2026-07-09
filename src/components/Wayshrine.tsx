@@ -3,7 +3,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   AppBar,
-  Badge,
   Box,
   Button,
   Chip,
@@ -18,7 +17,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { ThemeProvider, StyledEngineProvider, useTheme } from '@mui/material/styles';
-import { ArrowBack, Close, FilterList, GitHub, RestartAlt } from '@mui/icons-material';
+import { ArrowBack, Close, GitHub, RestartAlt } from '@mui/icons-material';
 import theme from '@/app/theme';
 import { useLocationStore } from '@/data/locationStore';
 import { useHydrated } from '@/hooks/useHydrated';
@@ -235,16 +234,6 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
             Oblivion Wayshrine
           </Typography>
 
-          <IconButton
-            size="small"
-            onClick={() => setFilterPanelOpen((prev) => !prev)}
-            sx={{ color: 'text.secondary' }}
-          >
-            <Badge variant="dot" color="secondary" invisible={!hasActiveFilters}>
-              <FilterList fontSize="small" />
-            </Badge>
-          </IconButton>
-
           <Box sx={{ flex: 1 }} />
 
           <Chip
@@ -350,6 +339,8 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
             onSelect={handleSelectLocation}
             search={search}
             onSearchChange={setSearch}
+            onToggleFilter={() => setFilterPanelOpen((prev) => !prev)}
+            hasActiveFilters={hasActiveFilters}
           />
         </Box>
 
