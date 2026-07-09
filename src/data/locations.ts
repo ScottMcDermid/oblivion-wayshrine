@@ -14,13 +14,13 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'A Rat Problem' },
       { name: 'Where Spirits Have Lease' },
       { name: 'The Ghost Ship of Anvil', leveled: 30 },
-      { name: 'The Siren\'s Deception', leveled: 25 },
+      { name: "The Siren's Deception", leveled: 25 },
       { name: 'When the Vow Breaks', leveled: 25 },
     ],
     merchants: [
       { name: 'Norbert Lelles' },
       { name: 'Varnado' },
-      { name: 'Lelles\' Quality Merchandise' },
+      { name: "Lelles' Quality Merchandise" },
     ],
     skillBooks: [
       { title: 'The Red Kitchen Reader', skill: 'Athletics' },
@@ -62,11 +62,12 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Through A Nightmare, Darkly' },
       { name: 'Caught in the Hunt' },
       { name: 'An Unexpected Voyage', leveled: 25 },
+      { name: "Ahdarji's Heirloom" },
+      { name: 'Misdirection' },
+      { name: 'Lost Histories' },
+      { name: 'Taking Care of Lex' },
     ],
-    merchants: [
-      { name: 'Ungarion' },
-      { name: 'Nilawen' },
-    ],
+    merchants: [{ name: 'Ungarion' }, { name: 'Nilawen' }],
     skillBooks: [
       { title: 'Thief', skill: 'Acrobatics' },
       { title: 'Light Armor Repair', skill: 'Armorer' },
@@ -74,7 +75,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'The Importance of Where', skill: 'Blunt' },
       { title: 'The Horrors of Castle Xyr', skill: 'Destruction' },
       { title: 'Father Of The Niben', skill: 'Marksman' },
-      { title: '2920, Rain\'s Hand', skill: 'Restoration' },
+      { title: "2920, Rain's Hand", skill: 'Restoration' },
       { title: 'The Wolf Queen, v1', skill: 'Security' },
       { title: '2920, Last Seed', skill: 'Sneak' },
     ],
@@ -84,7 +85,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Ardaline', skill: 'Alchemy', tier: 'Journeyman', maxLevel: 70 },
       { name: 'City-Swimmer', skill: 'Sneak', tier: 'Novice', maxLevel: 40 },
       { name: 'Delphine Jend', skill: 'Destruction', tier: 'Journeyman', maxLevel: 70 },
-      { name: 'Dro\'shanji', skill: 'Security', tier: 'Journeyman', maxLevel: 70 },
+      { name: "Dro'shanji", skill: 'Security', tier: 'Journeyman', maxLevel: 70 },
       { name: 'Fathis Aren', skill: 'Conjuration', tier: 'Novice', maxLevel: 40 },
       { name: 'Ita Rienus', skill: 'Mysticism', tier: 'Journeyman', maxLevel: 70 },
       { name: 'Luciana Galena', skill: 'Light Armor', tier: 'Journeyman', maxLevel: 70 },
@@ -97,9 +98,9 @@ export const locationDefinitions: LocationDefinition[] = [
     nirnroots: [
       { description: "Andragil's house" },
       { description: "City-Swimmer's house" },
-      { description: "Silverhome on the Water, 3rd floor" },
-      { description: "Chapel Hall, room on the right" },
-      { description: "Fighters Guild, 2nd floor, first room" },
+      { description: 'Silverhome on the Water, 3rd floor' },
+      { description: 'Chapel Hall, room on the right' },
+      { description: 'Fighters Guild, 2nd floor, first room' },
       { description: "Wizard's Grotto, via secret entrance in Castle Bravil" },
     ],
   },
@@ -115,11 +116,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Bruma Gate' },
       { name: 'Great Gate' },
     ],
-    merchants: [
-      { name: 'Novaroma' },
-      { name: 'Hammer and Tongs' },
-      { name: 'Selena Orania' },
-    ],
+    merchants: [{ name: 'Novaroma' }, { name: 'Hammer and Tongs' }, { name: 'Selena Orania' }],
     skillBooks: [
       { title: '2920, Hearth Fire', skill: 'Conjuration' },
       { title: 'Ahzirr Traajijazeri', skill: 'Hand to Hand' },
@@ -136,7 +133,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Cirroc', skill: 'Restoration', tier: 'Novice', maxLevel: 40 },
       { name: 'Edla Dark-Heart', skill: 'Marksman', tier: 'Novice', maxLevel: 40 },
       { name: 'Helvius Cecia', skill: 'Hand to Hand', tier: 'Master', maxLevel: 100 },
-      { name: 'J\'skar', skill: 'Destruction', tier: 'Novice', maxLevel: 40 },
+      { name: "J'skar", skill: 'Destruction', tier: 'Novice', maxLevel: 40 },
       { name: 'Jantus Brolus', skill: 'Illusion', tier: 'Novice', maxLevel: 40 },
       { name: 'Olfand', skill: 'Light Armor', tier: 'Novice', maxLevel: 40 },
       { name: 'Right-Wind', skill: 'Blade', tier: 'Novice', maxLevel: 40 },
@@ -146,7 +143,8 @@ export const locationDefinitions: LocationDefinition[] = [
       { description: "Regner's house, downstairs" },
       { description: "Castle Bruma, Tolgan's apartment" },
     ],
-    notes: 'Missable: Invest in Selena Orania and buy Summon Dremora Lord from Volanaro before "A Plot Revealed"',
+    notes:
+      'Missable: Invest in Selena Orania and buy Summon Dremora Lord from Volanaro before "A Plot Revealed"',
   },
   {
     id: 'cheydinhal',
@@ -167,13 +165,10 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'The Renegade Shadowscale', leveled: 30 },
       { name: 'A Watery Grave', leveled: 30 },
     ],
-    merchants: [
-      { name: 'Borba gra-Uzgash' },
-      { name: 'Mach-Na' },
-    ],
+    merchants: [{ name: 'Borba gra-Uzgash' }, { name: 'Mach-Na' }],
     skillBooks: [
       { title: 'A Dance in Fire, v1', skill: 'Acrobatics' },
-      { title: 'The Armorer\'s Challenge', skill: 'Armorer' },
+      { title: "The Armorer's Challenge", skill: 'Armorer' },
       { title: '2920, Morning Star', skill: 'Blade' },
       { title: 'Ahzirr Traajijazeri', skill: 'Hand to Hand' },
       { title: 'Incident in Necrom', skill: 'Illusion' },
@@ -193,12 +188,12 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Mach-Na', skill: 'Mercantile', tier: 'Novice', maxLevel: 40 },
       { name: 'Naspia Cosma', skill: 'Blade', tier: 'Novice', maxLevel: 40 },
       { name: 'Ohtesse', skill: 'Restoration', tier: 'Journeyman', maxLevel: 70 },
-      { name: 'Ra\'qanar', skill: 'Hand to Hand', tier: 'Journeyman', maxLevel: 70 },
+      { name: "Ra'qanar", skill: 'Hand to Hand', tier: 'Journeyman', maxLevel: 70 },
     ],
     nirnroots: [
       { description: "Mach-Na's Books, bedroom upstairs" },
-      { description: "Mages Guild Well, underwater" },
-      { description: "Riverview, upstairs" },
+      { description: 'Mages Guild Well, underwater' },
+      { description: 'Riverview, upstairs' },
     ],
   },
   {
@@ -211,6 +206,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'A Shadow over Hackdirt' },
       { name: 'Canvas the Castle' },
       { name: 'Separated at Birth' },
+      { name: 'The Elven Maiden' },
     ],
     merchants: [
       { name: 'Northern Goods and Trade' },
@@ -223,7 +219,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'The Legendary Sancre Tor', skill: 'Blunt' },
       { title: '2920, MidYear', skill: 'Heavy Armor' },
       { title: 'Fighters Guild History, 1st Ed.', skill: 'Heavy Armor' },
-      { title: 'Hallgerd\'s Tale', skill: 'Heavy Armor' },
+      { title: "Hallgerd's Tale", skill: 'Heavy Armor' },
       { title: 'Vernaccus and Bourlor', skill: 'Marksman' },
       { title: 'A Dance in Fire, v6', skill: 'Mercantile' },
       { title: 'Notes on Racial Phylogeny', skill: 'Restoration' },
@@ -264,13 +260,19 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'The Bloodworm Helm', leveled: 25 },
       { name: "The Necromancer's Amulet", leveled: 1 },
       { name: 'Unfriendly Competition', leveled: 25 },
+      { name: 'May the Best Thief Win' },
+      { name: 'Untaxing the Poor' },
+      { name: 'The Elven Maiden' },
+      { name: 'Boots of Springheel Jak' },
+      { name: 'Turning a Blind Eye' },
+      { name: 'The Ultimate Heist' },
     ],
     merchants: [
       { name: 'Jensine' },
       { name: 'Thoronir' },
       { name: 'Rindir' },
       { name: 'The Copious Coinpurse' },
-      { name: 'Edgar\'s Discount Spells' },
+      { name: "Edgar's Discount Spells" },
       { name: 'Mystic Emporium' },
       { name: 'First Edition' },
       { name: 'The Gilded Carafe' },
@@ -285,20 +287,20 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'Mannimarco, King of Worms', skill: 'Alchemy' },
       { title: 'Song of the Alchemists', skill: 'Alchemy' },
       { title: 'The Dragon Break', skill: 'Alteration' },
-      { title: 'The Armorer\'s Challenge', skill: 'Armorer' },
-      { title: 'Cherim\'s Heart of Anequina', skill: 'Armorer' },
+      { title: "The Armorer's Challenge", skill: 'Armorer' },
+      { title: "Cherim's Heart of Anequina", skill: 'Armorer' },
       { title: 'Last Scabbard of Akrash', skill: 'Armorer' },
       { title: 'The Ransom of Zarek', skill: 'Athletics' },
       { title: 'Song of Hrormir', skill: 'Blade' },
       { title: 'A Dance in Fire, v2', skill: 'Block' },
       { title: 'Liminal Bridges', skill: 'Conjuration' },
-      { title: 'Response to Bero\'s Speech', skill: 'Destruction' },
+      { title: "Response to Bero's Speech", skill: 'Destruction' },
       { title: 'Immortal Blood', skill: 'Hand to Hand' },
       { title: 'Chimarvamidium', skill: 'Heavy Armor' },
       { title: 'Fighters Guild History, 1st Ed.', skill: 'Heavy Armor' },
       { title: 'The Argonian Account, Book 3', skill: 'Illusion' },
       { title: 'The Refugees', skill: 'Light Armor' },
-      { title: '2920, Sun\'s Height', skill: 'Mercantile' },
+      { title: "2920, Sun's Height", skill: 'Mercantile' },
       { title: 'The Buying Game', skill: 'Mercantile' },
       { title: 'The Wolf Queen, v4', skill: 'Mercantile' },
       { title: 'Before the Ages of Man', skill: 'Mysticism' },
@@ -316,7 +318,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Gin-Wulm', skill: 'Armorer', tier: 'Master', maxLevel: 100 },
       { name: 'Ida Vlinorman', skill: 'Acrobatics', tier: 'Novice', maxLevel: 40 },
       { name: 'Irene Metrick', skill: 'Blunt', tier: 'Master', maxLevel: 100 },
-      { name: 'J\'baana', skill: 'Security', tier: 'Master', maxLevel: 100 },
+      { name: "J'baana", skill: 'Security', tier: 'Master', maxLevel: 100 },
       { name: 'Mandil', skill: 'Security', tier: 'Journeyman', maxLevel: 70 },
       { name: 'Marana Rian', skill: 'Sneak', tier: 'Master', maxLevel: 100 },
       { name: 'Martina Floria', skill: 'Illusion', tier: 'Master', maxLevel: 100 },
@@ -329,10 +331,10 @@ export const locationDefinitions: LocationDefinition[] = [
     ],
     nirnroots: [
       { description: "Arcane University, Arch-Mage's Quarters" },
-      { description: "Arcane University, Mages Quarters, room on the right" },
-      { description: "Market District, Mystic Emporium private quarters" },
-      { description: "Market District, The Gilded Carafe" },
-      { description: "Imperial Prison Sewer, North Tunnel" },
+      { description: 'Arcane University, Mages Quarters, room on the right' },
+      { description: 'Market District, Mystic Emporium private quarters' },
+      { description: 'Market District, The Gilded Carafe' },
+      { description: 'Imperial Prison Sewer, North Tunnel' },
       { description: "Talos Plaza District, Samuel Bantien's private quarters" },
       { description: "Temple District, Salomon Geonette's private quarters" },
       { description: "Waterfront District, Marie Elena captain's cabin" },
@@ -350,12 +352,8 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Breaking the Siege of Kvatch' },
       { name: 'The Battle for Castle Kvatch', leveled: 25 },
     ],
-    skillBooks: [
-      { title: 'A Dance in Fire, v4', skill: 'Acrobatics' },
-    ],
-    trainers: [
-      { name: 'Oleta', skill: 'Restoration', tier: 'Master', maxLevel: 100 },
-    ],
+    skillBooks: [{ title: 'A Dance in Fire, v4', skill: 'Acrobatics' }],
+    trainers: [{ name: 'Oleta', skill: 'Restoration', tier: 'Master', maxLevel: 100 }],
   },
   {
     id: 'leyawiin',
@@ -368,11 +366,9 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Knights of the White Stallion' },
       { name: 'Whom Gods Annoy', leveled: 25 },
       { name: 'Tears of the Savior' },
+      { name: "Ahdarji's Heirloom" },
     ],
-    merchants: [
-      { name: 'Best Goods and Guarantees' },
-      { name: 'Southern Books' },
-    ],
+    merchants: [{ name: 'Best Goods and Guarantees' }, { name: 'Southern Books' }],
     skillBooks: [
       { title: 'Reality & Other Falsehoods', skill: 'Alteration' },
       { title: 'Sithis', skill: 'Alteration' },
@@ -389,16 +385,16 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Bugak gro-Bol', skill: 'Blunt', tier: 'Novice', maxLevel: 40 },
       { name: 'Dagail', skill: 'Mysticism', tier: 'Master', maxLevel: 100 },
       { name: 'Eitar', skill: 'Armorer', tier: 'Novice', maxLevel: 40 },
-      { name: 'J\'bari', skill: 'Light Armor', tier: 'Master', maxLevel: 100 },
+      { name: "J'bari", skill: 'Light Armor', tier: 'Master', maxLevel: 100 },
       { name: 'Mahei', skill: 'Athletics', tier: 'Novice', maxLevel: 40 },
       { name: 'Margarte', skill: 'Mercantile', tier: 'Novice', maxLevel: 40 },
-      { name: 'S\'drassa', skill: 'Alchemy', tier: 'Novice', maxLevel: 40 },
+      { name: "S'drassa", skill: 'Alchemy', tier: 'Novice', maxLevel: 40 },
       { name: 'Sherina', skill: 'Blade', tier: 'Journeyman', maxLevel: 70 },
       { name: 'Tsrava', skill: 'Acrobatics', tier: 'Journeyman', maxLevel: 70 },
     ],
     nirnroots: [
       { description: "Ahdarji's house, 2nd floor west" },
-      { description: "Blackwood Company Hall, 2nd floor" },
+      { description: 'Blackwood Company Hall, 2nd floor' },
       { description: "Blackwood Company, Jeetum-Ze's room, 2nd floor" },
       { description: "Margarte's house, room on the right" },
     ],
@@ -409,10 +405,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'City',
     hold: 'West Weald',
     initiallyDiscovered: true,
-    quests: [
-      { name: 'Ulterior Motives', leveled: 30 },
-      { name: 'Information at a Price' },
-    ],
+    quests: [{ name: 'Ulterior Motives', leveled: 30 }, { name: 'Information at a Price' }],
     merchants: [
       { name: 'Colovian Traders' },
       { name: 'Hammer and Axe' },
@@ -424,7 +417,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'A Dance in Fire, v3', skill: 'Athletics' },
       { title: 'A Hypothetical Treachery', skill: 'Destruction' },
       { title: 'The Wolf Queen, v2', skill: 'Hand to Hand' },
-      { title: '2920, Sun\'s Dawn', skill: 'Mysticism' },
+      { title: "2920, Sun's Dawn", skill: 'Mysticism' },
       { title: 'The Exodus', skill: 'Restoration' },
     ],
     houses: [{ name: 'Rosethorn Hall', price: 48200 }],
@@ -481,9 +474,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Blackwood',
     initiallyDiscovered: false,
     quests: [{ name: 'Sheogorath' }],
-    nirnroots: [
-      { description: 'Border Watch Inn' },
-    ],
+    nirnroots: [{ description: 'Border Watch Inn' }],
   },
   {
     id: 'brindle-home',
@@ -491,13 +482,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Great Forest',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Gravefinder\'s Repose' }],
-    skillBooks: [
-      { title: 'The Black Arrow, v1', skill: 'Acrobatics' },
-    ],
-    nirnroots: [
-      { description: "Torbal the Sufficient's house" },
-    ],
+    quests: [{ name: "The Gravefinder's Repose" }],
+    skillBooks: [{ title: 'The Black Arrow, v1', skill: 'Acrobatics' }],
+    nirnroots: [{ description: "Torbal the Sufficient's house" }],
   },
   {
     id: 'cropsford',
@@ -514,13 +501,8 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Great Forest',
     initiallyDiscovered: false,
     quests: [{ name: 'A Shadow over Hackdirt' }],
-    merchants: [
-      { name: 'Vlanhonder Moslin' },
-      { name: 'Etira Moslin' },
-    ],
-    nirnroots: [
-      { description: "Natch Pinder's house, upstairs" },
-    ],
+    merchants: [{ name: 'Vlanhonder Moslin' }, { name: 'Etira Moslin' }],
+    nirnroots: [{ description: "Natch Pinder's house, upstairs" }],
     notes: 'Missable: Invest in Etira Moslin and Vlanhonder Moslin before "A Shadow over Hackdirt"',
   },
   {
@@ -538,9 +520,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Heartlands',
     initiallyDiscovered: false,
     merchants: [{ name: 'Candice Corgine' }],
-    nirnroots: [
-      { description: "Shafaye's house" },
-    ],
+    nirnroots: [{ description: "Shafaye's house" }],
   },
   {
     id: 'waters-edge',
@@ -550,8 +530,8 @@ export const locationDefinitions: LocationDefinition[] = [
     initiallyDiscovered: false,
     quests: [{ name: 'Go Fish' }],
     nirnroots: [
-      { description: 'Near the water across the road from Biene Amelion\'s house' },
-      { description: 'Behind the large rock south of Marie Alouette\'s house' },
+      { description: "Near the water across the road from Biene Amelion's house" },
+      { description: "Behind the large rock south of Marie Alouette's house" },
     ],
   },
   {
@@ -581,7 +561,8 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Defense of Bruma' },
       { name: 'Paradise', leveled: 18 },
     ],
-    notes: 'Visit manually before starting the "Weynon Priory" quest to count toward discovered locations',
+    notes:
+      'Visit manually before starting the "Weynon Priory" quest to count toward discovered locations',
     skillBooks: [
       { title: 'Beggar', skill: 'Athletics' },
       { title: 'The Refugees', skill: 'Light Armor' },
@@ -609,7 +590,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    quests: [{ name: 'Lifting the Vale', leveled: 25 }],
+    quests: [{ name: 'Lifting the Vale', leveled: 25 }, { name: 'Turning a Blind Eye' }],
   },
   {
     id: 'weynon-priory',
@@ -617,13 +598,8 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Great Forest',
     initiallyDiscovered: false,
-    quests: [
-      { name: 'Deliver the Amulet' },
-      { name: 'Weynon Priory' },
-    ],
-    skillBooks: [
-      { title: 'The Warp in the West', skill: 'Block' },
-    ],
+    quests: [{ name: 'Deliver the Amulet' }, { name: 'Weynon Priory' }],
+    skillBooks: [{ title: 'The Warp in the West', skill: 'Block' }],
   },
   {
     id: 'white-stallion-lodge',
@@ -639,9 +615,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
-    nirnroots: [
-      { description: 'Outside, just left of the entrance door' },
-    ],
+    nirnroots: [{ description: 'Outside, just left of the entrance door' }],
   },
   {
     id: 'greyland',
@@ -685,7 +659,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Farm',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Siren\'s Deception', leveled: 25 }],
+    quests: [{ name: "The Siren's Deception", leveled: 25 }],
   },
   {
     id: 'harms-folly',
@@ -710,9 +684,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
     quests: [{ name: 'No Stone Unturned' }],
-    nirnroots: [
-      { description: 'Estate house, upstairs' },
-    ],
+    nirnroots: [{ description: 'Estate house, upstairs' }],
   },
   {
     id: 'odiil-farm',
@@ -721,9 +693,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Great Forest',
     initiallyDiscovered: false,
     quests: [{ name: 'The Killing Field', leveled: 25 }],
-    nirnroots: [
-      { description: 'Inside the farmhouse' },
-    ],
+    nirnroots: [{ description: 'Inside the farmhouse' }],
   },
   {
     id: 'shardrock',
@@ -743,9 +713,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Gold Coast',
     initiallyDiscovered: false,
     quests: [{ name: 'The Battle for Castle Kvatch', leveled: 25 }],
-    nirnroots: [
-      { description: 'Giant nirnroot by the pond northeast of the farmhouse' },
-    ],
+    nirnroots: [{ description: 'Giant nirnroot by the pond northeast of the farmhouse' }],
   },
   {
     id: 'weatherleah',
@@ -774,9 +742,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Gold Coast',
     initiallyDiscovered: false,
     merchants: [{ name: 'Christophe Marane' }],
-    trainers: [
-      { name: 'Christophe Marane', skill: 'Blunt', tier: 'Journeyman', maxLevel: 70 },
-    ],
+    trainers: [{ name: 'Christophe Marane', skill: 'Blunt', tier: 'Journeyman', maxLevel: 70 }],
   },
   {
     id: 'drunken-dragon-inn',
@@ -807,9 +773,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Gold Coast',
     initiallyDiscovered: false,
     merchants: [{ name: 'Foroch' }],
-    trainers: [
-      { name: 'Foroch', skill: 'Mercantile', tier: 'Novice', maxLevel: 40 },
-    ],
+    trainers: [{ name: 'Foroch', skill: 'Mercantile', tier: 'Novice', maxLevel: 40 }],
   },
   {
     id: 'imperial-bridge-inn',
@@ -818,12 +782,8 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
     merchants: [{ name: 'Davela Hlaren' }],
-    skillBooks: [
-      { title: 'Calcinator Treatise', skill: 'Alchemy' },
-    ],
-    trainers: [
-      { name: 'Davela Hlaren', skill: 'Hand to Hand', tier: 'Journeyman', maxLevel: 70 },
-    ],
+    skillBooks: [{ title: 'Calcinator Treatise', skill: 'Alchemy' }],
+    trainers: [{ name: 'Davela Hlaren', skill: 'Hand to Hand', tier: 'Journeyman', maxLevel: 70 }],
   },
   {
     id: 'inn-of-ill-omen',
@@ -841,9 +801,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Heartlands',
     initiallyDiscovered: false,
     merchants: [{ name: 'Malene' }],
-    trainers: [
-      { name: 'Pranal', skill: 'Heavy Armor', tier: 'Master', maxLevel: 100 },
-    ],
+    trainers: [{ name: 'Pranal', skill: 'Heavy Armor', tier: 'Master', maxLevel: 100 }],
   },
 
   // ============================================================
@@ -856,9 +814,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Valus Mountains',
     initiallyDiscovered: false,
     quests: [{ name: 'Acrobatics Master Training' }],
-    trainers: [
-      { name: 'Torbern', skill: 'Acrobatics', tier: 'Master', maxLevel: 100 },
-    ],
+    trainers: [{ name: 'Torbern', skill: 'Acrobatics', tier: 'Master', maxLevel: 100 }],
   },
   {
     id: 'atrene-camp',
@@ -873,9 +829,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
-    nirnroots: [
-      { description: 'Behind the rocks to the east of the island' },
-    ],
+    nirnroots: [{ description: 'Behind the rocks to the east of the island' }],
   },
   {
     id: 'black-dog-camp',
@@ -959,9 +913,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'Blackwood',
     initiallyDiscovered: false,
-    nirnroots: [
-      { description: 'On the shoreline to the west, between a pair of large rocks' },
-    ],
+    nirnroots: [{ description: 'On the shoreline to the west, between a pair of large rocks' }],
   },
   {
     id: 'garnet-camp',
@@ -1054,9 +1006,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Gold Coast',
     initiallyDiscovered: false,
     quests: [{ name: 'Marksman Master Training' }],
-    trainers: [
-      { name: 'Alawen', skill: 'Marksman', tier: 'Master', maxLevel: 100 },
-    ],
+    trainers: [{ name: 'Alawen', skill: 'Marksman', tier: 'Master', maxLevel: 100 }],
   },
   {
     id: 'trossan-camp',
@@ -1158,9 +1108,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Landmark',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    nirnroots: [
-      { description: "Next to the bridge's eastern end" },
-    ],
+    nirnroots: [{ description: "Next to the bridge's eastern end" }],
   },
   {
     id: 'shadeleaf-copse',
@@ -1195,7 +1143,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Birthsign Stone',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
-    greaterPowers: [{ name: 'Lady\'s Warding', renown: 0 }],
+    greaterPowers: [{ name: "Lady's Warding", renown: 0 }],
   },
   {
     id: 'lord-stone',
@@ -1203,7 +1151,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Birthsign Stone',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
-    greaterPowers: [{ name: 'Ysmir\'s Scales', renown: 0 }],
+    greaterPowers: [{ name: "Ysmir's Scales", renown: 0 }],
   },
   {
     id: 'lover-stone',
@@ -1211,7 +1159,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Birthsign Stone',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
-    greaterPowers: [{ name: 'Lover\'s Bower', renown: 0 }],
+    greaterPowers: [{ name: "Lover's Bower", renown: 0 }],
   },
   {
     id: 'mage-stone',
@@ -1228,8 +1176,8 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Blackwood',
     initiallyDiscovered: false,
     greaterPowers: [
-      { name: 'Mara\'s Milk', renown: 0 },
-      { name: 'Mara\'s Mercy', renown: 0 },
+      { name: "Mara's Milk", renown: 0 },
+      { name: "Mara's Mercy", renown: 0 },
     ],
   },
   {
@@ -1238,7 +1186,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Birthsign Stone',
     hold: 'Blackwood',
     initiallyDiscovered: false,
-    greaterPowers: [{ name: 'Cobra\'s Dance', renown: 0 }],
+    greaterPowers: [{ name: "Cobra's Dance", renown: 0 }],
   },
   {
     id: 'shadow-stone',
@@ -1262,7 +1210,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Birthsign Stone',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    greaterPowers: [{ name: 'Cheater\'s Nip', renown: 0 }],
+    greaterPowers: [{ name: "Cheater's Nip", renown: 0 }],
   },
   {
     id: 'tower-stone',
@@ -1271,7 +1219,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Heartlands',
     initiallyDiscovered: false,
     greaterPowers: [
-      { name: 'The Master\'s Hand', renown: 0 },
+      { name: "The Master's Hand", renown: 0 },
       { name: 'Warden Key', renown: 0 },
     ],
   },
@@ -1293,7 +1241,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Heaven Stone',
     hold: 'West Weald',
     initiallyDiscovered: false,
-    greaterPowers: [{ name: 'Jone\'s Shadow', renown: 10 }],
+    greaterPowers: [{ name: "Jone's Shadow", renown: 10 }],
   },
   {
     id: 'aetherius-stone',
@@ -1309,7 +1257,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Heaven Stone',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
-    greaterPowers: [{ name: 'Jode\'s Blood', renown: 30 }],
+    greaterPowers: [{ name: "Jode's Blood", renown: 30 }],
   },
   {
     id: 'sithian-stone',
@@ -1427,9 +1375,7 @@ export const locationDefinitions: LocationDefinition[] = [
     initiallyDiscovered: false,
     quests: [{ name: 'Molag Bal' }],
     uniqueItems: [{ name: 'Mace of Molag Bal' }],
-    trainers: [
-      { name: 'Olyn Seran', skill: 'Conjuration', tier: 'Master', maxLevel: 100 },
-    ],
+    trainers: [{ name: 'Olyn Seran', skill: 'Conjuration', tier: 'Master', maxLevel: 100 }],
   },
   {
     id: 'namiras-shrine',
@@ -1511,7 +1457,8 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Blackwood',
     initiallyDiscovered: false,
     quests: [{ name: 'Azani Blackheart' }],
-    notes: 'Visit manually before starting the "Azani Blackheart" quest to count toward discovered locations',
+    notes:
+      'Visit manually before starting the "Azani Blackheart" quest to count toward discovered locations',
   },
   {
     id: 'atatar',
@@ -1684,9 +1631,7 @@ export const locationDefinitions: LocationDefinition[] = [
     initiallyDiscovered: false,
     quests: [{ name: 'Secrets of the Ayleids', leveled: 25 }],
     uniqueItems: [{ name: 'Crown of Nenalata' }],
-    nirnroots: [
-      { description: 'On the Silverfish riverbank near the ruin' },
-    ],
+    nirnroots: [{ description: 'On the Silverfish riverbank near the ruin' }],
   },
   {
     id: 'nenyond-twyll',
@@ -1694,7 +1639,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Necromancer\'s Moon' }],
+    quests: [{ name: "Necromancer's Moon" }],
   },
   {
     id: 'ninendava',
@@ -1740,9 +1685,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Heartlands',
     initiallyDiscovered: false,
     quests: [{ name: 'The Path of Dawn' }],
-    skillBooks: [
-      { title: 'Fire and Darkness', skill: 'Blade' },
-    ],
+    skillBooks: [{ title: 'Fire and Darkness', skill: 'Blade' }],
   },
   {
     id: 'ondo',
@@ -1779,7 +1722,8 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Jerall Mountains',
     initiallyDiscovered: false,
     quests: [{ name: 'The Stone of St. Alessia' }],
-    notes: 'Visit manually before starting "The Stone of St. Alessia" quest to count toward discovered locations',
+    notes:
+      'Visit manually before starting "The Stone of St. Alessia" quest to count toward discovered locations',
   },
   {
     id: 'sercen',
@@ -1824,7 +1768,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    quests: [{ name: 'Vahtacen\'s Secret', leveled: 25 }],
+    quests: [{ name: "Vahtacen's Secret", leveled: 25 }],
   },
   {
     id: 'varondo',
@@ -1846,13 +1790,9 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Tutorial' }, { name: 'The Collector' }],
-    skillBooks: [
-      { title: 'Immortal Blood', skill: 'Hand to Hand' },
-    ],
-    nirnroots: [
-      { description: 'On the Lake Rumare shore near the entrance' },
-    ],
+    quests: [{ name: 'The Collector' }],
+    skillBooks: [{ title: 'Immortal Blood', skill: 'Hand to Hand' }],
+    nirnroots: [{ description: 'On the Lake Rumare shore near the entrance' }],
   },
   {
     id: 'vindasel',
@@ -1904,7 +1844,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Blackwood',
     initiallyDiscovered: false,
-    quests: [{ name: 'Amelion\'s Debt' }],
+    quests: [{ name: "Amelion's Debt" }],
   },
   {
     id: 'arrowshaft-cavern',
@@ -1948,9 +1888,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'West Weald',
     initiallyDiscovered: false,
     quests: [{ name: 'Skingrad Recommendation' }],
-    skillBooks: [
-      { title: 'Lord Jornibret\'s Last Dance', skill: 'Light Armor' },
-    ],
+    skillBooks: [{ title: "Lord Jornibret's Last Dance", skill: 'Light Armor' }],
   },
   {
     id: 'bloodcrust-cavern',
@@ -2106,9 +2044,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Blackwood',
     initiallyDiscovered: false,
-    skillBooks: [
-      { title: 'Way of the Exposed Palm', skill: 'Hand to Hand' },
-    ],
+    skillBooks: [{ title: 'Way of the Exposed Palm', skill: 'Hand to Hand' }],
   },
   {
     id: 'fingerbowl-cave',
@@ -2116,9 +2052,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    skillBooks: [
-      { title: 'Advances in Lock Picking', skill: 'Security' },
-    ],
+    skillBooks: [{ title: 'Advances in Lock Picking', skill: 'Security' }],
   },
   {
     id: 'frostfire-glade',
@@ -2148,9 +2082,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'West Weald',
     initiallyDiscovered: false,
-    skillBooks: [
-      { title: 'Night Falls on Sentinel', skill: 'Blunt' },
-    ],
+    skillBooks: [{ title: 'Night Falls on Sentinel', skill: 'Blunt' }],
   },
   {
     id: 'grayrock-cave',
@@ -2186,7 +2118,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'West Weald',
     initiallyDiscovered: false,
-    quests: [{ name: 'Necromancer\'s Moon' }],
+    quests: [{ name: "Necromancer's Moon" }],
   },
   {
     id: 'hrota-cave',
@@ -2231,9 +2163,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Valus Mountains',
     initiallyDiscovered: false,
     quests: [{ name: 'Dagon Shrine' }],
-    skillBooks: [
-      { title: 'Sacred Witness', skill: 'Sneak' },
-    ],
+    skillBooks: [{ title: 'Sacred Witness', skill: 'Sneak' }],
   },
   {
     id: 'leafrot-cave',
@@ -2241,9 +2171,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
-    skillBooks: [
-      { title: 'The Art of War Magic', skill: 'Destruction' },
-    ],
+    skillBooks: [{ title: 'The Art of War Magic', skill: 'Destruction' }],
   },
   {
     id: 'lost-boy-cavern',
@@ -2266,9 +2194,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    skillBooks: [
-      { title: 'Mythic Dawn Commentaries 1', skill: 'Conjuration' },
-    ],
+    skillBooks: [{ title: 'Mythic Dawn Commentaries 1', skill: 'Conjuration' }],
   },
   {
     id: 'mongrels-tooth-cave',
@@ -2312,7 +2238,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Colovian Highlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Master\'s Son' }],
+    quests: [{ name: "The Master's Son" }],
   },
   {
     id: 'onyx-caverns',
@@ -2529,9 +2455,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
-    nirnroots: [
-      { description: 'Veyond Black Waters, second zone' },
-    ],
+    nirnroots: [{ description: 'Veyond Black Waters, second zone' }],
   },
   {
     id: 'wellspring-cave',
@@ -2539,7 +2463,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'A Mage\'s Staff', leveled: 15 }],
+    quests: [{ name: "A Mage's Staff", leveled: 15 }],
   },
   {
     id: 'wenderbek-cave',
@@ -2573,9 +2497,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
     quests: [{ name: 'Vaermina' }],
-    skillBooks: [
-      { title: 'Palla, volume 1', skill: 'Illusion' },
-    ],
+    skillBooks: [{ title: 'Palla, volume 1', skill: 'Illusion' }],
   },
   {
     id: 'crowhaven',
@@ -2661,9 +2583,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    nirnroots: [
-      { description: 'First zone interior' },
-    ],
+    nirnroots: [{ description: 'First zone interior' }],
   },
   {
     id: 'fort-chalman',
@@ -2685,9 +2605,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
-    skillBooks: [
-      { title: 'Souls, Black and White', skill: 'Mysticism' },
-    ],
+    skillBooks: [{ title: 'Souls, Black and White', skill: 'Mysticism' }],
   },
   {
     id: 'fort-dirich',
@@ -2749,9 +2667,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
-    nirnroots: [
-      { description: 'On the Niben riverbank near the fort' },
-    ],
+    nirnroots: [{ description: 'On the Niben riverbank near the fort' }],
   },
   {
     id: 'fort-grief',
@@ -2760,9 +2676,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
     quests: [{ name: 'Caught in the Hunt' }],
-    nirnroots: [
-      { description: "Hunter's Run, first zone" },
-    ],
+    nirnroots: [{ description: "Hunter's Run, first zone" }],
   },
   {
     id: 'fort-hastrel',
@@ -2885,9 +2799,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    nirnroots: [
-      { description: 'First zone interior' },
-    ],
+    nirnroots: [{ description: 'First zone interior' }],
   },
   {
     id: 'fort-scinia',
@@ -3347,10 +3259,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'West Weald',
     dlc: 'KotN',
     initiallyDiscovered: false,
-    quests: [
-      { name: 'Priory of the Nine', leveled: 21 },
-      { name: 'The Blessing of Talos' },
-    ],
+    quests: [{ name: 'Priory of the Nine', leveled: 21 }, { name: 'The Blessing of Talos' }],
     uniqueItems: [{ name: 'Cuirass of the Crusader' }],
   },
   {
@@ -3563,10 +3472,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'The Fringe',
     dlc: 'SI',
     initiallyDiscovered: false,
-    quests: [
-      { name: 'Through the Fringe of Madness' },
-      { name: 'Retaking The Fringe' },
-    ],
+    quests: [{ name: 'Through the Fringe of Madness' }, { name: 'Retaking The Fringe' }],
     merchants: [{ name: 'Dredhwen' }],
     notes: 'Missable: Dredhwen ceases to be a merchant once Retaking The Fringe starts',
   },
@@ -3622,11 +3528,9 @@ export const locationDefinitions: LocationDefinition[] = [
     dlc: 'SI',
     initiallyDiscovered: false,
     quests: [{ name: 'Ghosts of Vitharn', leveled: 23 }],
-    uniqueItems: [
-      { name: "Count Cirion's Helmet" },
-      { name: 'Dagger of Depletion' },
-    ],
-    notes: "Missable: Vitharn's Mausoleum is sealed permanently after quest completion. Explore before finishing.",
+    uniqueItems: [{ name: "Count Cirion's Helmet" }, { name: 'Dagger of Depletion' }],
+    notes:
+      "Missable: Vitharn's Mausoleum is sealed permanently after quest completion. Explore before finishing.",
   },
 
   // ============================================================
@@ -3910,10 +3814,7 @@ export const locationDefinitions: LocationDefinition[] = [
     dlc: 'SI',
     initiallyDiscovered: false,
     quests: [{ name: 'Baiting the Trap', leveled: 30 }],
-    uniqueItems: [
-      { name: 'Dawnfang / Duskfang' },
-      { name: 'Talisman of Abetment' },
-    ],
+    uniqueItems: [{ name: 'Dawnfang / Duskfang' }, { name: 'Talisman of Abetment' }],
   },
   {
     id: 'si-xiditte',
