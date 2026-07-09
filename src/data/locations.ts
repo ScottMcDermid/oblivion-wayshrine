@@ -15,6 +15,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Where Spirits Have Lease' },
       { name: 'The Ghost Ship of Anvil', leveled: 30 },
       { name: 'The Siren\'s Deception', leveled: 25 },
+      { name: 'When the Vow Breaks', leveled: 25 },
     ],
     merchants: [
       { name: 'Norbert Lelles' },
@@ -157,6 +158,14 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'The Wayward Knight', leveled: 25 },
       { name: 'Corruption and Conscience' },
       { name: 'A Knife in the Dark' },
+      { name: 'A Brush with Death', leveled: 25 },
+      { name: 'Accidents Happen', leveled: 30 },
+      { name: 'The Assassinated Man', leveled: 30 },
+      { name: 'Bad Medicine', leveled: 30 },
+      { name: 'Information Gathering', leveled: 20 },
+      { name: 'The Lonely Wanderer', leveled: 30 },
+      { name: 'The Renegade Shadowscale', leveled: 30 },
+      { name: 'A Watery Grave', leveled: 30 },
     ],
     merchants: [
       { name: 'Borba gra-Uzgash' },
@@ -251,6 +260,10 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Light the Dragonfires' },
       { name: 'Repairing the Orrery' },
       { name: 'Horse Armor' },
+      { name: 'Join the Mages Guild', leveled: 10 },
+      { name: 'The Bloodworm Helm', leveled: 25 },
+      { name: "The Necromancer's Amulet", leveled: 1 },
+      { name: 'Unfriendly Competition', leveled: 25 },
     ],
     merchants: [
       { name: 'Jensine' },
@@ -516,7 +529,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    quests: [{ name: "Harlun's Watch Investigation" }],
+    quests: [{ name: "Mystery at Harlun's Watch", leveled: 20 }],
   },
   {
     id: 'pells-gate',
@@ -566,6 +579,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Blood of the Divines', leveled: 20 },
       { name: 'Miscarcand' },
       { name: 'Defense of Bruma' },
+      { name: 'Paradise', leveled: 18 },
     ],
     notes: 'Visit manually before starting the "Weynon Priory" quest to count toward discovered locations',
     skillBooks: [
@@ -747,6 +761,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Farm',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
+    quests: [{ name: 'When the Vow Breaks', leveled: 25 }],
   },
 
   // ============================================================
@@ -883,7 +898,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'Blackwood',
     initiallyDiscovered: false,
-    quests: [{ name: 'Mazoga the Orc' }],
+    quests: [{ name: 'Mazoga the Orc' }, { name: 'The Renegade Shadowscale', leveled: 30 }],
   },
   {
     id: 'brotch-camp',
@@ -2524,7 +2539,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'A Mage\'s Staff' }],
+    quests: [{ name: 'A Mage\'s Staff', leveled: 15 }],
   },
   {
     id: 'wenderbek-cave',
@@ -2894,6 +2909,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
+    quests: [{ name: 'When the Vow Breaks', leveled: 25 }],
   },
   {
     id: 'fort-sutch',
