@@ -7,9 +7,10 @@ import {
   DialogTitle,
   IconButton,
   LinearProgress,
+  Tooltip,
   Typography,
 } from '@mui/material';
-import { Close } from '@mui/icons-material';
+import { Close, RestartAlt } from '@mui/icons-material';
 import { LocationDLC, locationDLCLabels, locationDLCColors, locationDLCs } from '@/utils/locationTypes';
 
 type CompletionCategory = {
@@ -174,6 +175,7 @@ function CategoryRow({ label, completed, total, color }: CompletionCategory) {
 export default function CompletionDialog({
   open,
   onClose,
+  onReset,
   totals,
   completed,
   completionScope,
@@ -181,6 +183,7 @@ export default function CompletionDialog({
 }: {
   open: boolean;
   onClose: () => void;
+  onReset: () => void;
   totals: {
     locations: number;
     quests: number;
@@ -233,9 +236,16 @@ export default function CompletionDialog({
         }}
       >
         <span style={{ fontWeight: 'bold' }}>Completion Progress</span>
-        <IconButton size="small" onClick={onClose}>
-          <Close fontSize="small" />
-        </IconButton>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+          <Tooltip title="Reset to defaults">
+            <IconButton size="small" onClick={onReset} sx={{ color: 'error.main' }}>
+              <RestartAlt fontSize="small" />
+            </IconButton>
+          </Tooltip>
+          <IconButton size="small" onClick={onClose}>
+            <Close fontSize="small" />
+          </IconButton>
+        </Box>
       </DialogTitle>
       <DialogContent>
         {/* Completion Scope */}

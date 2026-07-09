@@ -18,7 +18,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { ThemeProvider, StyledEngineProvider, useTheme } from '@mui/material/styles';
-import { ArrowBack, Close, GitHub, RestartAlt } from '@mui/icons-material';
+import { ArrowBack, Close, GitHub } from '@mui/icons-material';
 import theme from '@/app/theme';
 import { useLocationStore } from '@/data/locationStore';
 import { useHydrated } from '@/hooks/useHydrated';
@@ -290,29 +290,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
             variant="outlined"
           />
 
-          {isMobile ? (
-            <IconButton
-              size="small"
-              onClick={() => setIsConfirmingReset(true)}
-              sx={{ color: 'error.main' }}
-            >
-              <RestartAlt sx={{ fontSize: 18 }} />
-            </IconButton>
-          ) : (
-            <Button
-              size="small"
-              startIcon={<RestartAlt sx={{ fontSize: 16 }} />}
-              onClick={() => setIsConfirmingReset(true)}
-              sx={{
-                color: 'error.main',
-                fontSize: '0.7rem',
-                textTransform: 'none',
-                minWidth: 'auto',
-              }}
-            >
-              Reset
-            </Button>
-          )}
+
         </Toolbar>
       </AppBar>
 
@@ -560,6 +538,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
       <CompletionDialog
         open={completionDialogOpen}
         onClose={() => setCompletionDialogOpen(false)}
+        onReset={() => setIsConfirmingReset(true)}
         totals={totals}
         completed={completed}
         completionScope={completionScope}
