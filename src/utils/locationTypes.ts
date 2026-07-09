@@ -78,20 +78,22 @@ export type TrainerReference = {
   maxLevel: number;
 };
 
-export type LocationDLC = 'Base' | 'SI' | 'KotN';
+export type LocationDLC = 'Base' | 'SI' | 'KotN' | 'Plugins';
 
-export const locationDLCs: LocationDLC[] = ['Base', 'SI', 'KotN'];
+export const locationDLCs: LocationDLC[] = ['Base', 'SI', 'KotN', 'Plugins'];
 
 export const locationDLCLabels: Record<LocationDLC, string> = {
   Base: 'Base Game',
   SI: 'Shivering Isles',
   KotN: 'Knights of the Nine',
+  Plugins: 'Official Plugins',
 };
 
 export const locationDLCColors: Record<LocationDLC, string> = {
   Base: '#6b7280',
   SI: '#a855f7',
   KotN: '#f59e0b',
+  Plugins: '#06b6d4',
 };
 
 export type LocationDefinition = {

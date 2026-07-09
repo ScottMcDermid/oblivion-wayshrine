@@ -249,6 +249,8 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'The Arena' },
       { name: 'An Unexpected Voyage', leveled: 25 },
       { name: 'Light the Dragonfires' },
+      { name: 'Repairing the Orrery' },
+      { name: 'A Horse Armor for Combat' },
     ],
     merchants: [
       { name: 'Jensine' },
@@ -3397,6 +3399,63 @@ export const locationDefinitions: LocationDefinition[] = [
     initiallyDiscovered: false,
     quests: [{ name: 'The Sword of the Crusader', leveled: 21 }],
     uniqueItems: [{ name: 'Sword of the Crusader' }],
+  },
+
+  // ============================================================
+  // OFFICIAL PLUGINS (5)
+  // ============================================================
+  {
+    id: 'plugin-frostcrag-spire',
+    name: 'Frostcrag Spire',
+    type: 'Landmark',
+    hold: 'Jerall Mountains',
+    dlc: 'Plugins',
+    initiallyDiscovered: false,
+    quests: [{ name: 'Frostcrag Spire' }],
+    uniqueItems: [{ name: 'Pentamagic Loop' }, { name: "Wizard's Tome" }],
+  },
+  {
+    id: 'plugin-dunbarrow-cove',
+    name: 'Dunbarrow Cove',
+    type: 'Cave',
+    hold: 'Gold Coast',
+    dlc: 'Plugins',
+    initiallyDiscovered: false,
+    quests: [{ name: 'Dunbarrow Cove' }],
+    uniqueItems: [{ name: 'Boots of the Taskmaster' }, { name: "Captain Dugal's Sword" }],
+    merchants: [{ name: 'Khafiz' }],
+  },
+  {
+    id: 'plugin-sundercliff-watch',
+    name: 'Sundercliff Watch',
+    type: 'Fort',
+    hold: 'Valus Mountains',
+    dlc: 'Plugins',
+    initiallyDiscovered: false,
+    quests: [{ name: 'Unearthing Mehrunes Razor' }],
+    uniqueItems: [{ name: "Mehrunes' Razor" }, { name: "Forgemaster's Fingers" }],
+  },
+  {
+    id: 'plugin-deepscorn-hollow',
+    name: 'Deepscorn Hollow',
+    type: 'Cave',
+    hold: 'Nibenay Valley',
+    dlc: 'Plugins',
+    initiallyDiscovered: false,
+    quests: [{ name: 'Deepscorn Hollow' }],
+    uniqueItems: [{ name: 'Raiment of the Crimson Scar' }, { name: 'Crimson Eviscerator' }],
+    merchants: [{ name: 'Rowley Eardwulf' }],
+  },
+  {
+    id: 'plugin-battlehorn-castle',
+    name: 'Battlehorn Castle',
+    type: 'Fort',
+    hold: 'Colovian Highlands',
+    dlc: 'Plugins',
+    initiallyDiscovered: false,
+    quests: [{ name: 'Battlehorn Castle' }],
+    uniqueItems: [{ name: 'Dragonsword of Lainlyn' }],
+    merchants: [{ name: 'Nilphas Omellian' }],
   },
 
   // ============================================================
