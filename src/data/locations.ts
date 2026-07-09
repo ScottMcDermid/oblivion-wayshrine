@@ -11,6 +11,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Gold Coast',
     initiallyDiscovered: true,
     quests: [
+      { name: 'A Rat Problem' },
       { name: 'Where Spirits Have Lease' },
       { name: 'The Ghost Ship of Anvil', leveled: 30 },
       { name: 'The Siren\'s Deception', leveled: 25 },
@@ -1532,7 +1533,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Secrets of the Ayleids', leveled: 25 }],
+    quests: [{ name: 'The Collector' }, { name: 'Secrets of the Ayleids', leveled: 25 }],
   },
   {
     id: 'elenglynn',
@@ -1547,7 +1548,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Valus Mountains',
     initiallyDiscovered: false,
-    quests: [{ name: 'Vampirism Cure' }],
+    quests: [{ name: 'The Collector' }],
   },
   {
     id: 'fanacasecul',
@@ -1590,7 +1591,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Great Forest',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Collector' }],
+    quests: [{ name: 'Secrets of the Ayleids', leveled: 25 }],
   },
   {
     id: 'lipsand-tarn',
@@ -1605,7 +1606,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
-    quests: [{ name: 'Fingers of the Mountain' }],
+    quests: [{ name: 'The Collector' }],
   },
   {
     id: 'malada',
@@ -1637,7 +1638,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Great Forest',
     initiallyDiscovered: false,
-    quests: [{ name: 'Confront the King' }],
+    quests: [{ name: 'The Collector' }],
   },
   {
     id: 'nagastani',
@@ -1677,9 +1678,9 @@ export const locationDefinitions: LocationDefinition[] = [
     id: 'ninendava',
     name: 'Ninendava',
     type: 'Ayleid Ruin',
-    hold: 'Colovian Highlands',
+    hold: 'Jerall Mountains',
     initiallyDiscovered: false,
-    quests: [{ name: 'Vampirism Cure' }],
+    quests: [{ name: 'The Collector' }],
   },
   {
     id: 'niryastare',
@@ -1823,7 +1824,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Tutorial' }],
+    quests: [{ name: 'Tutorial' }, { name: 'The Collector' }],
     skillBooks: [
       { title: 'Immortal Blood', skill: 'Hand to Hand' },
     ],
@@ -1845,15 +1846,15 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Wandering Scholar' }],
+    quests: [{ name: 'The Collector' }],
   },
   {
     id: 'wendelbek',
     name: 'Wendelbek',
     type: 'Ayleid Ruin',
-    hold: 'Nibenay Valley',
+    hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    quests: [{ name: 'Ayleid Crown Quest' }],
+    quests: [{ name: 'The Collector' }, { name: 'Ayleid Crown Quest' }],
   },
   {
     id: 'wendir',
@@ -1861,7 +1862,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Great Forest',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Wandering Scholar' }],
+    quests: [{ name: 'The Collector' }],
   },
   {
     id: 'wenyandawik',
@@ -1869,7 +1870,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
-    quests: [{ name: 'Seeking Your Roots' }],
+    quests: [{ name: 'The Collector' }],
   },
 
   // ============================================================
@@ -1881,7 +1882,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Blackwood',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Unfortunate Shopkeeper' }],
+    quests: [{ name: 'Amelion\'s Debt' }],
   },
   {
     id: 'arrowshaft-cavern',
@@ -1924,7 +1925,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'West Weald',
     initiallyDiscovered: false,
-    quests: [{ name: 'A Mage\'s Staff' }],
+    quests: [{ name: 'Skingrad Recommendation' }],
     skillBooks: [
       { title: 'Lord Jornibret\'s Last Dance', skill: 'Light Armor' },
     ],
@@ -1977,9 +1978,9 @@ export const locationDefinitions: LocationDefinition[] = [
     id: 'brittlerock-cave',
     name: 'Brittlerock Cave',
     type: 'Cave',
-    hold: 'Colovian Highlands',
+    hold: 'Gold Coast',
     initiallyDiscovered: false,
-    quests: [{ name: 'Meridia' }],
+    quests: [{ name: 'The Wandering Scholar' }],
   },
   {
     id: 'broken-promises-cave',
@@ -2171,7 +2172,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Collector' }],
+    quests: [{ name: 'Den of Thieves' }],
   },
   {
     id: 'imperial-sewers-north-exit',
@@ -2267,7 +2268,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    quests: [{ name: 'A Rat Problem' }],
+    quests: [{ name: 'Next of Kin' }],
   },
   {
     id: 'newt-cave',
@@ -2289,7 +2290,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Colovian Highlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Desolate Mine' }],
+    quests: [{ name: 'The Master\'s Son' }],
   },
   {
     id: 'onyx-caverns',
@@ -2619,7 +2620,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Wandering Scholar' }],
+    quests: [{ name: 'Zero Visibility' }],
     skillBooks: [
       { title: 'The Doors of Oblivion', skill: 'Conjuration' },
       { title: 'Mystery of Talara, v4', skill: 'Illusion' },
@@ -3077,7 +3078,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Mine',
     hold: 'Blackwood',
     initiallyDiscovered: false,
-    quests: [{ name: 'Nocturnal' }],
+    quests: [{ name: 'Trolls of Forsaken Mine' }],
   },
   {
     id: 'gutted-mine',
