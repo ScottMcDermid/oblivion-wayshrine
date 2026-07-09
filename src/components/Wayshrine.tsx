@@ -108,7 +108,9 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
         const matchesFilter = activeFilters.size === 0 || activeFilters.has(loc.type);
         const status = locations[loc.id] || 'undiscovered';
         const matchesStatus = activeStatusFilters.size === 0 || activeStatusFilters.has(status);
-        const matchesDLC = activeDLCFilters.size === 0 || activeDLCFilters.has(loc.dlc ?? 'Base');
+        const locDLC = loc.dlc ?? 'Base';
+        const hasMatchingQuestDLC = loc.quests?.some((q) => q.dlc && activeDLCFilters.has(q.dlc)) ?? false;
+        const matchesDLC = activeDLCFilters.size === 0 || activeDLCFilters.has(locDLC) || hasMatchingQuestDLC;
         return matchesFilter && matchesStatus && matchesDLC;
       }),
     [locations, activeFilters, activeStatusFilters, activeDLCFilters],
@@ -195,6 +197,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
       onTogglePower={(name) => togglePowerAcquired(selectedLocation.id, name)}
       onToggleHouse={(name) => toggleHousePurchased(selectedLocation.id, name)}
       onToggleNirnroot={(desc) => toggleNirnrootCollected(selectedLocation.id, desc)}
+      activeDLCFilters={activeDLCFilters}
     />
   ) : (
     <Box
@@ -391,6 +394,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
                 onTogglePower={(name) => togglePowerAcquired(displayedLocation.id, name)}
                 onToggleHouse={(name) => toggleHousePurchased(displayedLocation.id, name)}
                 onToggleNirnroot={(desc) => toggleNirnrootCollected(displayedLocation.id, desc)}
+                activeDLCFilters={activeDLCFilters}
               />
             ) : null}
           </Drawer>

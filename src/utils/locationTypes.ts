@@ -40,6 +40,7 @@ export const locationStatuses: LocationStatus[] = ['undiscovered', 'discovered',
 export type QuestReference = {
   name: string;
   leveled?: number;
+  dlc?: LocationDLC;
 };
 
 export type SkillBookReference = {
@@ -78,15 +79,16 @@ export type TrainerReference = {
   maxLevel: number;
 };
 
-export type LocationDLC = 'Base' | 'SI' | 'KotN' | 'Plugins';
+export type LocationDLC = 'Base' | 'SI' | 'KotN' | 'Plugins' | 'Remastered';
 
-export const locationDLCs: LocationDLC[] = ['Base', 'SI', 'KotN', 'Plugins'];
+export const locationDLCs: LocationDLC[] = ['Base', 'SI', 'KotN', 'Plugins', 'Remastered'];
 
 export const locationDLCLabels: Record<LocationDLC, string> = {
   Base: 'Base Game',
   SI: 'Shivering Isles',
   KotN: 'Knights of the Nine',
   Plugins: 'Official Plugins',
+  Remastered: 'Oblivion Remastered',
 };
 
 export const locationDLCColors: Record<LocationDLC, string> = {
@@ -94,6 +96,7 @@ export const locationDLCColors: Record<LocationDLC, string> = {
   SI: '#a855f7',
   KotN: '#f59e0b',
   Plugins: '#06b6d4',
+  Remastered: '#ef4444',
 };
 
 export type LocationDefinition = {

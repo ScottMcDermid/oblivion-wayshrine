@@ -18,7 +18,7 @@ import {
   RadioButtonUnchecked,
   Warning,
 } from '@mui/icons-material';
-import { LocationDefinition, LocationStatus, locationDLCColors, locationDLCLabels } from '@/utils/locationTypes';
+import { LocationDLC, LocationDefinition, LocationStatus, locationDLCColors, locationDLCLabels } from '@/utils/locationTypes';
 import { locationTypeIcons } from '@/utils/locationIcons';
 import SkillIcon from '@/components/SkillIcon';
 import { buildUespUrl, disambiguationNames } from '@/utils/uespLinks';
@@ -60,6 +60,7 @@ export default function LocationDetail({
   onTogglePower,
   onToggleHouse,
   onToggleNirnroot,
+  activeDLCFilters,
 }: {
   location: LocationDefinition;
   status: LocationStatus;
@@ -78,7 +79,13 @@ export default function LocationDetail({
   onTogglePower: (powerName: string) => void;
   onToggleHouse: (houseName: string) => void;
   onToggleNirnroot: (description: string) => void;
+  activeDLCFilters?: Set<LocationDLC>;
 }) {
+  const filteredQuests = location.quests?.filter((q) => {
+    if (!activeDLCFilters || activeDLCFilters.size === 0) return true;
+    const questDLC = q.dlc ?? location.dlc ?? 'Base';
+    return activeDLCFilters.has(questDLC);
+  });
 
   return (
     <Paper
@@ -264,7 +271,7 @@ export default function LocationDetail({
         </>
       )}
 
-      {location.quests && location.quests.length > 0 && (
+      {filteredQuests && filteredQuests.length > 0 && (
         <>
           <Divider sx={{ my: 1 }} />
           <Typography
@@ -274,8 +281,12 @@ export default function LocationDetail({
             Quests
           </Typography>
           <List dense disablePadding>
-            {location.quests.map((q) => {
+            {filteredQuests.map((q) => {
               const checked = !!completedQuests[q.name];
+              const questDLCLabel = q.dlc ? locationDLCLabels[q.dlc] : undefined;
+              const questDLCColor = q.dlc ? locationDLCColors[q.dlc] : undefined;
+              const secondaryParts: string[] = [];
+              if (q.leveled) secondaryParts.push(`Leveled reward (level ${q.leveled}+)`);
               return (
                 <ListItem
                   key={q.name}
@@ -298,13 +309,30 @@ export default function LocationDetail({
                   </ListItemIcon>
                   <ListItemText
                     primary={
-                      <UespLink href={buildUespUrl(q.name, location.dlc, disambiguationNames.has(q.name) ? 'quest' : undefined)}>
-                        {q.name}
-                      </UespLink>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+                        <UespLink href={buildUespUrl(q.name, q.dlc ?? location.dlc, disambiguationNames.has(q.name) ? 'quest' : undefined)}>
+                          {q.name}
+                        </UespLink>
+                        {questDLCLabel && (
+                          <Chip
+                            label={questDLCLabel}
+                            size="small"
+                            sx={{
+                              fontSize: '0.55rem',
+                              fontWeight: 'bold',
+                              color: '#fff',
+                              backgroundColor: questDLCColor,
+                              height: 16,
+                              '& .MuiChip-label': { px: 0.5 },
+                            }}
+                          />
+                        )}
+                      </Box>
                     }
-                    secondary={q.leveled ? `Leveled reward (level ${q.leveled}+)` : undefined}
+                    secondary={secondaryParts.length > 0 ? secondaryParts.join(' · ') : undefined}
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
+                      component: 'div',
                       sx: checked
                         ? { textDecoration: 'line-through', color: 'text.secondary' }
                         : undefined,

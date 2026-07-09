@@ -79,6 +79,8 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Bravil Recommendation' },
       { name: 'More Unfinished Business' },
       { name: 'The Fugitives' },
+      { name: 'Burning Trail', dlc: 'Remastered' },
+      { name: 'The Crimson Cave', leveled: 21, dlc: 'Remastered' },
     ],
     merchants: [{ name: 'Ungarion' }, { name: 'Nilawen' }],
     skillBooks: [
@@ -324,6 +326,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Liberation or Apprehension?' },
       { name: 'Alchemy Acquisitions' },
       { name: 'A Venerable Vintage' },
+      { name: 'Burning Trail', dlc: 'Remastered' },
     ],
     merchants: [
       { name: 'Jensine' },
@@ -410,8 +413,8 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Breaking the Siege of Kvatch' },
       { name: 'The Battle for Castle Kvatch', leveled: 25 },
       { name: 'Find the Heir' },
-      { name: 'A Wound In Time' },
-      { name: 'Saving Time Itself' },
+      { name: 'A Wound In Time', dlc: 'Remastered' },
+      { name: 'Saving Time Itself', leveled: 21, dlc: 'Remastered' },
     ],
     skillBooks: [{ title: 'A Dance in Fire, v4', skill: 'Acrobatics' }],
     trainers: [{ name: 'Oleta', skill: 'Restoration', tier: 'Master', maxLevel: 100 }],
@@ -1429,7 +1432,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Hircine' }],
+    quests: [{ name: 'Hircine' }, { name: 'Burning Trail', dlc: 'Remastered' }],
     uniqueItems: [{ name: "Saviour's Hide" }],
   },
   {
@@ -1465,7 +1468,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'Great Forest',
     initiallyDiscovered: false,
-    quests: [{ name: 'Molag Bal' }],
+    quests: [{ name: 'Molag Bal' }, { name: 'Burning Trail', dlc: 'Remastered' }],
     uniqueItems: [{ name: 'Mace of Molag Bal' }],
     trainers: [{ name: 'Olyn Seran', skill: 'Conjuration', tier: 'Master', maxLevel: 100 }],
   },
@@ -1580,7 +1583,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
-    quests: [{ name: 'A Wound In Time' }, { name: 'Saving Time Itself' }],
+    quests: [{ name: 'A Wound In Time', dlc: 'Remastered' }, { name: 'Saving Time Itself', leveled: 21, dlc: 'Remastered' }],
   },
   {
     id: 'ceyatatar',
@@ -2288,6 +2291,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Heartlands',
     initiallyDiscovered: false,
+    quests: [{ name: 'The Crimson Cave', leveled: 21, dlc: 'Remastered' }],
     skillBooks: [{ title: 'Mythic Dawn Commentaries 1', skill: 'Conjuration' }],
   },
   {
