@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Box,
+  Chip,
   Dialog,
   DialogContent,
   DialogTitle,
@@ -9,6 +10,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
+import { LocationDLC, locationDLCLabels, locationDLCColors, locationDLCs } from '@/utils/locationTypes';
 
 type CompletionCategory = {
   label: string;
@@ -174,6 +176,8 @@ export default function CompletionDialog({
   onClose,
   totals,
   completed,
+  completionScope,
+  onToggleCompletionScope,
 }: {
   open: boolean;
   onClose: () => void;
@@ -197,6 +201,8 @@ export default function CompletionDialog({
     greaterPowers: number;
     nirnroots: number;
   };
+  completionScope: LocationDLC[];
+  onToggleCompletionScope: (dlc: LocationDLC) => void;
 }) {
   const categories: CompletionCategory[] = [
     { label: 'Locations Cleared',      completed: completed.locations,     total: totals.locations,     color: '#22c55e' },
@@ -232,6 +238,43 @@ export default function CompletionDialog({
         </IconButton>
       </DialogTitle>
       <DialogContent>
+        {/* Completion Scope */}
+        <Box sx={{ mb: 3 }}>
+          <Typography
+            variant="caption"
+            sx={{ color: 'text.secondary', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', mb: 1 }}
+          >
+            Completion Scope
+          </Typography>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75 }}>
+            {locationDLCs.map((dlc) => {
+              const active = completionScope.includes(dlc);
+              const isLastActive = active && completionScope.length === 1;
+              return (
+                <Chip
+                  key={dlc}
+                  label={locationDLCLabels[dlc]}
+                  size="small"
+                  onClick={() => onToggleCompletionScope(dlc)}
+                  disabled={isLastActive}
+                  sx={{
+                    fontSize: '0.7rem',
+                    fontWeight: active ? 'bold' : 'normal',
+                    color: active ? '#fff' : 'text.secondary',
+                    backgroundColor: active ? locationDLCColors[dlc] : 'transparent',
+                    borderColor: active ? locationDLCColors[dlc] : 'divider',
+                    border: '1px solid',
+                    cursor: isLastActive ? 'default' : 'pointer',
+                    opacity: isLastActive ? 0.6 : 1,
+                    transition: 'all 0.15s ease',
+                  }}
+                  variant={active ? 'filled' : 'outlined'}
+                />
+              );
+            })}
+          </Box>
+        </Box>
+
         <MultiArcCircle categories={categories} overallPercent={overallPercent} />
 
         {categories.map((cat) => (

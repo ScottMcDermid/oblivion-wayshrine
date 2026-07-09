@@ -61,6 +61,7 @@ export default function LocationDetail({
   onToggleHouse,
   onToggleNirnroot,
   activeDLCFilters,
+  completionScope,
 }: {
   location: LocationDefinition;
   status: LocationStatus;
@@ -80,12 +81,20 @@ export default function LocationDetail({
   onToggleHouse: (houseName: string) => void;
   onToggleNirnroot: (description: string) => void;
   activeDLCFilters?: Set<LocationDLC>;
+  completionScope?: Set<LocationDLC>;
 }) {
+  const locationDLC = location.dlc ?? 'Base';
+
+  // A quest is visible if it passes both the sidebar DLC filter and the completion scope
   const filteredQuests = location.quests?.filter((q) => {
-    if (!activeDLCFilters || activeDLCFilters.size === 0) return true;
-    const questDLC = q.dlc ?? location.dlc ?? 'Base';
-    return activeDLCFilters.has(questDLC);
+    const questDLC = q.dlc ?? locationDLC;
+    const passesFilter = !activeDLCFilters || activeDLCFilters.size === 0 || activeDLCFilters.has(questDLC);
+    const passesScope = !completionScope || completionScope.size === 0 || completionScope.has(questDLC);
+    return passesFilter && passesScope;
   });
+
+  // Trainers are scoped to their location's DLC — hide when that DLC is out of scope
+  const showTrainers = !completionScope || completionScope.size === 0 || completionScope.has(locationDLC);
 
   return (
     <Paper
@@ -468,7 +477,7 @@ export default function LocationDetail({
         </>
       )}
 
-      {location.trainers && location.trainers.length > 0 && (
+      {showTrainers && location.trainers && location.trainers.length > 0 && (
         <>
           <Divider sx={{ my: 1 }} />
           <Typography

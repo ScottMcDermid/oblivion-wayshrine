@@ -46,6 +46,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
   const typeFilters = useLocationStore((s) => s.typeFilters);
   const statusFilters = useLocationStore((s) => s.statusFilters);
   const dlcFilters = useLocationStore((s) => s.dlcFilters);
+  const completionScope = useLocationStore((s) => s.completionScope);
   const {
     setLocationStatus,
     toggleQuestCompleted,
@@ -58,6 +59,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
     toggleTypeFilter,
     toggleStatusFilter,
     toggleDLCFilter,
+    toggleCompletionScope,
     clearFilters,
     resetToDefaults,
   } = useLocationStore((s) => s.actions);
@@ -65,6 +67,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
   const activeFilters = useMemo(() => new Set<LocationType>(typeFilters), [typeFilters]);
   const activeStatusFilters = useMemo(() => new Set<LocationStatus>(statusFilters), [statusFilters]);
   const activeDLCFilters = useMemo(() => new Set<LocationDLC>(dlcFilters), [dlcFilters]);
+  const activeCompletionScope = useMemo(() => new Set<LocationDLC>(completionScope), [completionScope]);
 
   const [selectedLocationId, setSelectedLocationId] = useState<string | undefined>(locationId);
 
@@ -118,29 +121,59 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
 
   const totals = useMemo(() => {
     const uniqueQuests = new Set<string>();
+    let scopedLocations = 0;
     let skillBooks = 0, merchants = 0, uniqueItems = 0, houses = 0, greaterPowers = 0, nirnroots = 0;
     for (const loc of locationDefinitions) {
-      loc.quests?.forEach((q) => uniqueQuests.add(q.name));
-      skillBooks += loc.skillBooks?.length ?? 0;
-      merchants += loc.merchants?.length ?? 0;
-      uniqueItems += loc.uniqueItems?.length ?? 0;
-      houses += loc.houses?.length ?? 0;
-      greaterPowers += loc.greaterPowers?.length ?? 0;
-      nirnroots += loc.nirnroots?.length ?? 0;
+      const locDLC = loc.dlc ?? 'Base';
+      const locInScope = activeCompletionScope.size === 0 || activeCompletionScope.has(locDLC);
+      if (locInScope) {
+        scopedLocations++;
+        // Count only quests whose effective DLC is in scope
+        loc.quests?.forEach((q) => {
+          const questDLC = q.dlc ?? locDLC;
+          if (activeCompletionScope.size === 0 || activeCompletionScope.has(questDLC)) {
+            uniqueQuests.add(q.name);
+          }
+        });
+        skillBooks += loc.skillBooks?.length ?? 0;
+        merchants += loc.merchants?.length ?? 0;
+        uniqueItems += loc.uniqueItems?.length ?? 0;
+        houses += loc.houses?.length ?? 0;
+        greaterPowers += loc.greaterPowers?.length ?? 0;
+        nirnroots += loc.nirnroots?.length ?? 0;
+      }
     }
-    return { locations: locationDefinitions.length, quests: uniqueQuests.size, skillBooks, merchants, uniqueItems, houses, greaterPowers, nirnroots };
-  }, []);
+    return { locations: scopedLocations, quests: uniqueQuests.size, skillBooks, merchants, uniqueItems, houses, greaterPowers, nirnroots };
+  }, [activeCompletionScope]);
 
-  const completed = useMemo(() => ({
-    locations: Object.values(locations).filter((s) => s === 'cleared').length,
-    quests: Object.keys(completedQuests).length,
-    skillBooks: Object.keys(foundSkillBooks).length,
-    merchants: Object.keys(investedMerchants).length,
-    uniqueItems: Object.keys(acquiredItems).length,
-    houses: Object.keys(purchasedHouses).length,
-    greaterPowers: Object.keys(acquiredPowers).length,
-    nirnroots: Object.keys(collectedNirnroots).length,
-  }), [locations, completedQuests, foundSkillBooks, investedMerchants, acquiredItems, purchasedHouses, acquiredPowers, collectedNirnroots]);
+  const completed = useMemo(() => {
+    // Build a set of in-scope location IDs and in-scope quest names for fast lookups
+    const scopedLocationIds = new Set<string>();
+    const scopedQuestNames = new Set<string>();
+    for (const loc of locationDefinitions) {
+      const locDLC = loc.dlc ?? 'Base';
+      if (activeCompletionScope.size === 0 || activeCompletionScope.has(locDLC)) {
+        scopedLocationIds.add(loc.id);
+        loc.quests?.forEach((q) => {
+          const questDLC = q.dlc ?? locDLC;
+          if (activeCompletionScope.size === 0 || activeCompletionScope.has(questDLC)) {
+            scopedQuestNames.add(q.name);
+          }
+        });
+      }
+    }
+
+    return {
+      locations: Object.entries(locations).filter(([id, s]) => s === 'cleared' && scopedLocationIds.has(id)).length,
+      quests: Object.keys(completedQuests).filter((name) => scopedQuestNames.has(name)).length,
+      skillBooks: Object.keys(foundSkillBooks).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
+      merchants: Object.keys(investedMerchants).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
+      uniqueItems: Object.keys(acquiredItems).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
+      houses: Object.keys(purchasedHouses).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
+      greaterPowers: Object.keys(acquiredPowers).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
+      nirnroots: Object.keys(collectedNirnroots).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
+    };
+  }, [activeCompletionScope, locations, completedQuests, foundSkillBooks, investedMerchants, acquiredItems, purchasedHouses, acquiredPowers, collectedNirnroots]);
 
   const overallPercent = useMemo(() => {
     const cats = ['locations', 'quests', 'skillBooks', 'merchants', 'uniqueItems', 'houses', 'greaterPowers', 'nirnroots'] as const;
@@ -198,6 +231,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
       onToggleHouse={(name) => toggleHousePurchased(selectedLocation.id, name)}
       onToggleNirnroot={(desc) => toggleNirnrootCollected(selectedLocation.id, desc)}
       activeDLCFilters={activeDLCFilters}
+      completionScope={activeCompletionScope}
     />
   ) : (
     <Box
@@ -298,9 +332,14 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
                 height: '100%',
               }}
             >
-              <Typography variant="subtitle2" sx={{ fontWeight: 'bold', mb: 1.5 }}>
-                Filters
-              </Typography>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
+                <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
+                  Filters
+                </Typography>
+                <IconButton size="small" onClick={() => setFilterPanelOpen(false)}>
+                  <Close fontSize="small" />
+                </IconButton>
+              </Box>
               <LocationFilters
                 activeFilters={activeFilters}
                 onToggleFilter={toggleTypeFilter}
@@ -395,6 +434,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
                 onToggleHouse={(name) => toggleHousePurchased(displayedLocation.id, name)}
                 onToggleNirnroot={(desc) => toggleNirnrootCollected(displayedLocation.id, desc)}
                 activeDLCFilters={activeDLCFilters}
+                completionScope={activeCompletionScope}
               />
             ) : null}
           </Drawer>
@@ -521,6 +561,8 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
         onClose={() => setCompletionDialogOpen(false)}
         totals={totals}
         completed={completed}
+        completionScope={completionScope}
+        onToggleCompletionScope={toggleCompletionScope}
       />
     </Box>
   );

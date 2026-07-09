@@ -23,6 +23,7 @@ type State = {
   typeFilters: LocationType[];
   statusFilters: LocationStatus[];
   dlcFilters: LocationDLC[];
+  completionScope: LocationDLC[];
   version: number;
 };
 
@@ -38,6 +39,7 @@ type Actions = {
   toggleTypeFilter: (type: LocationType) => void;
   toggleStatusFilter: (status: LocationStatus) => void;
   toggleDLCFilter: (dlc: LocationDLC) => void;
+  toggleCompletionScope: (dlc: LocationDLC) => void;
   clearFilters: () => void;
   resetToDefaults: () => void;
 };
@@ -58,7 +60,8 @@ export const useLocationStore = create<LocationStore>()(
       typeFilters: [],
       statusFilters: [],
       dlcFilters: [],
-      version: 4,
+      completionScope: ['Base', 'SI', 'KotN', 'Plugins', 'Remastered'],
+      version: 5,
       actions: {
         setLocationStatus: (id, status) =>
           set((state) => ({
@@ -123,6 +126,17 @@ export const useLocationStore = create<LocationStore>()(
               ? state.dlcFilters.filter((d) => d !== dlc)
               : [...state.dlcFilters, dlc],
           })),
+        toggleCompletionScope: (dlc) =>
+          set((state) => {
+            const current = state.completionScope;
+            // Prevent removing the last DLC from scope
+            if (current.includes(dlc) && current.length === 1) return {};
+            return {
+              completionScope: current.includes(dlc)
+                ? current.filter((d) => d !== dlc)
+                : [...current, dlc],
+            };
+          }),
         clearFilters: () =>
           set({ typeFilters: [], statusFilters: [], dlcFilters: [] }),
         resetToDefaults: () =>
@@ -140,7 +154,7 @@ export const useLocationStore = create<LocationStore>()(
     }),
     {
       name: 'oblivion-wayshrine',
-      version: 4,
+      version: 5,
       migrate: (persisted, version) => {
         const state = persisted as Record<string, unknown>;
         if (version < 2) {
@@ -177,6 +191,13 @@ export const useLocationStore = create<LocationStore>()(
           }
           state.version = 4;
         }
+        if (version < 5) {
+          // Add completionScope with all DLCs included (preserves existing behavior)
+          if (!state.completionScope) {
+            state.completionScope = ['Base', 'SI', 'KotN', 'Plugins', 'Remastered'];
+          }
+          state.version = 5;
+        }
         return state as LocationStore;
       },
       partialize: (state) => ({
@@ -191,6 +212,7 @@ export const useLocationStore = create<LocationStore>()(
         typeFilters: state.typeFilters,
         statusFilters: state.statusFilters,
         dlcFilters: state.dlcFilters,
+        completionScope: state.completionScope,
         version: state.version,
       }),
     },
