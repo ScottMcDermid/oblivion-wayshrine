@@ -12,8 +12,8 @@ export const locationDefinitions: LocationDefinition[] = [
     initiallyDiscovered: true,
     quests: [
       { name: 'Where Spirits Have Lease' },
-      { name: 'The Ghost Ship of Anvil', leveled: true },
-      { name: 'The Siren\'s Deception', leveled: true },
+      { name: 'The Ghost Ship of Anvil', leveled: 30 },
+      { name: 'The Siren\'s Deception', leveled: 25 },
     ],
     merchants: [
       { name: 'Norbert Lelles' },
@@ -59,7 +59,7 @@ export const locationDefinitions: LocationDefinition[] = [
     quests: [
       { name: 'Through A Nightmare, Darkly' },
       { name: 'Caught in the Hunt' },
-      { name: 'An Unexpected Voyage', leveled: true },
+      { name: 'An Unexpected Voyage', leveled: 25 },
     ],
     merchants: [
       { name: 'Ungarion' },
@@ -108,7 +108,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Jerall Mountains',
     initiallyDiscovered: true,
     quests: [
-      { name: 'A Brotherhood Betrayed', leveled: true },
+      { name: 'A Brotherhood Betrayed', leveled: 25 },
       { name: 'Two Sides of the Coin' },
       { name: 'Bruma Gate' },
       { name: 'Great Gate' },
@@ -153,7 +153,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Nibenay Basin',
     initiallyDiscovered: true,
     quests: [
-      { name: 'The Wayward Knight', leveled: true },
+      { name: 'The Wayward Knight', leveled: 25 },
       { name: 'Corruption and Conscience' },
       { name: 'A Knife in the Dark' },
     ],
@@ -244,9 +244,9 @@ export const locationDefinitions: LocationDefinition[] = [
     initiallyDiscovered: true,
     quests: [
       { name: 'Imperial Corruption' },
-      { name: 'Order of the Virtuous Blood', leveled: true },
+      { name: 'Order of the Virtuous Blood', leveled: 25 },
       { name: 'The Arena' },
-      { name: 'An Unexpected Voyage', leveled: true },
+      { name: 'An Unexpected Voyage', leveled: 25 },
       { name: 'Light the Dragonfires' },
     ],
     merchants: [
@@ -332,7 +332,7 @@ export const locationDefinitions: LocationDefinition[] = [
     initiallyDiscovered: true,
     quests: [
       { name: 'Breaking the Siege of Kvatch' },
-      { name: 'The Battle for Castle Kvatch', leveled: true },
+      { name: 'The Battle for Castle Kvatch', leveled: 25 },
     ],
     skillBooks: [
       { title: 'A Dance in Fire, v4', skill: 'Acrobatics' },
@@ -350,7 +350,7 @@ export const locationDefinitions: LocationDefinition[] = [
     quests: [
       { name: 'Mazoga the Orc' },
       { name: 'Knights of the White Stallion' },
-      { name: 'Whom Gods Annoy', leveled: true },
+      { name: 'Whom Gods Annoy', leveled: 25 },
       { name: 'Tears of the Savior' },
     ],
     merchants: [
@@ -394,7 +394,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'West Weald',
     initiallyDiscovered: true,
     quests: [
-      { name: 'Ulterior Motives', leveled: true },
+      { name: 'Ulterior Motives', leveled: 30 },
       { name: 'Information at a Price' },
     ],
     merchants: [
@@ -489,7 +489,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Killing Field', leveled: true }],
+    quests: [{ name: 'The Killing Field', leveled: 25 }],
   },
   {
     id: 'hackdirt',
@@ -556,7 +556,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'Weynon Priory' },
       { name: 'The Path of Dawn' },
       { name: 'Blood of the Daedra' },
-      { name: 'Blood of the Divines', leveled: true },
+      { name: 'Blood of the Divines', leveled: 20 },
       { name: 'Miscarcand' },
       { name: 'Defense of Bruma' },
     ],
@@ -580,7 +580,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Wayward Knight', leveled: true }],
+    quests: [{ name: 'The Wayward Knight', leveled: 25 }],
   },
   {
     id: 'temple-of-the-ancestor-moths',
@@ -588,7 +588,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    quests: [{ name: 'Lifting the Vale', leveled: true }],
+    quests: [{ name: 'Lifting the Vale', leveled: 25 }],
   },
   {
     id: 'weynon-priory',
@@ -625,7 +625,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Blackwood',
     initiallyDiscovered: false,
-    quests: [{ name: 'Order of the Virtuous Blood', leveled: true }],
+    quests: [{ name: 'Order of the Virtuous Blood', leveled: 25 }],
   },
   {
     id: 'roland-jenserics-cabin',
@@ -633,7 +633,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Order of the Virtuous Blood', leveled: true }],
+    quests: [{ name: 'Order of the Virtuous Blood', leveled: 25 }],
   },
 
   // ============================================================
@@ -645,7 +645,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Farm',
     hold: 'Jerall Mountains',
     initiallyDiscovered: false,
-    quests: [{ name: 'A Brotherhood Betrayed', leveled: true }],
+    quests: [{ name: 'A Brotherhood Betrayed', leveled: 25 }],
   },
   {
     id: 'drakelowe',
@@ -661,7 +661,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Farm',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Siren\'s Deception', leveled: true }],
+    quests: [{ name: 'The Siren\'s Deception', leveled: 25 }],
   },
   {
     id: 'harms-folly',
@@ -696,7 +696,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Farm',
     hold: 'Great Forest',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Killing Field', leveled: true }],
+    quests: [{ name: 'The Killing Field', leveled: 25 }],
     nirnroots: [
       { description: 'Inside the farmhouse' },
     ],
@@ -714,7 +714,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Farm',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Battle for Castle Kvatch', leveled: true }],
+    quests: [{ name: 'The Battle for Castle Kvatch', leveled: 25 }],
   },
   {
     id: 'weatherleah',
@@ -898,7 +898,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Camp',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Killing Field', leveled: true }],
+    quests: [{ name: 'The Killing Field', leveled: 25 }],
   },
   {
     id: 'dagnys-camp',
@@ -1061,7 +1061,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Landmark',
     hold: 'Colovian Highlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Lifting the Vale', leveled: true }],
+    quests: [{ name: 'Lifting the Vale', leveled: 25 }],
   },
   {
     id: 'dive-rock',
@@ -1509,7 +1509,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Secrets of the Ayleids', leveled: true }],
+    quests: [{ name: 'Secrets of the Ayleids', leveled: 25 }],
   },
   {
     id: 'elenglynn',
@@ -1614,7 +1614,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Great Forest',
     initiallyDiscovered: false,
-    quests: [{ name: 'Confront the King', leveled: true }],
+    quests: [{ name: 'Confront the King' }],
   },
   {
     id: 'nagastani',
@@ -1636,7 +1636,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
-    quests: [{ name: 'Secrets of the Ayleids', leveled: true }],
+    quests: [{ name: 'Secrets of the Ayleids', leveled: 25 }],
     uniqueItems: [{ name: 'Crown of Nenalata' }],
   },
   {
@@ -1675,7 +1675,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    quests: [{ name: 'Whom Gods Annoy', leveled: true }],
+    quests: [{ name: 'Whom Gods Annoy', leveled: 25 }],
   },
   {
     id: 'nornalhorst',
@@ -1775,7 +1775,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Ayleid Ruin',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    quests: [{ name: 'Vahtacen\'s Secret', leveled: true }],
+    quests: [{ name: 'Vahtacen\'s Secret', leveled: 25 }],
   },
   {
     id: 'varondo',
@@ -2024,7 +2024,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Jerall Mountains',
     initiallyDiscovered: false,
-    quests: [{ name: 'Confront the King', leveled: true }],
+    quests: [{ name: 'Confront the King' }],
   },
   {
     id: 'fallen-rock-cave',
@@ -2206,7 +2206,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Order of the Virtuous Blood', leveled: true }],
+    quests: [{ name: 'Order of the Virtuous Blood', leveled: 25 }],
   },
   {
     id: 'mingo-cave',
@@ -2303,7 +2303,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Cave',
     hold: 'Great Forest',
     initiallyDiscovered: false,
-    quests: [{ name: 'Sins of the Father', leveled: true }],
+    quests: [{ name: 'Sins of the Father', leveled: 25 }],
   },
   {
     id: 'redwater-slough',
@@ -2531,7 +2531,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Ghost Ship of Anvil', leveled: true }],
+    quests: [{ name: 'The Ghost Ship of Anvil', leveled: 30 }],
   },
   {
     id: 'dasek-moor',
@@ -2678,7 +2678,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    quests: [{ name: 'A Knife in the Dark' }, { name: 'Honor Thy Mother', leveled: true }],
+    quests: [{ name: 'A Knife in the Dark' }, { name: 'Honor Thy Mother', leveled: 30 }],
   },
   {
     id: 'fort-flecia',
@@ -2789,7 +2789,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Jerall Mountains',
     initiallyDiscovered: false,
-    quests: [{ name: 'Lifting the Vale', leveled: true }],
+    quests: [{ name: 'Lifting the Vale', leveled: 25 }],
   },
   {
     id: 'fort-rayles',
@@ -2885,7 +2885,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'West Weald',
     initiallyDiscovered: false,
-    quests: [{ name: 'Order of the Virtuous Blood', leveled: true }],
+    quests: [{ name: 'Order of the Virtuous Blood', leveled: 25 }],
   },
   {
     id: 'fort-wariel',
@@ -2907,7 +2907,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Fort',
     hold: 'Colovian Highlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Blood of the Divines', leveled: true }],
+    quests: [{ name: 'Blood of the Divines', leveled: 20 }],
     uniqueItems: [{ name: 'Armor of Tiber Septim' }],
   },
 
@@ -3021,7 +3021,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Mine',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Wayward Knight', leveled: true }],
+    quests: [{ name: 'The Wayward Knight', leveled: 25 }],
   },
   {
     id: 'forsaken-mine',
@@ -3126,7 +3126,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Oblivion Gate',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Wayward Knight', leveled: true }],
+    quests: [{ name: 'The Wayward Knight', leveled: 25 }],
     notes: 'Fixed gate; appears after completing Dagon Shrine',
   },
   {
@@ -3276,7 +3276,7 @@ export const locationDefinitions: LocationDefinition[] = [
     dlc: 'KotN',
     initiallyDiscovered: false,
     quests: [
-      { name: 'Priory of the Nine', leveled: true },
+      { name: 'Priory of the Nine', leveled: 21 },
       { name: 'The Blessing of Talos' },
     ],
     uniqueItems: [{ name: 'Cuirass of the Crusader' }],
@@ -3288,7 +3288,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Blackwood',
     dlc: 'KotN',
     initiallyDiscovered: false,
-    quests: [{ name: 'Wisdom of the Ages', leveled: true }],
+    quests: [{ name: 'Wisdom of the Ages', leveled: 21 }],
     uniqueItems: [{ name: 'Shield of the Crusader' }],
   },
   {
@@ -3298,7 +3298,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Gold Coast',
     dlc: 'KotN',
     initiallyDiscovered: false,
-    quests: [{ name: 'Umaril the Unfeathered', leveled: true }],
+    quests: [{ name: 'Umaril the Unfeathered', leveled: 24 }],
     uniqueItems: [{ name: "Umaril's Sword" }],
   },
   {
@@ -3308,7 +3308,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Heartlands',
     dlc: 'KotN',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Shrine of the Crusader', leveled: true }],
+    quests: [{ name: 'The Shrine of the Crusader', leveled: 21 }],
     uniqueItems: [{ name: 'Helm of the Crusader' }],
   },
   {
@@ -3318,7 +3318,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Great Forest',
     dlc: 'KotN',
     initiallyDiscovered: false,
-    quests: [{ name: "Nature's Fury", leveled: true }],
+    quests: [{ name: "Nature's Fury", leveled: 21 }],
   },
   {
     id: 'kotn-kynareth-grotto',
@@ -3327,7 +3327,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Great Forest',
     dlc: 'KotN',
     initiallyDiscovered: false,
-    quests: [{ name: "Nature's Fury", leveled: true }],
+    quests: [{ name: "Nature's Fury", leveled: 21 }],
     uniqueItems: [{ name: 'Boots of the Crusader' }],
   },
   {
@@ -3337,7 +3337,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Great Forest',
     dlc: 'KotN',
     initiallyDiscovered: false,
-    quests: [{ name: "Nature's Fury", leveled: true }],
+    quests: [{ name: "Nature's Fury", leveled: 21 }],
   },
   {
     id: 'kotn-lord-vlindrels-tower',
@@ -3346,7 +3346,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Great Forest',
     dlc: 'KotN',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Sword of the Crusader', leveled: true }],
+    quests: [{ name: 'The Sword of the Crusader', leveled: 21 }],
     uniqueItems: [{ name: 'Sword of the Crusader' }],
   },
 
@@ -3411,7 +3411,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { name: 'The Cold Flame of Agnon' },
       { name: 'Ritual of Accession' },
       { name: 'Rebuilding the Gatekeeper' },
-      { name: 'The Helpless Army', leveled: true },
+      { name: 'The Helpless Army', leveled: 20 },
       { name: 'Symbols of Office' },
       { name: 'The Roots of Madness' },
       { name: 'The End of Order' },
@@ -3465,7 +3465,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Mania',
     dlc: 'SI',
     initiallyDiscovered: false,
-    quests: [{ name: 'To Help A Hero', leveled: true }],
+    quests: [{ name: 'To Help A Hero', leveled: 30 }],
   },
   {
     id: 'si-highcross',
@@ -3492,7 +3492,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Dementia',
     dlc: 'SI',
     initiallyDiscovered: false,
-    quests: [{ name: 'Ghosts of Vitharn', leveled: true }],
+    quests: [{ name: 'Ghosts of Vitharn', leveled: 23 }],
     uniqueItems: [
       { name: "Count Cirion's Helmet" },
       { name: 'Dagger of Depletion' },
@@ -3678,7 +3678,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Dementia',
     dlc: 'SI',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Helpless Army', leveled: true }],
+    quests: [{ name: 'The Helpless Army', leveled: 20 }],
   },
 
   // ============================================================
@@ -3780,7 +3780,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Dementia',
     dlc: 'SI',
     initiallyDiscovered: false,
-    quests: [{ name: 'Baiting the Trap', leveled: true }],
+    quests: [{ name: 'Baiting the Trap', leveled: 30 }],
     uniqueItems: [
       { name: 'Dawnfang / Duskfang' },
       { name: 'Talisman of Abetment' },
@@ -3814,7 +3814,7 @@ export const locationDefinitions: LocationDefinition[] = [
     hold: 'Mania',
     dlc: 'SI',
     initiallyDiscovered: false,
-    quests: [{ name: 'The Helpless Army', leveled: true }],
+    quests: [{ name: 'The Helpless Army', leveled: 20 }],
   },
 
   // ============================================================

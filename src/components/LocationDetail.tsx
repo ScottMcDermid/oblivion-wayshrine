@@ -302,7 +302,7 @@ export default function LocationDetail({
                         {q.name}
                       </UespLink>
                     }
-                    secondary={q.leveled ? 'Leveled reward' : undefined}
+                    secondary={q.leveled ? `Leveled reward (level ${q.leveled}+)` : undefined}
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
                       sx: checked
