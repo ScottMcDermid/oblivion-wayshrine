@@ -114,9 +114,10 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
         const locDLC = loc.dlc ?? 'Base';
         const hasMatchingQuestDLC = loc.quests?.some((q) => q.dlc && activeDLCFilters.has(q.dlc)) ?? false;
         const matchesDLC = activeDLCFilters.size === 0 || activeDLCFilters.has(locDLC) || hasMatchingQuestDLC;
-        return matchesFilter && matchesStatus && matchesDLC;
+        const inScope = activeCompletionScope.size === 0 || activeCompletionScope.has(locDLC);
+        return matchesFilter && matchesStatus && matchesDLC && inScope;
       }),
-    [locations, activeFilters, activeStatusFilters, activeDLCFilters],
+    [locations, activeFilters, activeStatusFilters, activeDLCFilters, activeCompletionScope],
   );
 
   const totals = useMemo(() => {
