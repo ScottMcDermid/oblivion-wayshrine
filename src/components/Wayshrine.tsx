@@ -207,7 +207,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
           backgroundColor: 'background.default',
         }}
       >
-        <CircularProgress sx={{ color: 'secondary.main' }} />
+        <CircularProgress sx={{ color: 'primary.main' }} />
       </Box>
     );
   }
@@ -276,7 +276,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
             sx={{
               fontSize: '1rem',
               fontWeight: 'bold',
-              color: 'secondary.main',
+              color: 'text.primary',
             }}
           >
             Oblivion Wayshrine
@@ -291,10 +291,10 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
             onClick={() => setCompletionDialogOpen(true)}
             sx={{
               fontSize: '0.7rem',
-              color: 'secondary.main',
-              borderColor: 'secondary.main',
+              color: 'text.secondary',
+              borderColor: 'divider',
               cursor: 'pointer',
-              '& .MuiChip-icon': { color: 'secondary.light' },
+              '& .MuiChip-icon': { color: 'text.secondary' },
             }}
             variant="outlined"
           />

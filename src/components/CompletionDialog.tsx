@@ -122,7 +122,7 @@ function MultiArcCircle({
           sx={{
             fontSize: '2rem',
             fontWeight: 'bold',
-            color: 'secondary.main',
+            color: 'text.primary',
             lineHeight: 1,
           }}
         >
