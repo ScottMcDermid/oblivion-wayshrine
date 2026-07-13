@@ -276,7 +276,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
             sx={{
               fontSize: '1rem',
               fontWeight: 'bold',
-              color: 'text.primary',
+              color: 'secondary.main',
             }}
           >
             Oblivion Wayshrine
