@@ -59,6 +59,10 @@ export const locationDefinitions: LocationDefinition[] = [
       { description: "Anvil Castle, Dairhill's apartment" },
       { description: "Lighthouse, Ulfgar Fog-Eye's house" },
     ],
+    beggars: [
+      { name: 'Penniless Olvus', location: 'Just east of the Anvil Main Gate' },
+      { name: 'Imus the Dull', location: 'On the dock, behind The Flowing Bowl' },
+    ],
   },
   {
     id: 'bravil',
@@ -118,6 +122,10 @@ export const locationDefinitions: LocationDefinition[] = [
       { description: 'Fighters Guild, 2nd floor, first room' },
       { description: "Wizard's Grotto, via secret entrance in Castle Bravil" },
     ],
+    beggars: [
+      { name: 'Wretched Aia', location: 'Southwest of the Lonely Suitor Lodge, or by the Main Gate' },
+      { name: 'Cosmus the Cheat', location: 'Sleeps behind The Fair Deal' },
+    ],
   },
   {
     id: 'bruma',
@@ -161,6 +169,10 @@ export const locationDefinitions: LocationDefinition[] = [
       { description: "Baenlin's house, 2nd floor" },
       { description: "Regner's house, downstairs" },
       { description: "Castle Bruma, Tolgan's apartment" },
+    ],
+    beggars: [
+      { name: 'Jorck the Outcast', location: 'South Bruma, behind Arnora\'s house' },
+      { name: 'Fetid Jofnhild', location: 'Northwest Bruma, near the castle' },
     ],
     notes:
       'Missable: Invest in Selena Orania and buy Summon Dremora Lord from Volanaro before "A Plot Revealed"',
@@ -240,6 +252,10 @@ export const locationDefinitions: LocationDefinition[] = [
       { description: 'Mages Guild Well, underwater' },
       { description: 'Riverview, upstairs' },
     ],
+    beggars: [
+      { name: 'Bruccius the Orphan', location: 'Sleeps behind the Mages and Fighters guilds' },
+      { name: 'Luckless Lucina', location: 'Sleeps in the southwest corner, near the house for sale' },
+    ],
   },
   {
     id: 'chorrol',
@@ -291,6 +307,10 @@ export const locationDefinitions: LocationDefinition[] = [
     nirnroots: [
       { description: "Casta Scribonia's house, upstairs" },
       { description: "Vilena Donton's house, 3rd floor" },
+    ],
+    beggars: [
+      { name: 'Nermus the Mooch', location: 'West of the Fighters Guild back door, behind big boulders' },
+      { name: 'Lazy Kaslowyn', location: 'West of the southwest wall tower' },
     ],
   },
   {
@@ -401,6 +421,13 @@ export const locationDefinitions: LocationDefinition[] = [
       { description: "Waterfront District, Marie Elena captain's cabin" },
       { description: "South Watch Tower, captain's quarters" },
     ],
+    beggars: [
+      { name: 'Fralav the Faker', location: "Elven Gardens District, sleeps behind Fathis Ules' house" },
+      { name: 'Simplicia the Slow', location: 'Market District, sleeps behind A Fighting Chance' },
+      { name: 'No-Coins Draninus', location: "Talos Plaza District, sleeps behind Ulen Athram's house" },
+      { name: 'Ragbag Buntara', location: "Temple District, sleeps behind Pennus Mallius' house" },
+      { name: 'Puny Ancus', location: "Waterfront District, sleeps behind Methredhel's house" },
+    ],
     notes: 'Missable: Invest in Fathis Ules before "Sins of the Father"',
   },
   {
@@ -468,6 +495,10 @@ export const locationDefinitions: LocationDefinition[] = [
       { description: "Blackwood Company, Jeetum-Ze's room, 2nd floor" },
       { description: "Margarte's house, room on the right" },
     ],
+    beggars: [
+      { name: 'Deeh the Scalawag', location: 'Sleeps west of the Five Claws Lodge' },
+      { name: 'Rancid Ra\'dirsha', location: 'South-southwest of the Mages Guild' },
+    ],
   },
   {
     id: 'skingrad',
@@ -518,6 +549,10 @@ export const locationDefinitions: LocationDefinition[] = [
     nirnroots: [
       { description: "Surilie Brothers' house, 3rd floor" },
       { description: "Toutius Sextius' house, 3rd floor" },
+    ],
+    beggars: [
+      { name: 'Nigidius the Needy', location: 'Sleeps west of the West Weald Inn' },
+      { name: 'Foul Fagus', location: 'Southeast of the West Weald Inn' },
     ],
   },
 

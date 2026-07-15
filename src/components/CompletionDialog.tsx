@@ -193,6 +193,7 @@ export default function CompletionDialog({
     houses: number;
     greaterPowers: number;
     nirnroots: number;
+    beggars: number;
   };
   completed: {
     locations: number;
@@ -203,6 +204,7 @@ export default function CompletionDialog({
     houses: number;
     greaterPowers: number;
     nirnroots: number;
+    beggars: number;
   };
   completionScope: LocationDLC[];
   onToggleCompletionScope: (dlc: LocationDLC) => void;
@@ -216,6 +218,7 @@ export default function CompletionDialog({
     { label: 'Houses Purchased',        completed: completed.houses,        total: totals.houses,        color: '#14b8a6' },
     { label: 'Greater Powers Acquired', completed: completed.greaterPowers, total: totals.greaterPowers, color: '#f59e0b' },
     { label: 'Nirnroots Collected',     completed: completed.nirnroots,     total: totals.nirnroots,     color: '#84cc16' },
+    { label: 'Beggars Spoken To',       completed: completed.beggars,       total: totals.beggars,       color: '#fb923c' },
   ];
 
   const percentages = categories.map((cat) =>

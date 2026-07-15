@@ -43,6 +43,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
   const acquiredPowers = useLocationStore((s) => s.acquiredPowers);
   const purchasedHouses = useLocationStore((s) => s.purchasedHouses);
   const collectedNirnroots = useLocationStore((s) => s.collectedNirnroots);
+  const spokenBeggars = useLocationStore((s) => s.spokenBeggars);
   const typeFilters = useLocationStore((s) => s.typeFilters);
   const statusFilters = useLocationStore((s) => s.statusFilters);
   const dlcFilters = useLocationStore((s) => s.dlcFilters);
@@ -56,6 +57,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
     togglePowerAcquired,
     toggleHousePurchased,
     toggleNirnrootCollected,
+    toggleBeggarSpoken,
     toggleTypeFilter,
     toggleStatusFilter,
     toggleDLCFilter,
@@ -123,7 +125,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
   const totals = useMemo(() => {
     const uniqueQuests = new Set<string>();
     let scopedLocations = 0;
-    let skillBooks = 0, merchants = 0, uniqueItems = 0, houses = 0, greaterPowers = 0, nirnroots = 0;
+    let skillBooks = 0, merchants = 0, uniqueItems = 0, houses = 0, greaterPowers = 0, nirnroots = 0, beggars = 0;
     for (const loc of locationDefinitions) {
       const locDLC = loc.dlc ?? 'Base';
       const locInScope = activeCompletionScope.size === 0 || activeCompletionScope.has(locDLC);
@@ -142,9 +144,10 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
         houses += loc.houses?.length ?? 0;
         greaterPowers += loc.greaterPowers?.length ?? 0;
         nirnroots += loc.nirnroots?.length ?? 0;
+        beggars += loc.beggars?.length ?? 0;
       }
     }
-    return { locations: scopedLocations, quests: uniqueQuests.size, skillBooks, merchants, uniqueItems, houses, greaterPowers, nirnroots };
+    return { locations: scopedLocations, quests: uniqueQuests.size, skillBooks, merchants, uniqueItems, houses, greaterPowers, nirnroots, beggars };
   }, [activeCompletionScope]);
 
   const completed = useMemo(() => {
@@ -173,11 +176,12 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
       houses: Object.keys(purchasedHouses).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
       greaterPowers: Object.keys(acquiredPowers).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
       nirnroots: Object.keys(collectedNirnroots).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
+      beggars: Object.keys(spokenBeggars).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
     };
-  }, [activeCompletionScope, locations, completedQuests, foundSkillBooks, investedMerchants, acquiredItems, purchasedHouses, acquiredPowers, collectedNirnroots]);
+  }, [activeCompletionScope, locations, completedQuests, foundSkillBooks, investedMerchants, acquiredItems, purchasedHouses, acquiredPowers, collectedNirnroots, spokenBeggars]);
 
   const overallPercent = useMemo(() => {
-    const cats = ['locations', 'quests', 'skillBooks', 'merchants', 'uniqueItems', 'houses', 'greaterPowers', 'nirnroots'] as const;
+    const cats = ['locations', 'quests', 'skillBooks', 'merchants', 'uniqueItems', 'houses', 'greaterPowers', 'nirnroots', 'beggars'] as const;
     const percentages = cats.map((cat) =>
       totals[cat] > 0 ? (completed[cat] / totals[cat]) * 100 : 100,
     );
@@ -224,6 +228,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
       acquiredPowers={acquiredPowers}
       purchasedHouses={purchasedHouses}
       collectedNirnroots={collectedNirnroots}
+      spokenBeggars={spokenBeggars}
       onToggleQuest={(name) => toggleQuestCompleted(name)}
       onToggleSkillBook={(title) => toggleSkillBookFound(selectedLocation.id, title)}
       onToggleMerchant={(name) => toggleMerchantInvested(selectedLocation.id, name)}
@@ -231,6 +236,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
       onTogglePower={(name) => togglePowerAcquired(selectedLocation.id, name)}
       onToggleHouse={(name) => toggleHousePurchased(selectedLocation.id, name)}
       onToggleNirnroot={(desc) => toggleNirnrootCollected(selectedLocation.id, desc)}
+      onToggleBeggar={(name) => toggleBeggarSpoken(selectedLocation.id, name)}
       activeDLCFilters={activeDLCFilters}
       completionScope={activeCompletionScope}
     />
@@ -414,6 +420,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
                 acquiredPowers={acquiredPowers}
                 purchasedHouses={purchasedHouses}
                 collectedNirnroots={collectedNirnroots}
+                spokenBeggars={spokenBeggars}
                 onToggleQuest={(name) => toggleQuestCompleted(name)}
                 onToggleSkillBook={(title) => toggleSkillBookFound(displayedLocation.id, title)}
                 onToggleMerchant={(name) => toggleMerchantInvested(displayedLocation.id, name)}
@@ -421,6 +428,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
                 onTogglePower={(name) => togglePowerAcquired(displayedLocation.id, name)}
                 onToggleHouse={(name) => toggleHousePurchased(displayedLocation.id, name)}
                 onToggleNirnroot={(desc) => toggleNirnrootCollected(displayedLocation.id, desc)}
+                onToggleBeggar={(name) => toggleBeggarSpoken(displayedLocation.id, name)}
                 activeDLCFilters={activeDLCFilters}
                 completionScope={activeCompletionScope}
               />

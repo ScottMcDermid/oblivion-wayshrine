@@ -20,6 +20,7 @@ type State = {
   acquiredPowers: Record<string, boolean>;
   purchasedHouses: Record<string, boolean>;
   collectedNirnroots: Record<string, boolean>;
+  spokenBeggars: Record<string, boolean>;
   typeFilters: LocationType[];
   statusFilters: LocationStatus[];
   dlcFilters: LocationDLC[];
@@ -36,6 +37,7 @@ type Actions = {
   togglePowerAcquired: (locationId: string, powerName: string) => void;
   toggleHousePurchased: (locationId: string, houseName: string) => void;
   toggleNirnrootCollected: (locationId: string, description: string) => void;
+  toggleBeggarSpoken: (locationId: string, beggarName: string) => void;
   toggleTypeFilter: (type: LocationType) => void;
   toggleStatusFilter: (status: LocationStatus) => void;
   toggleDLCFilter: (dlc: LocationDLC) => void;
@@ -57,11 +59,12 @@ export const useLocationStore = create<LocationStore>()(
       acquiredPowers: {},
       purchasedHouses: {},
       collectedNirnroots: {},
+      spokenBeggars: {},
       typeFilters: [],
       statusFilters: [],
       dlcFilters: [],
       completionScope: ['Base', 'SI', 'KotN', 'Plugins', 'Remastered'],
-      version: 5,
+      version: 6,
       actions: {
         setLocationStatus: (id, status) =>
           set((state) => ({
@@ -108,6 +111,12 @@ export const useLocationStore = create<LocationStore>()(
             const { [key]: current, ...rest } = state.collectedNirnroots;
             return { collectedNirnroots: current ? rest : { ...state.collectedNirnroots, [key]: true } };
           }),
+        toggleBeggarSpoken: (locationId, beggarName) =>
+          set((state) => {
+            const key = `${locationId}:${beggarName}`;
+            const { [key]: current, ...rest } = state.spokenBeggars;
+            return { spokenBeggars: current ? rest : { ...state.spokenBeggars, [key]: true } };
+          }),
         toggleTypeFilter: (type) =>
           set((state) => ({
             typeFilters: state.typeFilters.includes(type)
@@ -149,12 +158,13 @@ export const useLocationStore = create<LocationStore>()(
             acquiredPowers: {},
             purchasedHouses: {},
             collectedNirnroots: {},
+            spokenBeggars: {},
           }),
       },
     }),
     {
       name: 'oblivion-wayshrine',
-      version: 5,
+      version: 6,
       migrate: (persisted, version) => {
         const state = persisted as Record<string, unknown>;
         if (version < 2) {
@@ -198,6 +208,13 @@ export const useLocationStore = create<LocationStore>()(
           }
           state.version = 5;
         }
+        if (version < 6) {
+          // Add spokenBeggars tracking
+          if (!state.spokenBeggars) {
+            state.spokenBeggars = {};
+          }
+          state.version = 6;
+        }
         return state as LocationStore;
       },
       partialize: (state) => ({
@@ -209,6 +226,7 @@ export const useLocationStore = create<LocationStore>()(
         acquiredPowers: state.acquiredPowers,
         purchasedHouses: state.purchasedHouses,
         collectedNirnroots: state.collectedNirnroots,
+        spokenBeggars: state.spokenBeggars,
         typeFilters: state.typeFilters,
         statusFilters: state.statusFilters,
         dlcFilters: state.dlcFilters,

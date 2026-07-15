@@ -70,6 +70,11 @@ export type NirnrootReference = {
   description: string;
 };
 
+export type BeggarReference = {
+  name: string;
+  location: string;
+};
+
 export type TrainerTier = 'Novice' | 'Journeyman' | 'Master';
 
 export type TrainerReference = {
@@ -114,5 +119,6 @@ export type LocationDefinition = {
   greaterPowers?: GreaterPowerReference[];
   trainers?: TrainerReference[];
   nirnroots?: NirnrootReference[];
+  beggars?: BeggarReference[];
   notes?: string;
 };

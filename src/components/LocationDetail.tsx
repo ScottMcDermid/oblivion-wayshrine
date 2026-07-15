@@ -53,6 +53,7 @@ export default function LocationDetail({
   acquiredPowers,
   purchasedHouses,
   collectedNirnroots,
+  spokenBeggars,
   onToggleQuest,
   onToggleSkillBook,
   onToggleMerchant,
@@ -60,6 +61,7 @@ export default function LocationDetail({
   onTogglePower,
   onToggleHouse,
   onToggleNirnroot,
+  onToggleBeggar,
   activeDLCFilters,
   completionScope,
 }: {
@@ -73,6 +75,7 @@ export default function LocationDetail({
   acquiredPowers: Record<string, boolean>;
   purchasedHouses: Record<string, boolean>;
   collectedNirnroots: Record<string, boolean>;
+  spokenBeggars: Record<string, boolean>;
   onToggleQuest: (questName: string) => void;
   onToggleSkillBook: (bookTitle: string) => void;
   onToggleMerchant: (merchantName: string) => void;
@@ -80,6 +83,7 @@ export default function LocationDetail({
   onTogglePower: (powerName: string) => void;
   onToggleHouse: (houseName: string) => void;
   onToggleNirnroot: (description: string) => void;
+  onToggleBeggar: (beggarName: string) => void;
   activeDLCFilters?: Set<LocationDLC>;
   completionScope?: Set<LocationDLC>;
 }) {
@@ -574,6 +578,69 @@ export default function LocationDetail({
                 />
               </ListItem>
             ))}
+          </List>
+        </>
+      )}
+
+      {location.beggars && location.beggars.length > 0 && (
+        <>
+          <Divider sx={{ my: 1 }} />
+          <Typography
+            variant="caption"
+            sx={{ color: 'text.secondary', fontWeight: 'bold', textTransform: 'uppercase' }}
+          >
+            Beggars
+          </Typography>
+          <Typography variant="caption" sx={{ color: 'text.disabled', fontSize: '0.65rem', display: 'block', mb: 0.5 }}>
+            Speak to all 19 beggars in Cyrodiil to unlock Speechcraft master training from Tandilwe (Imperial City)
+          </Typography>
+          <List dense disablePadding>
+            {location.beggars.map((beggar) => {
+              const checked = !!spokenBeggars[`${location.id}:${beggar.name}`];
+              return (
+                <ListItem
+                  key={beggar.name}
+                  disableGutters
+                  sx={{ py: 0.25, cursor: 'pointer' }}
+                  onClick={() => onToggleBeggar(beggar.name)}
+                >
+                  <ListItemIcon sx={{ minWidth: 28 }}>
+                    <Checkbox
+                      size="small"
+                      checked={checked}
+                      tabIndex={-1}
+                      disableRipple
+                      sx={{
+                        p: 0,
+                        color: '#fb923c',
+                        '&.Mui-checked': { color: '#fb923c' },
+                      }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={
+                      <UespLink href={buildUespUrl(beggar.name, location.dlc)}>
+                        {beggar.name}
+                      </UespLink>
+                    }
+                    secondary={beggar.location}
+                    primaryTypographyProps={{
+                      fontSize: '0.8rem',
+                      component: 'div',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.secondary' }
+                        : undefined,
+                    }}
+                    secondaryTypographyProps={{
+                      fontSize: '0.7rem',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.disabled' }
+                        : undefined,
+                    }}
+                  />
+                </ListItem>
+              );
+            })}
           </List>
         </>
       )}
