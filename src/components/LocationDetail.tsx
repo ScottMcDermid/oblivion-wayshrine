@@ -18,7 +18,7 @@ import {
   RadioButtonUnchecked,
   Warning,
 } from '@mui/icons-material';
-import { LocationDLC, LocationDefinition, LocationStatus, locationDLCColors, locationDLCLabels } from '@/utils/locationTypes';
+import { LocationDLC, LocationDefinition, LocationStatus, locationDLCColors, locationDLCLabels, vanillaLeveledOverrides } from '@/utils/locationTypes';
 import { locationTypeIcons } from '@/utils/locationIcons';
 import SkillIcon from '@/components/SkillIcon';
 import { buildUespUrl, disambiguationNames } from '@/utils/uespLinks';
@@ -62,6 +62,7 @@ export default function LocationDetail({
   onToggleHouse,
   onToggleNirnroot,
   onToggleBeggar,
+  unofficialPatch,
   activeDLCFilters,
   completionScope,
 }: {
@@ -84,6 +85,7 @@ export default function LocationDetail({
   onToggleHouse: (houseName: string) => void;
   onToggleNirnroot: (description: string) => void;
   onToggleBeggar: (beggarName: string) => void;
+  unofficialPatch: boolean;
   activeDLCFilters?: Set<LocationDLC>;
   completionScope?: Set<LocationDLC>;
 }) {
@@ -310,7 +312,12 @@ export default function LocationDetail({
               const effectiveQuestDLC = q.dlc ?? locationDLC;
               const questDLCBadge = effectiveQuestDLC !== 'Base' ? effectiveQuestDLC : undefined;
               const secondaryParts: string[] = [];
-              if (q.leveled) secondaryParts.push(`Leveled reward (level ${q.leveled}+)`);
+              if (q.leveled) {
+                const effectiveLevel = (!unofficialPatch && vanillaLeveledOverrides[q.name] !== undefined)
+                  ? vanillaLeveledOverrides[q.name]
+                  : q.leveled;
+                secondaryParts.push(`Leveled reward (level ${effectiveLevel}+)`);
+              }
               return (
                 <ListItem
                   key={q.name}

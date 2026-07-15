@@ -44,6 +44,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
   const purchasedHouses = useLocationStore((s) => s.purchasedHouses);
   const collectedNirnroots = useLocationStore((s) => s.collectedNirnroots);
   const spokenBeggars = useLocationStore((s) => s.spokenBeggars);
+  const unofficialPatch = useLocationStore((s) => s.unofficialPatch);
   const typeFilters = useLocationStore((s) => s.typeFilters);
   const statusFilters = useLocationStore((s) => s.statusFilters);
   const dlcFilters = useLocationStore((s) => s.dlcFilters);
@@ -58,6 +59,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
     toggleHousePurchased,
     toggleNirnrootCollected,
     toggleBeggarSpoken,
+    toggleUnofficialPatch,
     toggleTypeFilter,
     toggleStatusFilter,
     toggleDLCFilter,
@@ -237,6 +239,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
       onToggleHouse={(name) => toggleHousePurchased(selectedLocation.id, name)}
       onToggleNirnroot={(desc) => toggleNirnrootCollected(selectedLocation.id, desc)}
       onToggleBeggar={(name) => toggleBeggarSpoken(selectedLocation.id, name)}
+      unofficialPatch={unofficialPatch}
       activeDLCFilters={activeDLCFilters}
       completionScope={activeCompletionScope}
     />
@@ -429,6 +432,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
                 onToggleHouse={(name) => toggleHousePurchased(displayedLocation.id, name)}
                 onToggleNirnroot={(desc) => toggleNirnrootCollected(displayedLocation.id, desc)}
                 onToggleBeggar={(name) => toggleBeggarSpoken(displayedLocation.id, name)}
+                unofficialPatch={unofficialPatch}
                 activeDLCFilters={activeDLCFilters}
                 completionScope={activeCompletionScope}
               />
@@ -538,6 +542,8 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
         completed={completed}
         completionScope={completionScope}
         onToggleCompletionScope={toggleCompletionScope}
+        unofficialPatch={unofficialPatch}
+        onToggleUnofficialPatch={toggleUnofficialPatch}
       />
     </Box>
   );

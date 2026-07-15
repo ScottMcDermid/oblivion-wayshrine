@@ -180,6 +180,8 @@ export default function CompletionDialog({
   completed,
   completionScope,
   onToggleCompletionScope,
+  unofficialPatch,
+  onToggleUnofficialPatch,
 }: {
   open: boolean;
   onClose: () => void;
@@ -208,6 +210,8 @@ export default function CompletionDialog({
   };
   completionScope: LocationDLC[];
   onToggleCompletionScope: (dlc: LocationDLC) => void;
+  unofficialPatch: boolean;
+  onToggleUnofficialPatch: () => void;
 }) {
   const categories: CompletionCategory[] = [
     { label: 'Locations Cleared',      completed: completed.locations,     total: totals.locations,     color: '#22c55e' },
@@ -286,6 +290,35 @@ export default function CompletionDialog({
               );
             })}
           </Box>
+        </Box>
+
+        {/* Unofficial Patch */}
+        <Box sx={{ mb: 3 }}>
+          <Typography
+            variant="caption"
+            sx={{ color: 'text.secondary', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', mb: 0.5 }}
+          >
+            Unofficial Patch / Remastered
+          </Typography>
+          <Typography variant="caption" sx={{ color: 'text.disabled', fontSize: '0.65rem', display: 'block', mb: 1 }}>
+            Adjusts leveled reward thresholds for 4 quests fixed by the Unofficial Oblivion Patch
+          </Typography>
+          <Chip
+            label={unofficialPatch ? 'Enabled' : 'Disabled'}
+            size="small"
+            onClick={onToggleUnofficialPatch}
+            sx={{
+              fontSize: '0.7rem',
+              fontWeight: unofficialPatch ? 'bold' : 'normal',
+              color: unofficialPatch ? '#fff' : 'text.secondary',
+              backgroundColor: unofficialPatch ? '#22c55e' : 'transparent',
+              borderColor: unofficialPatch ? '#22c55e' : 'divider',
+              border: '1px solid',
+              cursor: 'pointer',
+              transition: 'all 0.15s ease',
+            }}
+            variant={unofficialPatch ? 'filled' : 'outlined'}
+          />
         </Box>
 
         <MultiArcCircle categories={categories} overallPercent={overallPercent} />

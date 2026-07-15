@@ -84,6 +84,15 @@ export type TrainerReference = {
   maxLevel: number;
 };
 
+// Quests whose leveled reward thresholds are corrected by the Unofficial Oblivion Patch.
+// The data stores UOP-corrected values; these are the vanilla (unpatched) equivalents.
+export const vanillaLeveledOverrides: Record<string, number> = {
+  'The Ghost Ship of Anvil':   1,
+  'Information Gathering':     5,
+  "Mystery at Harlun's Watch": 10,
+  'Blood of the Divines':      15,
+};
+
 export type LocationDLC = 'Base' | 'SI' | 'KotN' | 'Plugins' | 'Remastered';
 
 export const locationDLCs: LocationDLC[] = ['Base', 'SI', 'KotN', 'Plugins', 'Remastered'];

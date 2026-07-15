@@ -25,6 +25,7 @@ type State = {
   statusFilters: LocationStatus[];
   dlcFilters: LocationDLC[];
   completionScope: LocationDLC[];
+  unofficialPatch: boolean;
   version: number;
 };
 
@@ -42,6 +43,7 @@ type Actions = {
   toggleStatusFilter: (status: LocationStatus) => void;
   toggleDLCFilter: (dlc: LocationDLC) => void;
   toggleCompletionScope: (dlc: LocationDLC) => void;
+  toggleUnofficialPatch: () => void;
   clearFilters: () => void;
   resetToDefaults: () => void;
 };
@@ -64,7 +66,8 @@ export const useLocationStore = create<LocationStore>()(
       statusFilters: [],
       dlcFilters: [],
       completionScope: ['Base', 'SI', 'KotN', 'Plugins', 'Remastered'],
-      version: 6,
+      unofficialPatch: true,
+      version: 8,
       actions: {
         setLocationStatus: (id, status) =>
           set((state) => ({
@@ -146,6 +149,8 @@ export const useLocationStore = create<LocationStore>()(
                 : [...current, dlc],
             };
           }),
+        toggleUnofficialPatch: () =>
+          set((state) => ({ unofficialPatch: !state.unofficialPatch })),
         clearFilters: () =>
           set({ typeFilters: [], statusFilters: [], dlcFilters: [] }),
         resetToDefaults: () =>
@@ -164,7 +169,7 @@ export const useLocationStore = create<LocationStore>()(
     }),
     {
       name: 'oblivion-wayshrine',
-      version: 6,
+      version: 8,
       migrate: (persisted, version) => {
         const state = persisted as Record<string, unknown>;
         if (version < 2) {
@@ -215,6 +220,30 @@ export const useLocationStore = create<LocationStore>()(
           }
           state.version = 6;
         }
+        if (version < 7) {
+          // Rename master training quest keys to drop "Master" prefix
+          const quests = (state.completedQuests ?? {}) as Record<string, boolean>;
+          const renames: Record<string, string> = {
+            'Acrobatics Master Training': 'Acrobatics Training',
+            'Marksman Master Training': 'Marksman Training',
+          };
+          let updated = { ...quests };
+          for (const [oldKey, newKey] of Object.entries(renames)) {
+            if (updated[oldKey]) {
+              const { [oldKey]: val, ...rest } = updated;
+              updated = { ...rest, [newKey]: val };
+            }
+          }
+          state.completedQuests = updated;
+          state.version = 7;
+        }
+        if (version < 8) {
+          // Add unofficialPatch setting (defaults to true)
+          if (state.unofficialPatch === undefined) {
+            state.unofficialPatch = true;
+          }
+          state.version = 8;
+        }
         return state as LocationStore;
       },
       partialize: (state) => ({
@@ -231,6 +260,7 @@ export const useLocationStore = create<LocationStore>()(
         statusFilters: state.statusFilters,
         dlcFilters: state.dlcFilters,
         completionScope: state.completionScope,
+        unofficialPatch: state.unofficialPatch,
         version: state.version,
       }),
     },
