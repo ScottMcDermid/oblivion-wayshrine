@@ -454,6 +454,9 @@ export default function LocationDetail({
           >
             Merchants
           </Typography>
+          <Typography variant="caption" sx={{ color: 'text.disabled', fontSize: '0.65rem', display: 'block', mb: 0.5 }}>
+            Invest 500 gold with each merchant to permanently increase their available gold
+          </Typography>
           <List dense disablePadding>
             {location.merchants.map((m) => {
               const checked = !!investedMerchants[`${location.id}:${m.name}`];
