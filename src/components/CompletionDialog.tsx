@@ -193,6 +193,7 @@ export default function CompletionDialog({
     merchants: number;
     uniqueItems: number;
     houses: number;
+    horses: number;
     greaterPowers: number;
     nirnroots: number;
     beggars: number;
@@ -204,6 +205,7 @@ export default function CompletionDialog({
     merchants: number;
     uniqueItems: number;
     houses: number;
+    horses: number;
     greaterPowers: number;
     nirnroots: number;
     beggars: number;
@@ -220,6 +222,7 @@ export default function CompletionDialog({
     { label: 'Merchants Invested',      completed: completed.merchants,     total: totals.merchants,     color: '#34d399' },
     { label: 'Unique Items Acquired',   completed: completed.uniqueItems,   total: totals.uniqueItems,   color: '#f472b6' },
     { label: 'Houses Purchased',        completed: completed.houses,        total: totals.houses,        color: '#14b8a6' },
+    { label: 'Horses Purchased',        completed: completed.horses,        total: totals.horses,        color: '#38bdf8' },
     { label: 'Greater Powers Acquired', completed: completed.greaterPowers, total: totals.greaterPowers, color: '#f59e0b' },
     { label: 'Nirnroots Collected',     completed: completed.nirnroots,     total: totals.nirnroots,     color: '#84cc16' },
     { label: 'Beggars Spoken To',       completed: completed.beggars,       total: totals.beggars,       color: '#fb923c' },

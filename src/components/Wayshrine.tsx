@@ -42,6 +42,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
   const acquiredItems = useLocationStore((s) => s.acquiredItems);
   const acquiredPowers = useLocationStore((s) => s.acquiredPowers);
   const purchasedHouses = useLocationStore((s) => s.purchasedHouses);
+  const purchasedHorses = useLocationStore((s) => s.purchasedHorses);
   const collectedNirnroots = useLocationStore((s) => s.collectedNirnroots);
   const spokenBeggars = useLocationStore((s) => s.spokenBeggars);
   const unofficialPatch = useLocationStore((s) => s.unofficialPatch);
@@ -57,6 +58,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
     toggleItemAcquired,
     togglePowerAcquired,
     toggleHousePurchased,
+    toggleHorsePurchased,
     toggleNirnrootCollected,
     toggleBeggarSpoken,
     toggleUnofficialPatch,
@@ -127,6 +129,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
   const totals = useMemo(() => {
     const uniqueQuests = new Set<string>();
     let scopedLocations = 0;
+    const uniqueHorseNames = new Set<string>();
     let skillBooks = 0, merchants = 0, uniqueItems = 0, houses = 0, greaterPowers = 0, nirnroots = 0, beggars = 0;
     for (const loc of locationDefinitions) {
       const locDLC = loc.dlc ?? 'Base';
@@ -144,18 +147,20 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
         merchants += loc.merchants?.length ?? 0;
         uniqueItems += loc.uniqueItems?.length ?? 0;
         houses += loc.houses?.length ?? 0;
+        loc.horses?.forEach((h) => uniqueHorseNames.add(h.name));
         greaterPowers += loc.greaterPowers?.length ?? 0;
         nirnroots += loc.nirnroots?.length ?? 0;
         beggars += loc.beggars?.length ?? 0;
       }
     }
-    return { locations: scopedLocations, quests: uniqueQuests.size, skillBooks, merchants, uniqueItems, houses, greaterPowers, nirnroots, beggars };
+    return { locations: scopedLocations, quests: uniqueQuests.size, skillBooks, merchants, uniqueItems, houses, horses: uniqueHorseNames.size, greaterPowers, nirnroots, beggars };
   }, [activeCompletionScope]);
 
   const completed = useMemo(() => {
-    // Build a set of in-scope location IDs and in-scope quest names for fast lookups
+    // Build a set of in-scope location IDs, quest names, and horse names for fast lookups
     const scopedLocationIds = new Set<string>();
     const scopedQuestNames = new Set<string>();
+    const scopedHorseNames = new Set<string>();
     for (const loc of locationDefinitions) {
       const locDLC = loc.dlc ?? 'Base';
       if (activeCompletionScope.size === 0 || activeCompletionScope.has(locDLC)) {
@@ -166,6 +171,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
             scopedQuestNames.add(q.name);
           }
         });
+        loc.horses?.forEach((h) => scopedHorseNames.add(h.name));
       }
     }
 
@@ -176,14 +182,15 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
       merchants: Object.keys(investedMerchants).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
       uniqueItems: Object.keys(acquiredItems).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
       houses: Object.keys(purchasedHouses).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
+      horses: Object.keys(purchasedHorses).filter((name) => scopedHorseNames.has(name)).length,
       greaterPowers: Object.keys(acquiredPowers).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
       nirnroots: Object.keys(collectedNirnroots).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
       beggars: Object.keys(spokenBeggars).filter((key) => scopedLocationIds.has(key.split(':')[0])).length,
     };
-  }, [activeCompletionScope, locations, completedQuests, foundSkillBooks, investedMerchants, acquiredItems, purchasedHouses, acquiredPowers, collectedNirnroots, spokenBeggars]);
+  }, [activeCompletionScope, locations, completedQuests, foundSkillBooks, investedMerchants, acquiredItems, purchasedHouses, purchasedHorses, acquiredPowers, collectedNirnroots, spokenBeggars]);
 
   const overallPercent = useMemo(() => {
-    const cats = ['locations', 'quests', 'skillBooks', 'merchants', 'uniqueItems', 'houses', 'greaterPowers', 'nirnroots', 'beggars'] as const;
+    const cats = ['locations', 'quests', 'skillBooks', 'merchants', 'uniqueItems', 'houses', 'horses', 'greaterPowers', 'nirnroots', 'beggars'] as const;
     const percentages = cats.map((cat) =>
       totals[cat] > 0 ? (completed[cat] / totals[cat]) * 100 : 100,
     );
@@ -229,6 +236,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
       acquiredItems={acquiredItems}
       acquiredPowers={acquiredPowers}
       purchasedHouses={purchasedHouses}
+      purchasedHorses={purchasedHorses}
       collectedNirnroots={collectedNirnroots}
       spokenBeggars={spokenBeggars}
       onToggleQuest={(name) => toggleQuestCompleted(name)}
@@ -237,6 +245,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
       onToggleItem={(name) => toggleItemAcquired(selectedLocation.id, name)}
       onTogglePower={(name) => togglePowerAcquired(selectedLocation.id, name)}
       onToggleHouse={(name) => toggleHousePurchased(selectedLocation.id, name)}
+      onToggleHorse={(name) => toggleHorsePurchased(name)}
       onToggleNirnroot={(desc) => toggleNirnrootCollected(selectedLocation.id, desc)}
       onToggleBeggar={(name) => toggleBeggarSpoken(selectedLocation.id, name)}
       unofficialPatch={unofficialPatch}
@@ -422,6 +431,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
                 acquiredItems={acquiredItems}
                 acquiredPowers={acquiredPowers}
                 purchasedHouses={purchasedHouses}
+                purchasedHorses={purchasedHorses}
                 collectedNirnroots={collectedNirnroots}
                 spokenBeggars={spokenBeggars}
                 onToggleQuest={(name) => toggleQuestCompleted(name)}
@@ -430,6 +440,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
                 onToggleItem={(name) => toggleItemAcquired(displayedLocation.id, name)}
                 onTogglePower={(name) => togglePowerAcquired(displayedLocation.id, name)}
                 onToggleHouse={(name) => toggleHousePurchased(displayedLocation.id, name)}
+                onToggleHorse={(name) => toggleHorsePurchased(name)}
                 onToggleNirnroot={(desc) => toggleNirnrootCollected(displayedLocation.id, desc)}
                 onToggleBeggar={(name) => toggleBeggarSpoken(displayedLocation.id, name)}
                 unofficialPatch={unofficialPatch}

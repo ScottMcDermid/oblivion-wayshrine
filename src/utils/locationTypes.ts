@@ -61,6 +61,11 @@ export type HouseReference = {
   price: number;
 };
 
+export type HorseReference = {
+  name: string;
+  price: number;
+};
+
 export type GreaterPowerReference = {
   name: string;
   renown: number;
@@ -125,6 +130,7 @@ export type LocationDefinition = {
   merchants?: MerchantReference[];
   uniqueItems?: UniqueItemReference[];
   houses?: HouseReference[];
+  horses?: HorseReference[];
   greaterPowers?: GreaterPowerReference[];
   trainers?: TrainerReference[];
   nirnroots?: NirnrootReference[];

@@ -40,6 +40,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'Fighters Guild History, 1st Ed.', skill: 'Heavy Armor' },
     ],
     houses: [{ name: 'Benirus Manor', price: 5000 }],
+    horses: [{ name: 'White Horse', price: 4000 }],
     trainers: [
       { name: 'Azzan', skill: 'Blunt', tier: 'Journeyman', maxLevel: 70 },
       { name: 'Carahil', skill: 'Illusion', tier: 'Journeyman', maxLevel: 70 },
@@ -101,6 +102,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: '2920, Last Seed', skill: 'Sneak' },
     ],
     houses: [{ name: 'Bravil House', price: 7900 }],
+    horses: [{ name: 'Bay Horse', price: 1000 }],
     trainers: [
       { name: 'Andragil', skill: 'Block', tier: 'Master', maxLevel: 100 },
       { name: 'Ardaline', skill: 'Alchemy', tier: 'Journeyman', maxLevel: 70 },
@@ -155,6 +157,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'A Dance in Fire, v5', skill: 'Marksman' },
     ],
     houses: [{ name: 'Bruma House', price: 19900 }],
+    horses: [{ name: 'Paint Horse', price: 500 }],
     trainers: [
       { name: 'Alga', skill: 'Speechcraft', tier: 'Novice', maxLevel: 40 },
       { name: 'Arentus Falvius', skill: 'Conjuration', tier: 'Journeyman', maxLevel: 70 },
@@ -240,6 +243,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'The Wolf Queen, v7', skill: 'Speechcraft' },
     ],
     houses: [{ name: 'Cheydinhal House', price: 30000 }],
+    horses: [{ name: 'Black Horse', price: 5000 }, { name: 'Shadowmere', price: 0 }],
     trainers: [
       { name: 'Deetsan', skill: 'Alteration', tier: 'Novice', maxLevel: 40 },
       { name: 'Ganredhel', skill: 'Acrobatics', tier: 'Journeyman', maxLevel: 70 },
@@ -295,6 +299,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'Notes on Racial Phylogeny', skill: 'Restoration' },
     ],
     houses: [{ name: 'Arborwatch', price: 39400 }],
+    horses: [{ name: 'Chestnut Horse', price: 2500 }],
     trainers: [
       { name: 'Alberic Litte', skill: 'Conjuration', tier: 'Journeyman', maxLevel: 70 },
       { name: 'Angalmo', skill: 'Mysticism', tier: 'Novice', maxLevel: 40 },
@@ -489,6 +494,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'Withershins', skill: 'Restoration' },
     ],
     houses: [{ name: 'Leyawiin House', price: 14000 }],
+    horses: [{ name: 'Paint Horse', price: 500 }],
     trainers: [
       { name: 'Ahdarji', skill: 'Light Armor', tier: 'Journeyman', maxLevel: 70 },
       { name: 'Brodras', skill: 'Heavy Armor', tier: 'Novice', maxLevel: 40 },
@@ -549,6 +555,7 @@ export const locationDefinitions: LocationDefinition[] = [
       { title: 'The Exodus', skill: 'Restoration' },
     ],
     houses: [{ name: 'Rosethorn Hall', price: 48200 }],
+    horses: [{ name: 'Bay Horse', price: 1000 }],
     trainers: [
       { name: 'Ambroise Canne', skill: 'Block', tier: 'Journeyman', maxLevel: 70 },
       { name: 'Druja', skill: 'Mysticism', tier: 'Novice', maxLevel: 40 },

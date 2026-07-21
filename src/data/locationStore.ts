@@ -19,6 +19,7 @@ type State = {
   acquiredItems: Record<string, boolean>;
   acquiredPowers: Record<string, boolean>;
   purchasedHouses: Record<string, boolean>;
+  purchasedHorses: Record<string, boolean>;
   collectedNirnroots: Record<string, boolean>;
   spokenBeggars: Record<string, boolean>;
   typeFilters: LocationType[];
@@ -37,6 +38,7 @@ type Actions = {
   toggleItemAcquired: (locationId: string, itemName: string) => void;
   togglePowerAcquired: (locationId: string, powerName: string) => void;
   toggleHousePurchased: (locationId: string, houseName: string) => void;
+  toggleHorsePurchased: (horseName: string) => void;
   toggleNirnrootCollected: (locationId: string, description: string) => void;
   toggleBeggarSpoken: (locationId: string, beggarName: string) => void;
   toggleTypeFilter: (type: LocationType) => void;
@@ -60,6 +62,7 @@ export const useLocationStore = create<LocationStore>()(
       acquiredItems: {},
       acquiredPowers: {},
       purchasedHouses: {},
+      purchasedHorses: {},
       collectedNirnroots: {},
       spokenBeggars: {},
       typeFilters: [],
@@ -67,7 +70,7 @@ export const useLocationStore = create<LocationStore>()(
       dlcFilters: [],
       completionScope: ['Base', 'SI', 'KotN', 'Plugins', 'Remastered'],
       unofficialPatch: true,
-      version: 8,
+      version: 10,
       actions: {
         setLocationStatus: (id, status) =>
           set((state) => ({
@@ -107,6 +110,11 @@ export const useLocationStore = create<LocationStore>()(
             const key = `${locationId}:${houseName}`;
             const { [key]: current, ...rest } = state.purchasedHouses;
             return { purchasedHouses: current ? rest : { ...state.purchasedHouses, [key]: true } };
+          }),
+        toggleHorsePurchased: (horseName) =>
+          set((state) => {
+            const { [horseName]: current, ...rest } = state.purchasedHorses;
+            return { purchasedHorses: current ? rest : { ...state.purchasedHorses, [horseName]: true } };
           }),
         toggleNirnrootCollected: (locationId, description) =>
           set((state) => {
@@ -162,6 +170,7 @@ export const useLocationStore = create<LocationStore>()(
             acquiredItems: {},
             acquiredPowers: {},
             purchasedHouses: {},
+            purchasedHorses: {},
             collectedNirnroots: {},
             spokenBeggars: {},
           }),
@@ -169,7 +178,7 @@ export const useLocationStore = create<LocationStore>()(
     }),
     {
       name: 'oblivion-wayshrine',
-      version: 8,
+      version: 10,
       migrate: (persisted, version) => {
         const state = persisted as Record<string, unknown>;
         if (version < 2) {
@@ -244,6 +253,25 @@ export const useLocationStore = create<LocationStore>()(
           }
           state.version = 8;
         }
+        if (version < 9) {
+          // Add purchasedHorses tracking
+          if (!state.purchasedHorses) {
+            state.purchasedHorses = {};
+          }
+          state.version = 9;
+        }
+        if (version < 10) {
+          // Re-key purchasedHorses from "locationId:horseName" to just "horseName"
+          const old = (state.purchasedHorses ?? {}) as Record<string, boolean>;
+          const migrated: Record<string, boolean> = {};
+          for (const key of Object.keys(old)) {
+            const colonIndex = key.indexOf(':');
+            const horseName = colonIndex >= 0 ? key.slice(colonIndex + 1) : key;
+            migrated[horseName] = true;
+          }
+          state.purchasedHorses = migrated;
+          state.version = 10;
+        }
         return state as LocationStore;
       },
       partialize: (state) => ({
@@ -254,6 +282,7 @@ export const useLocationStore = create<LocationStore>()(
         acquiredItems: state.acquiredItems,
         acquiredPowers: state.acquiredPowers,
         purchasedHouses: state.purchasedHouses,
+        purchasedHorses: state.purchasedHorses,
         collectedNirnroots: state.collectedNirnroots,
         spokenBeggars: state.spokenBeggars,
         typeFilters: state.typeFilters,

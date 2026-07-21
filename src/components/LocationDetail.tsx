@@ -52,6 +52,7 @@ export default function LocationDetail({
   acquiredItems,
   acquiredPowers,
   purchasedHouses,
+  purchasedHorses,
   collectedNirnroots,
   spokenBeggars,
   onToggleQuest,
@@ -60,6 +61,7 @@ export default function LocationDetail({
   onToggleItem,
   onTogglePower,
   onToggleHouse,
+  onToggleHorse,
   onToggleNirnroot,
   onToggleBeggar,
   unofficialPatch,
@@ -75,6 +77,7 @@ export default function LocationDetail({
   acquiredItems: Record<string, boolean>;
   acquiredPowers: Record<string, boolean>;
   purchasedHouses: Record<string, boolean>;
+  purchasedHorses: Record<string, boolean>;
   collectedNirnroots: Record<string, boolean>;
   spokenBeggars: Record<string, boolean>;
   onToggleQuest: (questName: string) => void;
@@ -83,6 +86,7 @@ export default function LocationDetail({
   onToggleItem: (itemName: string) => void;
   onTogglePower: (powerName: string) => void;
   onToggleHouse: (houseName: string) => void;
+  onToggleHorse: (horseName: string) => void;
   onToggleNirnroot: (description: string) => void;
   onToggleBeggar: (beggarName: string) => void;
   unofficialPatch: boolean;
@@ -276,6 +280,68 @@ export default function LocationDetail({
                       </Box>
                     }
                     secondary={`${house.price.toLocaleString()} gold`}
+                    primaryTypographyProps={{
+                      fontSize: '0.8rem',
+                      component: 'div',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.secondary' }
+                        : undefined,
+                    }}
+                    secondaryTypographyProps={{
+                      fontSize: '0.7rem',
+                      sx: checked
+                        ? { textDecoration: 'line-through', color: 'text.disabled' }
+                        : undefined,
+                    }}
+                  />
+                </ListItem>
+              );
+            })}
+          </List>
+        </>
+      )}
+
+      {location.horses && location.horses.length > 0 && (
+        <>
+          <Divider sx={{ my: 1 }} />
+          <Typography
+            variant="caption"
+            sx={{ color: 'text.secondary', fontWeight: 'bold', textTransform: 'uppercase' }}
+          >
+            Horses
+          </Typography>
+          <List dense disablePadding>
+            {location.horses.map((horse) => {
+              const checked = !!purchasedHorses[horse.name];
+              return (
+                <ListItem
+                  key={horse.name}
+                  disableGutters
+                  sx={{ py: 0.25, cursor: 'pointer' }}
+                  onClick={() => onToggleHorse(horse.name)}
+                >
+                  <ListItemIcon sx={{ minWidth: 28 }}>
+                    <Checkbox
+                      size="small"
+                      checked={checked}
+                      tabIndex={-1}
+                      disableRipple
+                      sx={{
+                        p: 0,
+                        color: '#38bdf8',
+                        '&.Mui-checked': { color: '#38bdf8' },
+                      }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+                        <UespLink href={buildUespUrl(horse.name, location.dlc)}>
+                          {horse.name}
+                        </UespLink>
+                      </Box>
+                    }
+                    secondary={horse.price === 0 ? 'Quest Reward' : `${horse.price.toLocaleString()} gold`}
                     primaryTypographyProps={{
                       fontSize: '0.8rem',
                       component: 'div',
