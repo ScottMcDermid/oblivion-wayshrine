@@ -19,6 +19,7 @@ import {
 } from '@mui/material';
 import { ThemeProvider, StyledEngineProvider, useTheme } from '@mui/material/styles';
 import { ArrowBack, Close } from '@mui/icons-material';
+import Image from 'next/image';
 import theme from '@/app/theme';
 import { useLocationStore } from '@/data/locationStore';
 import { useHydrated } from '@/hooks/useHydrated';
@@ -286,7 +287,7 @@ function WayshrineContent({ locationId }: { locationId?: string }) {
             aria-label="Oblivion Tools home"
             sx={{ p: 0.5 }}
           >
-            <img src="/oblivion-tools-icon.ico" alt="Oblivion Tools" width={16} height={16} style={{ display: 'block' }} />
+            <Image src="/oblivion-tools-icon.ico" alt="Oblivion Tools" width={16} height={16} style={{ display: 'block' }} />
           </IconButton>
           <Typography
             variant="h6"
