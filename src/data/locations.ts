@@ -602,7 +602,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Great Forest',
     initiallyDiscovered: false,
-    quests: [{ name: 'Mephala' }],
+    quests: [{ name: 'Mephala', levelReq: 15 }],
     merchants: [{ name: 'Kirsten' }],
     notes: 'Missable: Invest in Kirsten before "Mephala" Daedric quest',
   },
@@ -612,7 +612,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Settlement',
     hold: 'Blackwood',
     initiallyDiscovered: false,
-    quests: [{ name: 'Sheogorath' }],
+    quests: [{ name: 'Sheogorath', levelReq: 2 }],
     nirnroots: [{ description: 'Border Watch Inn' }],
   },
   {
@@ -1461,7 +1461,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'Jerall Mountains',
     initiallyDiscovered: false,
-    quests: [{ name: 'Azura' }],
+    quests: [{ name: 'Azura', levelReq: 2 }],
     uniqueItems: [{ name: "Azura's Star" }],
   },
   {
@@ -1470,7 +1470,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'Valus Mountains',
     initiallyDiscovered: false,
-    quests: [{ name: 'Boethia' }],
+    quests: [{ name: 'Boethia', levelReq: 20 }],
     uniqueItems: [{ name: 'Goldbrand' }],
   },
   {
@@ -1479,7 +1479,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'West Weald',
     initiallyDiscovered: false,
-    quests: [{ name: 'Clavicus Vile' }],
+    quests: [{ name: 'Clavicus Vile', levelReq: 20 }],
     uniqueItems: [{ name: 'Masque of Clavicus Vile' }, { name: 'Umbra' }],
   },
   {
@@ -1488,7 +1488,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'Jerall Mountains',
     initiallyDiscovered: false,
-    quests: [{ name: 'Hermaeus Mora' }],
+    quests: [{ name: 'Hermaeus Mora', levelReq: 20 }],
     uniqueItems: [{ name: 'Oghma Infinium' }],
   },
   {
@@ -1497,7 +1497,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Hircine' }, { name: 'Burning Trail', dlc: 'Remastered' }],
+    quests: [{ name: 'Hircine', levelReq: 17 }, { name: 'Burning Trail', dlc: 'Remastered' }],
     uniqueItems: [{ name: "Saviour's Hide" }],
   },
   {
@@ -1506,7 +1506,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'Gold Coast',
     initiallyDiscovered: false,
-    quests: [{ name: 'Malacath' }],
+    quests: [{ name: 'Malacath', levelReq: 10 }],
     uniqueItems: [{ name: 'Volendrung' }],
   },
   {
@@ -1515,7 +1515,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'Heartlands',
     initiallyDiscovered: false,
-    quests: [{ name: 'Mephala' }],
+    quests: [{ name: 'Mephala', levelReq: 15 }],
     uniqueItems: [{ name: 'Ebony Blade' }],
   },
   {
@@ -1524,7 +1524,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'West Weald',
     initiallyDiscovered: false,
-    quests: [{ name: 'Meridia' }],
+    quests: [{ name: 'Meridia', levelReq: 10 }],
     uniqueItems: [{ name: 'Ring of Khajiiti' }],
   },
   {
@@ -1533,7 +1533,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'Great Forest',
     initiallyDiscovered: false,
-    quests: [{ name: 'Molag Bal' }, { name: 'Burning Trail', dlc: 'Remastered' }, { name: 'Conjuration Training' }],
+    quests: [{ name: 'Molag Bal', levelReq: 17 }, { name: 'Burning Trail', dlc: 'Remastered' }, { name: 'Conjuration Training' }],
     uniqueItems: [{ name: 'Mace of Molag Bal' }],
     trainers: [{ name: 'Olyn Seran', skill: 'Conjuration', tier: 'Master', maxLevel: 100 }],
   },
@@ -1543,7 +1543,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'Jerall Mountains',
     initiallyDiscovered: false,
-    quests: [{ name: 'Namira' }],
+    quests: [{ name: 'Namira', levelReq: 5 }],
     uniqueItems: [{ name: 'Ring of Namira' }],
   },
   {
@@ -1552,7 +1552,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'Blackwood',
     initiallyDiscovered: false,
-    quests: [{ name: 'Nocturnal' }],
+    quests: [{ name: 'Nocturnal', levelReq: 10 }],
     uniqueItems: [{ name: 'Skeleton Key' }],
   },
   {
@@ -1561,7 +1561,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'Nibenay Valley',
     initiallyDiscovered: false,
-    quests: [{ name: 'Peryite' }],
+    quests: [{ name: 'Peryite', levelReq: 10 }],
     uniqueItems: [{ name: 'Spell Breaker' }],
   },
   {
@@ -1570,7 +1570,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'Blackwood',
     initiallyDiscovered: false,
-    quests: [{ name: 'Sheogorath' }],
+    quests: [{ name: 'Sheogorath', levelReq: 2 }],
     uniqueItems: [{ name: 'Wabbajack' }],
   },
   {
@@ -1579,7 +1579,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'West Weald',
     initiallyDiscovered: false,
-    quests: [{ name: 'Sanguine' }],
+    quests: [{ name: 'Sanguine', levelReq: 8 }],
     uniqueItems: [{ name: 'Sanguine Rose' }],
   },
   {
@@ -1588,7 +1588,7 @@ export const locationDefinitions: LocationDefinition[] = [
     type: 'Daedric Shrine',
     hold: 'Nibenay Basin',
     initiallyDiscovered: false,
-    quests: [{ name: 'Vaermina' }],
+    quests: [{ name: 'Vaermina', levelReq: 5 }],
     uniqueItems: [{ name: 'Skull of Corruption' }],
   },
 

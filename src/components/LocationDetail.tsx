@@ -378,6 +378,9 @@ export default function LocationDetail({
               const effectiveQuestDLC = q.dlc ?? locationDLC;
               const questDLCBadge = effectiveQuestDLC !== 'Base' ? effectiveQuestDLC : undefined;
               const secondaryParts: string[] = [];
+              if (q.levelReq) {
+                secondaryParts.push(`Requires level ${q.levelReq}`);
+              }
               if (q.leveled) {
                 const effectiveLevel = (!unofficialPatch && vanillaLeveledOverrides[q.name] !== undefined)
                   ? vanillaLeveledOverrides[q.name]
